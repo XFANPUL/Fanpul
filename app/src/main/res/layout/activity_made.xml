@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/code_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="请输入生成二维码的文字" />
+
+    <CheckBox
+        android:id="@+id/logo_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="是否在二维码中添加LOGO图片"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/made_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="生成二维码"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/result_iv"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_margin="10dp" />
+</LinearLayout>
