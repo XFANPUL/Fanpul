@@ -13,8 +13,6 @@ def versionBuild = 0
 def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
-
-
 android {
     aaptOptions {
                 cruncherEnabled = false
