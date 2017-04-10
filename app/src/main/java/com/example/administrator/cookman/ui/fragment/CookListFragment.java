@@ -14,6 +14,8 @@ import com.example.administrator.cookman.IView.ICookListView;
 import com.example.administrator.cookman.R;
 import com.example.administrator.cookman.constants.Constants;
 import com.example.administrator.cookman.model.entity.CookEntity.CookDetail;
+import com.example.administrator.cookman.model.entity.bmobEntity.Menu;
+import com.example.administrator.cookman.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.cookman.model.entity.tb_cook.TB_CustomCategory;
 import com.example.administrator.cookman.presenter.CookListPresenter;
 import com.example.administrator.cookman.presenter.Presenter;
@@ -95,17 +97,17 @@ public class CookListFragment extends BaseFragment implements ICookListView {
         cookListAdapter.setDataList(datas);
 
         cookListPresenter = new CookListPresenter(getActivity(), this);
-        cookListPresenter.updateRefreshCookMenuByID(customCategoryData.getCtgId());
+        //cookListPresenter.updateRefreshCookMenuByID(customCategoryData.getCtgId());
 
         twinklingRefreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
             @Override
             public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
-                cookListPresenter.updateRefreshCookMenuByID(customCategoryData.getCtgId());
+                //cookListPresenter.updateRefreshCookMenuByID(customCategoryData.getCtgId());
             }
 
             @Override
             public void onLoadMore(final TwinklingRefreshLayout refreshLayout) {
-                cookListPresenter.loadMoreCookMenuByID(customCategoryData.getCtgId());
+                //cookListPresenter.loadMoreCookMenuByID(customCategoryData.getCtgId());
             }
         });
     }
@@ -192,8 +194,12 @@ public class CookListFragment extends BaseFragment implements ICookListView {
         return false;
     }
 
-    public void setCustomCategoryData(TB_CustomCategory customCategoryData){
+    /*public void setCustomCategoryData(TB_CustomCategory customCategoryData){
         this.customCategoryData = customCategoryData;
+    }*/
+    private MenuCategory menuCategory;
+    public void setMenuCategory(MenuCategory menuCategory){
+        this.menuCategory = menuCategory;
     }
     private Map<String,MainPageViewPageAdapter.Buy> buyMap=new HashMap<>();
     public void setBuyMap(Map<String,MainPageViewPageAdapter.Buy> buyList){

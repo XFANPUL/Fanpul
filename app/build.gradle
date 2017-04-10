@@ -67,13 +67,6 @@ android {
 
     //多渠道打包
     productFlavors {
-        ATest {}
-        Fir {}
-        Tencent {}
-        Qh360 {}
-        WangDouJia {}
-        XiaoMi {}
-        BaiDu {}
         Huawei {}
     }
 

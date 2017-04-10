@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import com.example.administrator.cookman.R;
 import com.example.administrator.cookman.constants.Constants;
+import com.example.administrator.cookman.model.bmob.BmobQueryCallback;
+import com.example.administrator.cookman.model.bmob.BmobUtil;
+import com.example.administrator.cookman.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.cookman.model.entity.tb_cook.TB_CustomCategory;
 import com.example.administrator.cookman.model.manager.CustomCategoryManager;
 import com.example.administrator.cookman.presenter.Presenter;
@@ -34,6 +37,7 @@ import com.umeng.analytics.MobclickAgent;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,8 +53,8 @@ import butterknife.OnClick;
 public class MainPageFragment extends BaseFragment implements
         ViewPager.OnPageChangeListener
 {
-    private List<TB_CustomCategory> customCategoryDatas;
-
+    //private List<TB_CustomCategory> customCategoryDatas;
+     private List<MenuCategory> menuCategoryList;
 
     @Bind(R.id.magic_indicator)
     public MagicIndicator magicIndicator;
@@ -79,9 +83,11 @@ public class MainPageFragment extends BaseFragment implements
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        menuCategoryList = new ArrayList<>();
+        String restaurantName="";
         if(getActivity().getIntent().getStringExtra(ZxingFragment.TAG_ZXING)!=null) {
             String[] str = getActivity().getIntent().getStringExtra(ZxingFragment.TAG_ZXING).split(" ");
-
+            restaurantName = str[0];
             shopName.setText(str[0]);
             if(str.length==2) {
                 //Pattern pattern = Pattern.compile("^[ABCD]+\\d");
@@ -93,10 +99,22 @@ public class MainPageFragment extends BaseFragment implements
             }
         }
         if(getActivity().getIntent().getStringExtra(OrderActivity.SHOP_NAME)!=null){
-
             shopName.setText(getActivity().getIntent().getStringExtra(OrderActivity.SHOP_NAME));
+            restaurantName = getActivity().getIntent().getStringExtra(OrderActivity.SHOP_NAME);
         }
-            initIndicatorView();
+        BmobUtil.queryRestaurantCategory(restaurantName, new BmobQueryCallback<MenuCategory>() {
+            @Override
+            public void Success(List<MenuCategory> bmobObjectList) {
+                     menuCategoryList = bmobObjectList;
+                     initIndicatorView();
+            }
+
+            @Override
+            public void Failed() {
+
+            }
+        });
+
 
     }
 
@@ -140,20 +158,21 @@ public class MainPageFragment extends BaseFragment implements
     /********************************************************************************************/
 
     private void initIndicatorView(){
-        customCategoryDatas = CustomCategoryManager.getInstance().getDatas();
+       //customCategoryDatas = CustomCategoryManager.getInstance().getDatas();
 
         commonNavigator = new CommonNavigator(getActivity());
         commonNavigator.setScrollPivotX(0.35f);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
             @Override
             public int getCount() {
-                return customCategoryDatas == null ? 0 : customCategoryDatas.size();
+                return menuCategoryList == null ? 0 : menuCategoryList.size();
             }
 
             @Override
             public IPagerTitleView getTitleView(Context context, final int index) {
                 SimplePagerTitleView simplePagerTitleView = new SimplePagerTitleView(context);
-                simplePagerTitleView.setText(customCategoryDatas.get(index).getName());
+                //simplePagerTitleView.setText(customCategoryDatas.get(index).getName());
+                simplePagerTitleView.setText(menuCategoryList.get(index).getCategoryName());
                 simplePagerTitleView.setNormalColor(Color.parseColor("#333333"));
                 simplePagerTitleView.setSelectedColor(Color.parseColor("#ffffff"));
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
@@ -174,9 +193,8 @@ public class MainPageFragment extends BaseFragment implements
         });
         magicIndicator.setNavigator(commonNavigator);
 
-        mainPageViewPageAdapter = new MainPageViewPageAdapter(getFragmentManager(), customCategoryDatas);
+        mainPageViewPageAdapter = new MainPageViewPageAdapter(getFragmentManager(), menuCategoryList);
         viewPager.addOnPageChangeListener(this);
-
         viewPager.setAdapter(mainPageViewPageAdapter);
     }
 

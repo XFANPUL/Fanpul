@@ -2,14 +2,15 @@ package com.example.administrator.cookman.model.bmob;
 
 import android.util.Log;
 
+import com.example.administrator.cookman.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.cookman.model.entity.bmobEntity.Restaurant;
 
 import java.util.List;
 
-import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SQLQueryListener;
 
 /**
@@ -43,5 +44,26 @@ public class BmobUtil {
 
             }
         });*/
+    }
+    public static void queryRestaurantCategory(String restaurantName, final BmobQueryCallback callback){
+        String bql = "select * from Restaurant where restaurantName = '"+restaurantName+"'";
+        new BmobQuery<Restaurant>().doSQLQuery(bql, new SQLQueryListener<Restaurant>() {
+            @Override
+            public void done(BmobQueryResult<Restaurant> bmobQueryResult, BmobException e) {
+                if(e == null){
+                    Restaurant restaurant = bmobQueryResult.getResults().get(0);
+                    BmobQuery<MenuCategory> menuCategoryBmobQuery = new BmobQuery<MenuCategory>();
+                    menuCategoryBmobQuery.addWhereEqualTo("restaurant",restaurant);
+                    menuCategoryBmobQuery.findObjects(new FindListener<MenuCategory>() {
+                        @Override
+                        public void done(List<MenuCategory> list, BmobException e) {
+                            if(e == null){
+                               callback.Success(list);
+                            }
+                        }
+                    });
+                }
+            }
+        });
     }
 }

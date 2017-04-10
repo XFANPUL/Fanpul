@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
 import com.example.administrator.cookman.model.entity.CookEntity.CookDetail;
+import com.example.administrator.cookman.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.cookman.model.entity.tb_cook.TB_CookDetail;
 import com.example.administrator.cookman.model.entity.tb_cook.TB_CustomCategory;
 import com.example.administrator.cookman.ui.fragment.CookListFragment;
@@ -20,14 +21,15 @@ import java.util.Map;
 
 public class MainPageViewPageAdapter extends FragmentPagerAdapter {
 
-    private List<TB_CustomCategory> customCategoryDatas;
-    //private BuyList buyList = new BuyList();
+   // private List<TB_CustomCategory> customCategoryDatas;
+    private List<MenuCategory> menuCategoryList;
     public static  Map<String,Buy> buyMap = new HashMap<>();
 
     private static CookListFragment cookListCurrentFragment;
-    public MainPageViewPageAdapter(FragmentManager fm, List<TB_CustomCategory> customCategoryDatas){
+    public MainPageViewPageAdapter(FragmentManager fm, List<MenuCategory> menuCategoryList){//List<TB_CustomCategory> customCategoryDatas){
         super(fm);
-        this.customCategoryDatas = customCategoryDatas;
+       // this.customCategoryDatas = customCategoryDatas;
+        this.menuCategoryList= menuCategoryList;
     }
 
     @Override
@@ -35,7 +37,8 @@ public class MainPageViewPageAdapter extends FragmentPagerAdapter {
         CookListFragment fragment = null;
 
         fragment = new CookListFragment();
-        fragment.setCustomCategoryData(customCategoryDatas.get(position));
+        //fragment.setCustomCategoryData(customCategoryDatas.get(position));
+        fragment.setMenuCategory(menuCategoryList.get(position));
         fragment.setBuyMap(buyMap);
         return fragment;
     }
@@ -52,16 +55,16 @@ public class MainPageViewPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        if(null == customCategoryDatas)
+        if(null == menuCategoryList)
             return 0;
 
-        return customCategoryDatas.size();
+        return menuCategoryList.size();
     }
 
     @Override
     public long getItemId(int position) {
         // 获取当前数据的hashCode
-        int hashCode = customCategoryDatas.get(position).hashCode();
+        int hashCode = menuCategoryList.get(position).hashCode();
         return hashCode;
     }
 

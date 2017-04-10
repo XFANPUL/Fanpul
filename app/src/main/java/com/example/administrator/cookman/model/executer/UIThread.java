@@ -3,9 +3,7 @@ package com.example.administrator.cookman.model.executer;
 import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 
-/**
- * Created by PeOS on 2016/9/6 0006.
- */
+
 public class UIThread implements PostExecutionThread{
     private UIThread() {
 

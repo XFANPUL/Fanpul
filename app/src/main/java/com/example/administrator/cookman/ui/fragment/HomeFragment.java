@@ -36,7 +36,7 @@ import java.util.List;
 import butterknife.Bind;
 import cn.bmob.v3.datatype.BmobFile;
 
-public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaurant>{
+public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaurant> {
 	@ViewInject(R.id.index_home_viewpager)
 	private WrapContentHeightViewPager viewPager;
 
@@ -139,6 +139,7 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
 	public void Success(List<Restaurant> bmobObjectList) {
            restaurantItemAdapter.setDataList(bmobObjectList);
 		   restaurantItemAdapter.notifyDataSetChanged();
+
 	}
 
 
