@@ -36,9 +36,9 @@ public class CookSearchResultActivity extends BaseSwipeBackActivity implements I
 
     private int totalPages;
     private String name;
-    private ArrayList<CookDetail> list;
-    private CookListAdapter cookListAdapter;
-    private CookSearchResultPresenter cookSearchResultPresenter;
+   // private ArrayList<CookDetail> list;
+   // private CookListAdapter cookListAdapter;
+   // private CookSearchResultPresenter cookSearchResultPresenter;
 
     @Override
     protected Presenter getPresenter(){
@@ -62,13 +62,13 @@ public class CookSearchResultActivity extends BaseSwipeBackActivity implements I
         Intent intent = getIntent();
         name = intent.getStringExtra(Intent_Key_Name);
         totalPages = intent.getIntExtra(Intent_Key_TotalPages, 0);
-        list = intent.getParcelableArrayListExtra(Intent_Key_List);
+        //list = intent.getParcelableArrayListExtra(Intent_Key_List);
 
         getSupportActionBar().setTitle(name);
 
         recyclerList.setLayoutManager(new LinearLayoutManager(recyclerList.getContext()));
-        cookListAdapter = new CookListAdapter(this);
-        recyclerList.setAdapter(cookListAdapter);
+      //  cookListAdapter = new CookListAdapter(this);
+      //  recyclerList.setAdapter(cookListAdapter);
 
         twinklingRefreshLayout.setOverScrollRefreshShow(false);
         twinklingRefreshLayout.setEnableRefresh(false);
@@ -87,14 +87,14 @@ public class CookSearchResultActivity extends BaseSwipeBackActivity implements I
 
             @Override
             public void onLoadMore(final TwinklingRefreshLayout refreshLayout) {
-                cookSearchResultPresenter.loadMore();
+                //cookSearchResultPresenter.loadMore();
             }
         });
 
-        cookListAdapter.setDataList(list);
-        cookListAdapter.notifyDataSetChanged();
+       // cookListAdapter.setDataList(list);
+       // cookListAdapter.notifyDataSetChanged();
 
-        cookSearchResultPresenter = new CookSearchResultPresenter(this, name, totalPages, this);
+       // cookSearchResultPresenter = new CookSearchResultPresenter(this, name, totalPages, this);
     }
 
     @Override
@@ -117,7 +117,7 @@ public class CookSearchResultActivity extends BaseSwipeBackActivity implements I
     @Override
     public void onCookSearchLoadMoreSuccess(ArrayList<CookDetail> list){
         twinklingRefreshLayout.finishLoadmore();
-        cookListAdapter.addItems(list);
+       // cookListAdapter.addItems(list);
     }
 
     @Override

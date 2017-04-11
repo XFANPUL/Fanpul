@@ -62,7 +62,7 @@ public class CookListFragment extends BaseFragment implements ICookListView {
 
     private CookListAdapter cookListAdapter;
 
-    private TB_CustomCategory customCategoryData;
+    //private TB_CustomCategory customCategoryData;
     private CookListPresenter cookListPresenter;
 
     @Override
@@ -93,12 +93,12 @@ public class CookListFragment extends BaseFragment implements ICookListView {
         twinklingRefreshLayout.setBottomView(bottomProgressView);
         twinklingRefreshLayout.setOverScrollBottomShow(true);
 
-        final ArrayList<CookDetail> datas = new ArrayList<>();
+        final ArrayList<Menu> datas = new ArrayList<>();
         cookListAdapter.setDataList(datas);
 
         cookListPresenter = new CookListPresenter(getActivity(), this);
         //cookListPresenter.updateRefreshCookMenuByID(customCategoryData.getCtgId());
-
+        cookListPresenter.updateRefreshCookMenuCategory(menuCategory);
         twinklingRefreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
             @Override
             public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
@@ -149,11 +149,19 @@ public class CookListFragment extends BaseFragment implements ICookListView {
     }
 
     /********************************************************************************************/
-    @Override
     public void onCookListUpdateRefreshSuccess(ArrayList<CookDetail> list){
-        twinklingRefreshLayout.finishRefreshing();
+        //twinklingRefreshLayout.finishRefreshing();
 
-        cookListAdapter.setDataList(conversion(list));
+        //cookListAdapter.setDataList(conversion(list));
+       // cookListAdapter.notifyDataSetChanged();
+    }
+
+
+
+    @Override
+    public void onMenuListUpdateRefreshSuccess(List<Menu> list) {
+        twinklingRefreshLayout.finishRefreshing();
+        cookListAdapter.setDataList(list);
         cookListAdapter.notifyDataSetChanged();
     }
 
@@ -164,9 +172,15 @@ public class CookListFragment extends BaseFragment implements ICookListView {
     }
 
     @Override
-    public void onCookListLoadMoreSuccess(ArrayList<CookDetail> list){
+    public void onCookListLoadMoreSuccess(ArrayList<CookDetail> list) {
+       // twinklingRefreshLayout.finishLoadmore();
+       // cookListAdapter.addItems(conversion(list));
+    }
+
+    @Override
+    public void onMenuListLoadMoreSuccess(List<Menu> list){
         twinklingRefreshLayout.finishLoadmore();
-        cookListAdapter.addItems(conversion(list));
+        cookListAdapter.addItems(list);
     }
 
     @Override
@@ -176,14 +190,14 @@ public class CookListFragment extends BaseFragment implements ICookListView {
     }
     /********************************************************************************************/
 
-    private List<CookDetail> conversion(ArrayList<CookDetail> list){
-        List<CookDetail> datas = new ArrayList<>();
-        for(CookDetail item : list){
+   /* private List<Menu> conversion(ArrayList<Menu> list){
+        List<Menu> datas = new ArrayList<>();
+        for(Menu item : list){
             datas.add(item);
         }
 
         return datas;
-    }
+    }*/
 
     public boolean closeFabMenu(){
         if (floatingActionButton.getVisibility() != View.VISIBLE) {

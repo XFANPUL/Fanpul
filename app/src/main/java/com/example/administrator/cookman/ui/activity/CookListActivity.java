@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.administrator.cookman.IView.ICookListView;
 import com.example.administrator.cookman.R;
 import com.example.administrator.cookman.model.entity.CookEntity.CookDetail;
+import com.example.administrator.cookman.model.entity.bmobEntity.Menu;
 import com.example.administrator.cookman.presenter.CookListPresenter;
 import com.example.administrator.cookman.presenter.Presenter;
 import com.example.administrator.cookman.ui.adapter.CookListAdapter;
@@ -22,6 +23,7 @@ import com.example.administrator.cookman.ui.component.twinklingrefreshlayout.hea
 import com.example.administrator.cookman.utils.ToastUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 
@@ -123,8 +125,13 @@ public class CookListActivity extends BaseSwipeBackActivity implements ICookList
     public void onCookListUpdateRefreshSuccess(ArrayList<CookDetail> list){
         twinklingRefreshLayout.finishRefreshing();
 
-        cookListAdapter.setDataList(list);
+        //cookListAdapter.setDataList(list);
         cookListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onMenuListUpdateRefreshSuccess(List<Menu> list) {
+
     }
 
     @Override
@@ -136,7 +143,12 @@ public class CookListActivity extends BaseSwipeBackActivity implements ICookList
     @Override
     public void onCookListLoadMoreSuccess(ArrayList<CookDetail> list){
         twinklingRefreshLayout.finishLoadmore();
-        cookListAdapter.addItems(list);
+        //cookListAdapter.addItems(list);
+    }
+
+    @Override
+    public void onMenuListLoadMoreSuccess(List<Menu> list) {
+
     }
 
     @Override

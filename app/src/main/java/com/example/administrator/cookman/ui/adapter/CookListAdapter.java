@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.administrator.cookman.R;
 import com.example.administrator.cookman.model.entity.CookEntity.CookDetail;
+import com.example.administrator.cookman.model.entity.bmobEntity.Menu;
 import com.example.administrator.cookman.ui.activity.CookDetailActivity;
 import com.example.administrator.cookman.ui.activity.CookListActivity;
 import com.example.administrator.cookman.ui.fragment.CookListFragment;
@@ -28,7 +29,7 @@ import butterknife.Bind;
  * Created by Administrator on 2017/2/19.
  */
 
-public class CookListAdapter extends BaseRecyclerAdapter<CookDetail>{
+public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
 
     private Activity activity;
     private GlideUtil glideUtil;
@@ -37,16 +38,15 @@ public class CookListAdapter extends BaseRecyclerAdapter<CookDetail>{
         this.activity = activity;
         glideUtil = new GlideUtil();
     }
-
+  //CookDetail->Menu
     @Override
-    public CommonHolder<CookDetail> setViewHolder(ViewGroup parent) {
+    public CommonHolder<Menu> setViewHolder(ViewGroup parent) {
         return new CardHolder(parent.getContext(), parent);
     }
 
-    class CardHolder extends CommonHolder<CookDetail> {
+    class CardHolder extends CommonHolder<Menu> {
         private int currentNum=0;
         private CookListFragment cookListFragment;
-        private MainPageViewPageAdapter.Buy buy = new MainPageViewPageAdapter.Buy();
         @Bind(R.id.img_cook)
         ImageView imgvCook;
 
@@ -68,28 +68,26 @@ public class CookListAdapter extends BaseRecyclerAdapter<CookDetail>{
         }
 
         @Override
-        public void bindData(final CookDetail cook) {
-            textName.setText(cook.getName());
-            if(cookListFragment!=null&&cookListFragment.getBuy(cook.getMenuId()).getCookDetail()!=null){
-                numberText.setText(cookListFragment.getBuy(cook.getMenuId()).getNumber()+"");
-                currentNum = cookListFragment.getBuy(cook.getMenuId()).getNumber();
+        public void bindData(final Menu cook) {
+            textName.setText(cook.getMenuName());
+            if(cookListFragment!=null&&cookListFragment.getBuy(cook.getObjectId()).getMenu()!=null){
+                numberText.setText(cookListFragment.getBuy(cook.getObjectId()).getNumber()+"");
+                currentNum = cookListFragment.getBuy(cook.getObjectId()).getNumber();
             }else{
                 numberText.setText(0+"");
                 currentNum = 0;
             }
-
-            if(cook.getRecipe() != null && cook.getRecipe().getImg() != null && (!TextUtils.isEmpty(cook.getRecipe().getImg()))) {
-
+            /*if(cook.getRecipe() != null && cook.getRecipe().getImg() != null && (!TextUtils.isEmpty(cook.getRecipe().getImg()))) {
                 glideUtil.attach(imgvCook).injectImageWithNull(cook.getRecipe().getImg());
-
+            }else imgvCook.setImageResource(R.mipmap.qiudaoyu);*/
+            if(cook!=null && cook.getImgUrl()!=null&&(!TextUtils.isEmpty(cook.getImgUrl()))){
+                glideUtil.attach(imgvCook).injectImageWithNull(cook.getImgUrl());
             }
-            else
-                imgvCook.setImageResource(R.mipmap.qiudaoyu);
 
             imgvCook.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    CookDetailActivity.startActivity(activity, imgvCook, cook, true);
+                    //CookDetailActivity.startActivity(activity, imgvCook, cook, true);
                 }
             });
             deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -98,9 +96,9 @@ public class CookListAdapter extends BaseRecyclerAdapter<CookDetail>{
                     if(currentNum>0) {
                         cookListFragment = MainPageViewPageAdapter.getCurrentCookListCurrentFragment();
                         currentNum--;
-                        MainPageViewPageAdapter.Buy buy = cookListFragment.getBuy(cook.getMenuId());
+                        MainPageViewPageAdapter.Buy buy = cookListFragment.getBuy(cook.getObjectId());
                         buy.setNumber(buy.getNumber()-1);
-                        cookListFragment.ReduceCurrentNum(cook.getMenuId(),currentNum);
+                        cookListFragment.ReduceCurrentNum(cook.getObjectId(),currentNum);
                         numberText.setText(currentNum+"");
                       //  buy.setNumber(currentNum);
                     }
@@ -116,15 +114,11 @@ public class CookListAdapter extends BaseRecyclerAdapter<CookDetail>{
                     if(currentNum<9) {
                         cookListFragment = MainPageViewPageAdapter.getCurrentCookListCurrentFragment();
                        // Toast.makeText(activity,MainPageViewPageAdapter.getCurrentCookListCurrentFragment().toString(),Toast.LENGTH_SHORT).show();
-                        MainPageViewPageAdapter.Buy buy = cookListFragment.getBuy(cook.getMenuId());
+                        MainPageViewPageAdapter.Buy buy = cookListFragment.getBuy(cook.getObjectId());
                         currentNum++;
                        buy.setNumber(currentNum);
-                        Random ran = new Random();
-                        int price=25+Math.abs(ran.nextInt()%60);
-                        buy.setPerPrice(price);
-                        buy.setCookDetail(cook);
-                        buy.setTotalPrice(currentNum*price);
-                        cookListFragment.AddCurrentNum(cook.getMenuId(),buy);
+                        buy.setMenu(cook);
+                        cookListFragment.AddCurrentNum(cook.getObjectId(),buy);
                         numberText.setText(currentNum + "");
                      //   buy.setNumber(currentNum);
                     }else{

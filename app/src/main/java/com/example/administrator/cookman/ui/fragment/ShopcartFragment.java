@@ -64,8 +64,9 @@ public class ShopcartFragment extends Fragment {
             Iterator<String> iterator = MainPageViewPageAdapter.buyMap.keySet().iterator();
             while (iterator.hasNext()) {
                 String menuId = iterator.next();
-                lists.add(MainPageViewPageAdapter.buyMap.get(menuId));
-                totalmoney+= MainPageViewPageAdapter.buyMap.get(menuId).getTotalPrice();
+                MainPageViewPageAdapter.Buy buy = MainPageViewPageAdapter.buyMap.get(menuId);
+                lists.add(buy);
+                totalmoney+= buy.getNumber()*buy.getMenu().getPrice();
             }
 
 
@@ -114,8 +115,8 @@ public class ShopcartFragment extends Fragment {
         @Override
         public void onBindViewHolder(ShopCartHolder holder, int position) {
             MainPageViewPageAdapter.Buy buy = mbuyList.get(position);
-            holder.bindHolder(buy.getCookDetail().getRecipe().getImg(), buy.getCookDetail().getName(),
-                    buy.getPerPrice(), buy.getNumber());
+            holder.bindHolder(buy.getMenu().getImgUrl(), buy.getMenu().getMenuName(),
+                    buy.getMenu().getPrice(), buy.getNumber());
         }
 
         @Override

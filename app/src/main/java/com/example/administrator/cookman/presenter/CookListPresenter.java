@@ -1,16 +1,24 @@
 package com.example.administrator.cookman.presenter;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.administrator.cookman.IView.ICookListView;
 import com.example.administrator.cookman.R;
 import com.example.administrator.cookman.constants.Constants;
+import com.example.administrator.cookman.model.bmob.BmobQueryCallback;
+import com.example.administrator.cookman.model.bmob.BmobUtil;
 import com.example.administrator.cookman.model.entity.CookEntity.SearchCookMenuResultInfo;
 import com.example.administrator.cookman.model.entity.CookEntity.subscriberEntity.SearchCookMenuSubscriberResultInfo;
+import com.example.administrator.cookman.model.entity.bmobEntity.Menu;
+import com.example.administrator.cookman.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.cookman.model.interfaces.ICookRespository;
 import com.example.administrator.cookman.model.respository.CookRespository;
 import com.example.administrator.cookman.utils.ErrorExceptionUtil;
 import com.example.administrator.cookman.utils.Logger.Logger;
+
+import java.util.List;
 
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
@@ -32,6 +40,35 @@ public class CookListPresenter extends Presenter{
         this.iCookListView = iCookListView;
         this.iCookRespository = CookRespository.getInstance();
     }
+    public void updateRefreshCookMenuCategory(MenuCategory menuCategory){
+        curPage = 1;
+        BmobUtil.queryMenuByCategory(menuCategory, new BmobQueryCallback<Menu>() {
+            @Override
+            public void Success(List<Menu> bmobObjectList) {
+                iCookListView.onMenuListUpdateRefreshSuccess(bmobObjectList);
+            }
+
+            @Override
+            public void Failed() {
+                Toast.makeText(context,"查询失败",Toast.LENGTH_SHORT).show();
+                Log.i("Failed","查询菜品失败");
+            }
+        });
+    }
+
+    public void loadMoreMenuByCategory(MenuCategory menuCategory){
+        BmobUtil.queryMenuByCategory(menuCategory, new BmobQueryCallback() {
+            @Override
+            public void Success(List bmobObjectList) {
+
+            }
+
+            @Override
+            public void Failed() {
+
+            }
+        });
+    }
 
     public void destroy(){
         if(updateRefreshCookMenuByIDSubscriber != null){
@@ -50,6 +87,7 @@ public class CookListPresenter extends Presenter{
                 , updateRefreshCookMenuByIDSubscriber = new UpdateRefreshCookMenuByIDSubscriber()
         );
     }
+
 
     public void loadMoreCookMenuByID(String cid){
         curPage++;

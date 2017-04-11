@@ -2,6 +2,7 @@ package com.example.administrator.cookman.model.bmob;
 
 import android.util.Log;
 
+import com.example.administrator.cookman.model.entity.bmobEntity.Menu;
 import com.example.administrator.cookman.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.cookman.model.entity.bmobEntity.Restaurant;
 
@@ -28,6 +29,7 @@ public class BmobUtil {
                     callback.Success(bmobQueryResult.getResults());
                 }else{
                     Log.i("Failed","Fai");
+                    callback.Failed();
                 }
             }
         });
@@ -60,10 +62,32 @@ public class BmobUtil {
                             if(e == null){
                                callback.Success(list);
                             }
+                            else{
+                                callback.Failed();
+                            }
                         }
                     });
+                }else{
+                    callback.Failed();
                 }
             }
+        });
+    }
+
+    public static void queryMenuByCategory(MenuCategory menuCategory, final BmobQueryCallback callback){ //通过菜品种类查找菜品
+        BmobQuery<Menu> menuBmobQuery=new BmobQuery<Menu>();
+        menuBmobQuery.addWhereEqualTo("relation",menuCategory);
+        menuBmobQuery.findObjects(new FindListener<Menu>() {
+            @Override
+            public void done(List<Menu> list, BmobException e) {
+                if(e == null){
+                    callback.Success(list);
+                }
+                else{
+                    callback.Failed();
+                }
+            }
+
         });
     }
 }

@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
 import com.example.administrator.cookman.model.entity.CookEntity.CookDetail;
+import com.example.administrator.cookman.model.entity.bmobEntity.Menu;
 import com.example.administrator.cookman.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.cookman.model.entity.tb_cook.TB_CookDetail;
 import com.example.administrator.cookman.model.entity.tb_cook.TB_CustomCategory;
@@ -70,41 +71,22 @@ public class MainPageViewPageAdapter extends FragmentPagerAdapter {
 
 
     public static class Buy{
-        private CookDetail cookDetail;
+        private Menu menu;
+
+        public Menu getMenu() {
+            return menu;
+        }
+
+        public void setMenu(Menu menu) {
+            this.menu = menu;
+        }
+
         private int number = 0 ;
-        private int perPrice;
-        private int totalPrice;
-
-        public int getTotalPrice() {
-            return totalPrice;
-        }
-
-        public void setTotalPrice(int totalPrice) {
-            this.totalPrice = totalPrice;
-        }
-
-        public CookDetail getCookDetail() {
-            return cookDetail;
-        }
-
-        public void setCookDetail(CookDetail cookDetail) {
-            this.cookDetail = cookDetail;
-        }
-
         public int getNumber() {
             return number;
         }
-
         public void setNumber(int number) {
             this.number = number;
-        }
-
-        public int getPerPrice() {
-            return perPrice;
-        }
-
-        public void setPerPrice(int perPrice) {
-            this.perPrice = perPrice;
         }
     }
 
