@@ -22,7 +22,7 @@ import com.example.administrator.cookman.R;
 import com.example.administrator.cookman.model.bmob.BmobQueryCallback;
 import com.example.administrator.cookman.model.bmob.BmobUtil;
 import com.example.administrator.cookman.model.entity.bmobEntity.Restaurant;
-import com.example.administrator.cookman.ui.activity.OrderActivity;
+import com.example.administrator.cookman.ui.activity.OrderMenuActivity;
 import com.example.administrator.cookman.ui.adapter.BaseRecyclerAdapter;
 import com.example.administrator.cookman.ui.adapter.CommonHolder;
 import com.example.administrator.cookman.ui.view.ImageCycleView;
@@ -335,7 +335,7 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = OrderActivity.getIntent(getActivity(), shopNameText.getText().toString());
+				Intent intent = OrderMenuActivity.getIntent(getActivity(), shopNameText.getText().toString());
 				startActivity(intent);
 			}
 

@@ -7,7 +7,7 @@ import cn.bmob.v3.BmobObject;
  */
 
 public class LineState extends BmobObject {//排队状态表
-    private User user;
+    private String userName;
     private Integer bigTableLineNumber;//大桌排队人数
     private Integer middleTableLineNumber;//中桌排队人数
     private Integer smallTableLineNumber;//小桌排队人数
@@ -15,14 +15,13 @@ public class LineState extends BmobObject {//排队状态表
     private Integer state;//0表示直接排队(点击直接排队状态)，1表示排队点餐(点单完成状态),2表示未进行操作或取消排队
     //当点完餐后将存储该订单,可通过用户+店铺+订单状态查找
 
-    public User getUser() {
-        return user;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
-
     public Integer getBigTableLineNumber() {
         return bigTableLineNumber;
     }

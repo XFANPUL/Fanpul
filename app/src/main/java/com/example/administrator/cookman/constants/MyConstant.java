@@ -17,12 +17,6 @@ public class MyConstant {
 		R.drawable.nav_car,R.drawable.nav_discount,R.drawable.nav_yanchu,R.drawable.nav_coffee,
 		R.drawable.nav_pet,R.drawable.nav_jingdian,R.drawable.nav_yiyuan,R.drawable.nav_more,};
 
-	public static int[] pic = {R.mipmap.shop_1, R.mipmap.shop_2,R.mipmap.shop_3, R.mipmap.shop_4,
-			R.mipmap.shop_5, R.mipmap.shop_6, R.mipmap.shop_7, R.mipmap.shop_8,
-			R.mipmap.shop_9, R.mipmap.shop_10, R.mipmap.shop_11, R.mipmap.shop_12,
-			R.mipmap.shop_13, R.mipmap.shop_14, R.mipmap.shop_15, R.mipmap.shop_16,
-			R.mipmap.shop_17
-	};
 	public static String[] shopName = {"店铺1","店铺2","店铺3","店铺4","店铺5","店铺6","店铺7","店铺8","店铺9","店铺10"
 			,"店铺11","店铺12","店铺13","店铺14","店铺15","店铺16","店铺17"};
 }

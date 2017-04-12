@@ -29,7 +29,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.OrderActivity"
+            android:name=".ui.activity.OrderMenuActivity"
             android:theme="@style/AppTheme.NoActionBar" />
        <activity
             android:name=".ui.activity.SplashActivity"
@@ -62,12 +62,9 @@
         <activity android:name=".ui.activity.ShoppingCartActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name=".ui.activity.MainActivity">
-        </activity>
-
-        <activity android:name=".ui.activity.MadeCodeActivity">
-
-        </activity>
+        <activity android:name=".ui.activity.MainActivity"></activity>
+        <activity android:name=".ui.activity.MadeCodeActivity"></activity>
+        <activity android:name=".ui.activity.OrderFormActivity"></activity>
 
     </application>
 

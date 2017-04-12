@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.cookman.ui.activity.OrderActivity">
+    tools:context="com.example.administrator.cookman.ui.activity.OrderMenuActivity">
 
     <FrameLayout
         android:id="@+id/fragment_main_content"

@@ -7,9 +7,6 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
-/**
- * Created by PeOS on 2016/9/2 0002.
- */
 public abstract class AbsCustomDialog extends Dialog {
     public Window mWindow;
 

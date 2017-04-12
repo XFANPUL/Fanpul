@@ -12,9 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.cookman.R;
-import com.example.administrator.cookman.presenter.Presenter;
 import com.example.administrator.cookman.ui.activity.MadeCodeActivity;
-import com.example.administrator.cookman.ui.activity.OrderActivity;
+import com.example.administrator.cookman.ui.activity.OrderMenuActivity;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
@@ -51,7 +50,7 @@ public class ZxingFragment extends Fragment {
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                    // mTextView.setText(result);
-                    Intent intent = new Intent(getActivity(), OrderActivity.class);
+                    Intent intent = new Intent(getActivity(), OrderMenuActivity.class);
                     intent.putExtra(TAG_ZXING,result);
                     startActivity(intent);
                     // Toast.makeText(this,result.toString(),Toast.LENGTH_SHORT);

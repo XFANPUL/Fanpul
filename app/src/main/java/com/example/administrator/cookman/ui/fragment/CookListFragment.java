@@ -66,6 +66,13 @@ public class CookListFragment extends BaseFragment implements ICookListView {
     private CookListPresenter cookListPresenter;
 
     @Override
+    public void onResume() {
+        recyclerList.setAdapter(cookListAdapter);
+        cookListAdapter.notifyDataSetChanged();
+        super.onResume();
+    }
+
+    @Override
     protected Presenter getPresenter(){
         return cookListPresenter;
     }
@@ -118,11 +125,12 @@ public class CookListFragment extends BaseFragment implements ICookListView {
             FabTransformation.with(floatingActionButton).setOverlay(viewOverlay).transformTo(viewSheet);
         }
     }
+    public static final String restaurantNameIntent = "com.example.administrator.cookman.ui.fragment.CookListFragment";
     @OnClick(R.id.relative_buy)
     public void onClickBuy(){
-
+        MainPageFragment main = (MainPageFragment) getFragmentManager().findFragmentById(R.id.fragment_main_content);
         Intent intent  = new Intent(getActivity(), ShoppingCartActivity.class);
-
+        intent.putExtra(restaurantNameIntent,main.getRestaurantName());
         startActivity(intent);
         onClickOverlay();
     }

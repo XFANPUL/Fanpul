@@ -4,16 +4,15 @@ package com.example.administrator.cookman.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.example.administrator.cookman.R;
 import com.example.administrator.cookman.presenter.Presenter;
+import com.example.administrator.cookman.ui.adapter.MainPageViewPageAdapter;
 import com.example.administrator.cookman.ui.fragment.MainPageFragment;
-import com.example.administrator.cookman.utils.ToastUtil;
 
-public class OrderActivity extends BaseActivity {
+public class OrderMenuActivity extends BaseActivity {
 
     private FragmentManager fragmentManager;
     private MainPageFragment mainPageFragment;
@@ -52,7 +51,7 @@ public class OrderActivity extends BaseActivity {
     //private boolean doubleBackToExitPressedOnce = false;
     @Override
     public void onBackPressed() {
-
+        MainPageViewPageAdapter.buyMap.clear();
        super.onBackPressed();
 
         /*if (doubleBackToExitPressedOnce) {
@@ -86,12 +85,12 @@ public class OrderActivity extends BaseActivity {
     /**********************************************************/
 
     public static void startActivity(Context context){
-        Intent intent = new Intent(context, OrderActivity.class);
+        Intent intent = new Intent(context, OrderMenuActivity.class);
         context.startActivity(intent);
     }
     public static final String SHOP_NAME = "com.example.administrator.cookman.ui.activity.OrderActivity.Shope_Name";
     public static Intent getIntent(Context context,String name){
-        Intent intent = new Intent(context,OrderActivity.class);
+        Intent intent = new Intent(context,OrderMenuActivity.class);
         intent.putExtra(SHOP_NAME,name);
         return intent;
     }

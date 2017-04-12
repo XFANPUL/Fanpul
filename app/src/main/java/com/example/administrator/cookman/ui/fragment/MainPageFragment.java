@@ -1,29 +1,23 @@
 package com.example.administrator.cookman.ui.fragment;
 
-import android.app.ActivityOptions;
 import android.content.Context;
-import android.content.Intent;
+import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.administrator.cookman.R;
 import com.example.administrator.cookman.constants.Constants;
 import com.example.administrator.cookman.model.bmob.BmobQueryCallback;
 import com.example.administrator.cookman.model.bmob.BmobUtil;
 import com.example.administrator.cookman.model.entity.bmobEntity.MenuCategory;
-import com.example.administrator.cookman.model.entity.tb_cook.TB_CustomCategory;
-import com.example.administrator.cookman.model.manager.CustomCategoryManager;
 import com.example.administrator.cookman.presenter.Presenter;
-import com.example.administrator.cookman.ui.activity.CookCategoryActivity;
 import com.example.administrator.cookman.ui.activity.CookChannelActivity;
-import com.example.administrator.cookman.ui.activity.OrderActivity;
+import com.example.administrator.cookman.ui.activity.OrderMenuActivity;
 import com.example.administrator.cookman.ui.adapter.MainPageViewPageAdapter;
 import com.example.administrator.cookman.ui.component.magicindicator.MagicIndicator;
 import com.example.administrator.cookman.ui.component.magicindicator.buildins.commonnavigator.CommonNavigator;
@@ -32,15 +26,10 @@ import com.example.administrator.cookman.ui.component.magicindicator.buildins.co
 import com.example.administrator.cookman.ui.component.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
 import com.example.administrator.cookman.ui.component.magicindicator.buildins.commonnavigator.indicators.WrapPagerIndicator;
 import com.example.administrator.cookman.ui.component.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
-import com.example.administrator.cookman.utils.Logger.Logger;
 import com.umeng.analytics.MobclickAgent;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -70,6 +59,16 @@ public class MainPageFragment extends BaseFragment implements
     private CommonNavigator commonNavigator;
     private MainPageViewPageAdapter mainPageViewPageAdapter;
 
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    private  String restaurantName;
+
     /********************************************************************************************/
     @Override
     protected Presenter getPresenter(){
@@ -84,7 +83,6 @@ public class MainPageFragment extends BaseFragment implements
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         menuCategoryList = new ArrayList<>();
-        String restaurantName="";
         if(getActivity().getIntent().getStringExtra(ZxingFragment.TAG_ZXING)!=null) {
             String[] str = getActivity().getIntent().getStringExtra(ZxingFragment.TAG_ZXING).split(" ");
             restaurantName = str[0];
@@ -98,9 +96,9 @@ public class MainPageFragment extends BaseFragment implements
               //  }
             }
         }
-        if(getActivity().getIntent().getStringExtra(OrderActivity.SHOP_NAME)!=null){
-            shopName.setText(getActivity().getIntent().getStringExtra(OrderActivity.SHOP_NAME));
-            restaurantName = getActivity().getIntent().getStringExtra(OrderActivity.SHOP_NAME);
+        if(getActivity().getIntent().getStringExtra(OrderMenuActivity.SHOP_NAME)!=null){
+            shopName.setText(getActivity().getIntent().getStringExtra(OrderMenuActivity.SHOP_NAME));
+            restaurantName = getActivity().getIntent().getStringExtra(OrderMenuActivity.SHOP_NAME);
         }
         BmobUtil.queryRestaurantCategory(restaurantName, new BmobQueryCallback<MenuCategory>() {
             @Override
@@ -194,6 +192,7 @@ public class MainPageFragment extends BaseFragment implements
         magicIndicator.setNavigator(commonNavigator);
 
         mainPageViewPageAdapter = new MainPageViewPageAdapter(getFragmentManager(), menuCategoryList);
+
         viewPager.addOnPageChangeListener(this);
         viewPager.setAdapter(mainPageViewPageAdapter);
     }

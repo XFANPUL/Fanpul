@@ -10,17 +10,33 @@ import cn.bmob.v3.BmobObject;
  */
 
 public class Order extends BmobObject {
-    private User user; //用户
-    private Restaurant restaurant; //店铺
+    private String userName; //用户
+    private String restaurantName; //店铺
     private List<Menu> menuList;  //购买的商品
-    private Integer peopleNumber;//用餐人数
     private Float totalPrice; //订单菜品总额
     private String payMeasure; //支付方式
     private Integer menuNumber; //商品数量
     private Integer showName; //0表示显示姓名,1表示匿名;默认0
-    private Date orderDate;  //订单完成日期
-    private Boolean evaluateState;//0表示待评价，1已评价,2表示排队中
+    private String orderDate;  //订单完成日期
+    private Integer evaluateState;//0表示待评价，1已评价,2表示排队中
     private String evaluateInformation;//评价信息
+    private Integer orderNumber;//点击再来一单时加一
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
 
     public Integer getOrderNumber() {
         return orderNumber;
@@ -30,19 +46,24 @@ public class Order extends BmobObject {
         this.orderNumber = orderNumber;
     }
 
-    private Integer orderNumber;//点击再来一单时加一
-
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public Boolean getEvaluateState() {
+    public Integer getEvaluateState() {
         return evaluateState;
     }
 
-    public void setEvaluateState(Boolean evaluateState) {
+    public void setEvaluateState(Integer evaluateState) {
         this.evaluateState = evaluateState;
     }
+
+    public void setOrderDate(String orderDate) {
+
+        this.orderDate = orderDate;
+    }
+
+
     public String getEvaluateInformation() {
         return evaluateInformation;
     }
@@ -52,40 +73,12 @@ public class Order extends BmobObject {
     }
 
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
     public List<Menu> getMenuList() {
         return menuList;
     }
 
     public void setMenuList(List<Menu> menuList) {
         this.menuList = menuList;
-    }
-
-    public Integer getPeopleNumber() {
-        return peopleNumber;
-    }
-
-    public void setPeopleNumber(Integer peopleNumber) {
-        this.peopleNumber = peopleNumber;
     }
 
     public Float getTotalPrice() {
