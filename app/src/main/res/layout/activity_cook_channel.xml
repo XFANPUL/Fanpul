@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.cookman.ui.activity.CookChannelActivity">
+    tools:context="com.example.administrator.Fanpul.ui.activity.CookChannelActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -94,7 +94,7 @@
                 android:id="@+id/seperate_line"
                 style="@style/subscribe_seperate_line" />
 
-            <com.example.administrator.cookman.ui.component.tagComponent.DragGrid
+            <com.example.administrator.Fanpul.ui.component.tagComponent.DragGrid
                 android:id="@+id/userGridView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                 android:textSize="13sp"
                 android:text="@string/cook_channel_more" />
 
-            <com.example.administrator.cookman.ui.component.tagComponent.OtherGridView
+            <com.example.administrator.Fanpul.ui.component.tagComponent.OtherGridView
                 android:id="@+id/otherGridView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

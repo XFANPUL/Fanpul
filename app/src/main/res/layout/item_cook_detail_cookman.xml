@@ -21,7 +21,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"/>
 
-            <com.example.administrator.cookman.ui.component.SwitchIconView
+            <com.example.administrator.Fanpul.ui.component.SwitchIconView
                 android:id="@+id/switchIconView_collection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

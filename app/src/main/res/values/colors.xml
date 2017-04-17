@@ -57,6 +57,21 @@
     <color name="normal_orange_btn_pressed">#d25000</color>
     <color name="red">#ff0000</color>
     <color name="qianhui">#e1e1e1</color>
-
-
+    <color name="confirmorder_line">#dddddd</color>
+    <color name="personal_hinttext">#999999</color>
+    <color name="personal_textview">#555555</color>
+    <color name="detail_newprice">#ff6600</color>
+    <color name="detail_oldprice">#555555</color>
+    <color name="list_bg">#ffffff</color>
+    <color name="btn_order_bg">#c52720</color>
+    <color name="service_name">#555555</color>
+    <color name="server_tv">#777777</color>
+    <color name="service_content">#999999</color>
+    <color name="good_bg">#ffffff</color>
+    <color name="detail_goodsname">#555555</color>
+    <color name="trans">#85000000</color>
+    <color name="good_press">#ebebeb</color>
+    <color name="afford_newprice">#ff6600</color>
+    <color name="home_font5">#e15616</color>
+    <color name="afford_old_price">#999999</color>
 </resources>

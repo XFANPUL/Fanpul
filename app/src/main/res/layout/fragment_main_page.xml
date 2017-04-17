@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+       <!-- <ImageView
             android:id="@+id/imgv_add"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -71,9 +71,9 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@drawable/selector_btn_bg_add"
-            android:clickable="true"/>
+            android:clickable="true"/>-->
 
-        <com.example.administrator.cookman.ui.component.magicindicator.MagicIndicator
+        <com.example.administrator.Fanpul.ui.component.magicindicator.MagicIndicator
             android:id="@+id/magic_indicator"
             android:layout_width="match_parent"
             android:layout_height="40dp"

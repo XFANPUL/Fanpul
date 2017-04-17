@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.administrator.cookman"
+    package="com.example.administrator.Fanpul"
    >
 
 
@@ -21,7 +21,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name=".CookManApplication"
+        android:name="com.example.administrator.Fanpul.CookManApplication"
         tools:replace="android:name"
         android:allowBackup="true"
         android:icon="@mipmap/icon_app_cookman"
@@ -29,10 +29,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.OrderMenuActivity"
+            android:name="com.example.administrator.Fanpul.ui.activity.OrderMenuActivity"
             android:theme="@style/AppTheme.NoActionBar" />
        <activity
-            android:name=".ui.activity.SplashActivity"
+            android:name="com.example.administrator.Fanpul.ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,31 +41,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.CookChannelActivity"
+            android:name="com.example.administrator.Fanpul.ui.activity.CookChannelActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activity.CookCategoryActivity"
+            android:name="com.example.administrator.Fanpul.ui.activity.CookCategoryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activity.CookDetailActivity"
+            android:name="com.example.administrator.Fanpul.ui.activity.CookDetailActivity"
             android:theme="@style/AppThemeFullImage" />
         <activity
-            android:name=".ui.activity.CookSearchResultActivity"
+            android:name="com.example.administrator.Fanpul.ui.activity.CookSearchResultActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activity.CookListActivity"
+            android:name="com.example.administrator.Fanpul.ui.activity.CookListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activity.CookCollectionListActivity"
+            android:name="com.example.administrator.Fanpul.ui.activity.CookCollectionListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".ui.activity.ShoppingCartActivity"
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.ShoppingCartActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name=".ui.activity.MainActivity"></activity>
-        <activity android:name=".ui.activity.MadeCodeActivity"></activity>
-        <activity android:name=".ui.activity.OrderFormActivity"></activity>
-
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.MainActivity"></activity>
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.MadeCodeActivity"></activity>
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.OrderFormActivity"></activity>
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.MenuInDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".ui.activity.SegmentTabActivity"></activity>
+        <activity android:name=".ui.activity.OrdersTabActivity"></activity>
     </application>
 
     </manifest>

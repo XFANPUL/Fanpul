@@ -40,4 +40,9 @@
     <string name="title_activity_l">L</string>
     <string name="title_activity_order_dishes">OrderDishesActivity</string>
 
+    <string name="order_mybook">已点菜品</string>
+    <string name="order_book">排队点单</string>
+    <string name="order_cancel">取消排队</string>
+    <string name="order_toeva">去评价</string>
+    <string name="order_detailbook">详细菜品</string>
 </resources>
