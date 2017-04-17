@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:elevation="5dp">
 
-    <com.example.administrator.cookman.ui.component.fab_transformation.widget.RevealFrameLayout
+    <com.example.administrator.Fanpul.ui.component.fab_transformation.widget.RevealFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.example.administrator.cookman.ui.component.fab_transformation.widget.RevealLinearLayout
+            <com.example.administrator.Fanpul.ui.component.fab_transformation.widget.RevealLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -57,7 +57,7 @@
 
                 </LinearLayout>
 
-            </com.example.administrator.cookman.ui.component.fab_transformation.widget.RevealLinearLayout>
+            </com.example.administrator.Fanpul.ui.component.fab_transformation.widget.RevealLinearLayout>
 
             <LinearLayout
                 android:id="@+id/items"
@@ -75,7 +75,7 @@
                     android:layout_marginBottom="8dp"
                     android:textSize="14sp"/>
 
-                <com.example.administrator.cookman.ui.component.tagCloudLayout.TagCloudLayout
+                <com.example.administrator.Fanpul.ui.component.tagCloudLayout.TagCloudLayout
                     android:id="@+id/tag_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,6 +86,6 @@
 
         </LinearLayout>
 
-    </com.example.administrator.cookman.ui.component.fab_transformation.widget.RevealFrameLayout>
+    </com.example.administrator.Fanpul.ui.component.fab_transformation.widget.RevealFrameLayout>
 
 </LinearLayout>

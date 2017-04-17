@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlyt_view"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/affordshop_detail_border"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dip_10"
+            android:paddingLeft="@dimen/dip_16"
+            android:paddingRight="@dimen/dip_16"
+            android:paddingTop="@dimen/dip_16">
+
+            <TextView
+                android:id="@+id/shopinner_shopname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="店铺名称"
+                android:textColor="@color/personal_textview"
+                android:textSize="@dimen/size16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dip_8"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/shopinner_sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="月服务986单"
+                    android:textColor="@color/personal_hinttext"
+                    android:textSize="@dimen/size12" />
+
+
+                <TextView
+                    android:id="@+id/shopinner_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dip_12"
+                    android:text="评分4.0"
+                    android:textColor="@color/personal_hinttext"
+                    android:textSize="@dimen/size12" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dip_10"
+            android:background="@drawable/affordshop_detail_border"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dip_16">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="@color/personal_textview"
+                android:textSize="@dimen/size16" />
+
+            <TextView
+                android:id="@+id/shopinner_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:text="旺德福是一家致力于午餐快餐的餐饮集团，目前在全国已有100家饭店。"
+                android:textColor="@color/personal_hinttext"
+                android:textSize="@dimen/size12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dip_10"
+            android:background="@drawable/affordshop_detail_border"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dip_16">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="地址 ："
+                android:textColor="@color/personal_textview"
+                android:textSize="@dimen/size16" />
+
+            <TextView
+                android:id="@+id/text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="北京交通大学东门"
+                android:textColor="@color/personal_hinttext"
+                android:textSize="@dimen/size12" />
+
+        </LinearLayout>
+
+
+        <include layout="@layout/line_view" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dip_48"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dip_16">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系电话 :"
+                android:textColor="@color/detail_goodsname"
+                android:textSize="@dimen/size14" />
+
+            <TextView
+                android:id="@+id/shopinner_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="15801371120"
+                android:textColor="@color/detail_goodsname"
+                android:textSize="@dimen/size14" />
+
+            <ImageView
+                android:id="@+id/call_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dip_16"
+                android:paddingRight="@dimen/dip_16"
+                android:src="@drawable/mystore_btn_telephone" />
+        </LinearLayout>
+
+
+        <include layout="@layout/line_view" />
+
+        <LinearLayout
+            android:id="@+id/mainLlyout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topRlyt"
+            android:orientation="vertical"
+            android:padding="@dimen/dip_16">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dip_45"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:text="商品满意度："
+                    android:textColor="@color/personal_textview"
+                    android:textSize="@dimen/size16" />
+
+                <RatingBar
+                    android:id="@+id/shopinner_ratBarShop"
+                    style="@style/roomRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dip_10"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dip_45"
+                android:layout_marginTop="@dimen/dip_8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:text="上菜速度满意度："
+                    android:textColor="@color/personal_textview"
+                    android:textSize="@dimen/size16" />
+
+                <RatingBar
+                    android:id="@+id/shopinner_ratBarSpeed"
+                    style="@style/roomRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dip_10"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="4" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dip_45"
+                android:layout_marginTop="@dimen/dip_8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:text="服务质量满意度："
+                    android:textColor="@color/personal_textview"
+                    android:textSize="@dimen/size16" />
+
+                <RatingBar
+                    android:id="@+id/shopinner_ratBarServer"
+                    style="@style/roomRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dip_10"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

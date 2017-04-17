@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <com.example.administrator.cookman.ui.view.VerticalScrollView
+        <com.example.administrator.Fanpul.ui.view.VerticalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             <LinearLayout
@@ -89,7 +89,7 @@
               <include layout="@layout/index_home_list10" />
 
             </LinearLayout>
-       </com.example.administrator.cookman.ui.view.VerticalScrollView>
+       </com.example.administrator.Fanpul.ui.view.VerticalScrollView>
         <!-- title shadow -->
 
         <View

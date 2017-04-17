@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.cookman.ui.activity.CookSearchResultActivity">
+    tools:context="com.example.administrator.Fanpul.ui.activity.CookSearchResultActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.example.administrator.cookman.ui.component.twinklingrefreshlayout.TwinklingRefreshLayout
+        <com.example.administrator.Fanpul.ui.component.twinklingrefreshlayout.TwinklingRefreshLayout
             android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -41,7 +41,7 @@
                 android:layout_height="match_parent"
                 android:overScrollMode="never"/>
 
-        </com.example.administrator.cookman.ui.component.twinklingrefreshlayout.TwinklingRefreshLayout>
+        </com.example.administrator.Fanpul.ui.component.twinklingrefreshlayout.TwinklingRefreshLayout>
 
     </RelativeLayout>
 
