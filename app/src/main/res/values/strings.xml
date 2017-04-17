@@ -45,4 +45,24 @@
     <string name="order_cancel">取消排队</string>
     <string name="order_toeva">去评价</string>
     <string name="order_detailbook">详细菜品</string>
+
+
+
+    <string name="usercenter_register">登录/注册</string>
+    <string name="usercenter_login_favorible">登录后可享受更多优惠</string>
+    <string name="usercenter_login_dish">菜品收藏</string>
+    <string name="usercenter_login_store">店铺收藏</string>
+    <string name="usercenter_login_myorder">我的评价</string>
+    <string name="usercenter_login_address">账户管理、收货地址</string>
+    <string name="usercenter_login_allorder">查看全部评价</string>
+
+    <string name="feedbackSuggestion">反馈与建议</string>
+    <string name="aboutBgclounds">关于大实惠</string>
+    <string name="shareWith">把饭谱推荐给朋友</string>
+    <string name="youhuiquan">我的优惠券</string>
+
+    <string name="huiyuan">会员中心</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

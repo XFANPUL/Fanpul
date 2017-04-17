@@ -5,6 +5,7 @@ import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
 import com.example.administrator.Fanpul.ui.fragment.HomeFragment;
+import com.example.administrator.Fanpul.ui.fragment.MyFragment;
 import com.example.administrator.Fanpul.ui.fragment.ZxingFragment;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
@@ -36,6 +37,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     private RadioButton main_home;
     private FragmentManager fragmentManager;
     private HomeFragment home;
+    private MyFragment my;
     private ZxingFragment zxingFragment;
     private long exitTime=0;
     private RadioButton main_tuan_radio;
@@ -69,6 +71,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         if(savedInstanceState!=null){
             home=(HomeFragment)fragmentManager.findFragmentByTag("0");
             zxingFragment = (ZxingFragment)fragmentManager.findFragmentByTag("1");
+            my=(MyFragment)fragmentManager.findFragmentByTag("3");
         }
         main_home.setChecked(true);
         group.setOnCheckedChangeListener(this);
@@ -179,6 +182,12 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
             case 2:
                 break;
             case 3:
+                if(my==null){
+                    my=new MyFragment();
+                    beginTransaction.add(R.id.main_content,my,"3");
+                }else{
+                    beginTransaction.show(my);
+                }
                 break;
 
             default:
@@ -192,6 +201,8 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 
        if(zxingFragment!=null)
             transaction.hide(zxingFragment);
+        if (my != null)
+            transaction.hide(my);
 
     }
     @Override

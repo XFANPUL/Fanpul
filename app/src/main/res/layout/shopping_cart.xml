@@ -29,7 +29,7 @@
                 android:paddingLeft="50dp"
                 android:paddingTop="15dp"
                 android:text="小厨小菜"
-                android:textColor="@color/black"
+                android:textColor="@color/gray"
                 android:textSize="18sp"
                 android:id="@+id/shop_cart_restaurant_name_text"/>
             </android.support.v7.widget.CardView>
@@ -71,7 +71,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
                     android:text="金额：￥8997.0"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="17sp" />
 
                 <TextView
@@ -80,7 +80,7 @@
                     android:layout_marginRight="18dp"
                     android:text="共2件商品"
                     android:id="@+id/textview_total_item"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:layout_alignBaseline="@+id/total_money_item"
                     android:layout_alignBottom="@+id/total_money_item"
                     android:layout_toStartOf="@+id/total_money_item"
@@ -89,8 +89,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray" />
+                android:layout_height="3dp"
+                android:background="@color/black_alpha_light" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -106,7 +106,7 @@
                     android:layout_weight="1"
                     android:text="支付方式"
                     android:id="@+id/pay_ways"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/gray" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -118,8 +118,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray" />
+                android:layout_height="3dp"
+                android:background="@color/black_alpha_light" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="选择代金券"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/gray" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -146,8 +146,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray" />
+                android:layout_height="3dp"
+                android:background="@color/black_alpha_light" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -163,7 +163,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="匿名购买"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/gray" />
 
                 <CheckBox
                     android:layout_width="wrap_content"
