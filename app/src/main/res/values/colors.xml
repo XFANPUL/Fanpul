@@ -74,4 +74,18 @@
     <color name="afford_newprice">#ff6600</color>
     <color name="home_font5">#e15616</color>
     <color name="afford_old_price">#999999</color>
+
+
+    <color name="defaultBg">#f5f5f5</color>
+    <!--个人中心顶部关注商品背景半透明色-->
+    <color name="my_translucence">#88a42e2b</color>
+    <!--登录后个人中心页字体颜色-->
+    <color name="personal_login_textview">#555555</color>
+    <color name="personal_login_hinttext">#999999</color>
+    <color name="personal_login_line">#dddddd</color>
+    <color name="personal_login_textbg">#ffffff</color>
+    <!--未登录个人中心页字体颜色-->
+    <color name="personal_line">#dddddd</color>
+    <color name="personal_textbg">#ffffff</color>
+    <color name="line">#dddddd</color>
 </resources>

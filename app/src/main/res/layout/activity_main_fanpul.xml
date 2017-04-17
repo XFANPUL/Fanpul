@@ -60,7 +60,7 @@
             android:paddingLeft="0dp"
             android:scaleX="0.8"
             android:scaleY="0.8"
-            android:text="发现"
+            android:text="订单"
             android:textColor="@drawable/main_text_color_selector" />
 
         <RadioButton
