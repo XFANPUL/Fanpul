@@ -33,7 +33,6 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     //@ViewInject(R.id.main_bottom_tabs)
     public static final String APPLICATIONID = "3b60c6eb37caced9f0023a6515b2d8a5";
     private RadioGroup group;
-    private MyFragment my;
     //@ViewInject(R.id.main_home)
     private RadioButton main_home;
     private FragmentManager fragmentManager;
