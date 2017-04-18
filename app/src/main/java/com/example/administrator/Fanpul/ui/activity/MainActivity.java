@@ -38,6 +38,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     private RadioButton main_home;
     private FragmentManager fragmentManager;
     private HomeFragment home;
+    private MyFragment my;
     private ZxingFragment zxingFragment;
     private long exitTime=0;
     private RadioButton main_tuan_radio;
@@ -219,6 +220,8 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 
        if(zxingFragment!=null)
             transaction.hide(zxingFragment);
+        if (my != null)
+            transaction.hide(my);
 
         if (my != null)
             transaction.hide(my);

@@ -183,7 +183,11 @@ public class ShopcartFragment extends Fragment {
     private void showPayDialog(){
         final String items[] = {"支付宝支付","微信支付","网银支付"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+<<<<<<< HEAD
         builder.setTitle("支付方式");
+=======
+        builder.setTitle("请选择支付方式");
+>>>>>>> origin/branch_1
         builder.setIcon(R.drawable.nav_discount);
         builder.setSingleChoiceItems(items, 1, new DialogInterface.OnClickListener() {
             @Override
@@ -196,6 +200,7 @@ public class ShopcartFragment extends Fragment {
         });
         builder.create().show();
     }
+
     public void updateUI(){
         ((ShoppingCartActivity)getActivity()).updateUI(totalmoney,lists.size());
     }

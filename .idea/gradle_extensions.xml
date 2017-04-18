@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleExtensions">
+    <project path="$PROJECT_DIR$">
+      <sub-project>
+        <project path="$PROJECT_DIR$">
+          <extensions>
+            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
+            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of root project 'Fanpul'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="checkHuaweiDebugManifest" type="com.android.build.gradle.internal.tasks.CheckManifest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="packageHuaweiDebug" type="com.android.build.gradle.tasks.PackageApplication">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugShaders" type="com.android.build.gradle.tasks.ShaderCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mockableAndroidJar" type="com.android.build.gradle.internal.tasks.MockableAndroidJarTask">Creates a version of android.jar that's suitable for unit tests.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiDebugAndroidTest" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="lintVitalHuaweiRelease" type="com.android.build.gradle.tasks.Lint">Runs lint on just the fatal issues in the HuaweiRelease build.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAssets">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="preHuaweiReleaseUnitTestBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestSources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="deviceCheck">Runs all device checks using Device Providers and Test Servers.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiReleaseUnitTest" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiReleaseAssets" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="lint" type="com.android.build.gradle.tasks.Lint">Runs lint on all variants.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="prepareComFlycoTablayoutFlycoTabLayout_Lib212Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareHuaweiDebugAndroidTestDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestAssets">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiReleaseResources" type="com.android.build.gradle.tasks.MergeResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="cleanBuildCache" type="com.android.build.gradle.tasks.CleanBuildCache">Deletes the build cache directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by root project 'Fanpul'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="preHuaweiDebugAndroidTestBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportVectorDrawable2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-vector-drawable:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAndroidTestAssets" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="validateSigningHuaweiDebug" type="com.android.build.gradle.internal.tasks.ValidateSigningTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareDeHdodenhofCircleimageview130Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare de.hdodenhof:circleimageview:1.3.0&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiReleaseManifest" type="com.android.build.gradle.tasks.MergeManifests">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleHuaweiReleaseUnitTest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleHuaweiDebugAndroidTest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiReleaseUnitTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugAndroidTestJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="preHuaweiReleaseBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="validateSigningHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.tasks.ValidateSigningTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseUnitTestJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugUnitTestSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="deviceAndroidTest" type="com.android.build.gradle.internal.tasks.AndroidReportTask">Installs and runs instrumentation tests using all Device Providers.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportV132421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-v13:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="lintHuaweiDebug" type="com.android.build.gradle.tasks.Lint">Runs lint on the HuaweiDebug build.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="assembleHuaweiDebug">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAssets" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAndroidTestJniLibFolders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assemble">Assembles all variants of all applications and secondary packages.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="transformClassesWithDexForHuaweiDebug" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiReleaseResources" type="com.android.build.gradle.tasks.ProcessAndroidResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="cleanIdeaProject" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugAndroidTestManifest" type="com.android.build.gradle.tasks.ProcessTestManifest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComTencentBuglyCrashreport250Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.tencent.bugly:crashreport:2.5.0&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportCompat2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-compat:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="connectedCheck">Runs all device checks on currently connected devices.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestBuildConfig" type="com.android.build.gradle.tasks.GenerateBuildConfig">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleAndroidTest">Assembles all the Test applications.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="transformClassesWithDexForHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugUnitTestJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareHuaweiDebugDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugAndroidTestResources" type="com.android.build.gradle.tasks.ProcessAndroidResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformNativeLibsWithMergeJniLibsForHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportMediaCompat2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-media-compat:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileLint" type="com.android.build.gradle.internal.tasks.LintCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportAppcompatV72421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:appcompat-v7:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareHuaweiDebugUnitTestDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareHuaweiReleaseUnitTestDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="testHuaweiDebugUnitTest" type="com.android.build.gradle.tasks.factory.AndroidUnitTest">Run unit tests for the HuaweiDebug build.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="extractProguardFiles" type="com.android.build.gradle.internal.tasks.ExtractProguardFiles">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformClassesWithDexForHuaweiRelease" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="uninstallHuaweiRelease" type="com.android.build.gradle.internal.tasks.UninstallTask">Uninstalls the ReleaseHuawei build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportDesign2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:design:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="test">Run unit tests for all variants.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="connectedHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.tasks.DeviceProviderInstrumentTestTask">Installs and runs the tests for HuaweiDebug on connected devices.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="uploadHuaweiReleaseSymtabFile">&lt;i&gt;Task group: bugly&lt;i&gt;</task>
+            <task name="prepareComTencentBuglyNativecrashreport312Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.tencent.bugly:nativecrashreport:3.1.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugResources" type="com.android.build.gradle.tasks.MergeResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiReleaseJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareOrgLitepalAndroidCore150Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare org.litepal.android:core:1.5.0&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComWangAviLibrary101Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.wang.avi:library:1.0.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="preBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="ideaProject" type="org.gradle.plugins.ide.idea.GenerateIdeaProject">Generates IDEA project file (IPR)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="checkHuaweiReleaseManifest" type="com.android.build.gradle.internal.tasks.CheckManifest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestRunner05Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test:runner:0.5&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="uninstallHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.tasks.UninstallTask">Uninstalls the android (on device) tests for the HuaweiDebug build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
+            <task name="dependentComponents" type="org.gradle.api.reporting.dependents.DependentComponentsReport">Displays the dependent components of components in root project 'Fanpul'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in root project 'Fanpul'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="mergeHuaweiReleaseShaders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="sourceSets" type="com.android.build.gradle.internal.tasks.SourceSetsTask">Prints out all the source sets defined in this project.&lt;p&gt;&lt;i&gt;Task group: Android&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiDebugUnitTest" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="preHuaweiDebugBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugNdk" type="com.android.build.gradle.tasks.NdkCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiReleaseJniLibFolders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiReleaseAssets">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareCnBmobAndroidBmobIm205Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare cn.bmob.android:bmob-im:2.0.5&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
+            <task name="validateSigningHuaweiRelease" type="com.android.build.gradle.internal.tasks.ValidateSigningTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseAidl" type="com.android.build.gradle.tasks.AidlCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleRelease">Assembles all Release builds.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiRelease" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiReleaseResValues" type="com.android.build.gradle.tasks.GenerateResValues">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="incrementalHuaweiReleaseUnitTestJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleHuaweiRelease">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="incrementalHuaweiDebugUnitTestJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAndroidTestShaders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAidl" type="com.android.build.gradle.tasks.AidlCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportConstraintConstraintLayout102Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.constraint:constraint-layout:1.0.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestResValues" type="com.android.build.gradle.tasks.GenerateResValues">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestUiautomatorUiautomatorV18212Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test.uiautomator:uiautomator-v18:2.1.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of root project 'Fanpul'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseRenderscript" type="com.android.build.gradle.tasks.RenderscriptCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiReleaseUnitTestJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugManifest" type="com.android.build.gradle.tasks.MergeManifests">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from root project 'Fanpul' (some of the displayed tasks may belong to subprojects).&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="init" type="org.gradle.buildinit.tasks.InitBuild">Initializes a new Gradle build. [incubating]&lt;p&gt;&lt;i&gt;Task group: Build Setup&lt;i&gt;</task>
+            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in root project 'Fanpul'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportRecyclerviewV72421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:recyclerview-v7:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportCoreUtils2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-core-utils:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="prepareCnYipianfengyeAndroidZxingLibrary18Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare cn.yipianfengye.android:zxing-library:1.8&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="preHuaweiDebugUnitTestBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestNdk" type="com.android.build.gradle.tasks.NdkCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestEspressoEspressoIdlingResource222Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test.espresso:espresso-idling-resource:2.2.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugRenderscript" type="com.android.build.gradle.tasks.RenderscriptCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="packageHuaweiRelease" type="com.android.build.gradle.tasks.PackageApplication">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleDebug">Assembles all Debug builds.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="assembleHuaweiDebugUnitTest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestRules05Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test:rules:0.5&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestAidl" type="com.android.build.gradle.tasks.AidlCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="jarHuaweiReleaseClasses" type="com.android.build.gradle.tasks.AndroidJarTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiDebugUnitTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiReleaseBuildConfig" type="com.android.build.gradle.tasks.GenerateBuildConfig">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiRelease" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="compileHuaweiDebugUnitTestJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportCardviewV72421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:cardview-v7:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareHuaweiReleaseDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAndroidTestResources" type="com.android.build.gradle.tasks.MergeResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="jarHuaweiDebugClasses" type="com.android.build.gradle.tasks.AndroidJarTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="installHuaweiDebug" type="com.android.build.gradle.internal.tasks.InstallVariantTask">Installs the DebugHuawei build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="incrementalHuaweiDebugJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in root project 'Fanpul'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="lintHuaweiRelease" type="com.android.build.gradle.tasks.Lint">Runs lint on the HuaweiRelease build.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugJniLibFolders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="uninstallAll">Uninstall all applications.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="incrementalHuaweiDebugAndroidTestJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="generateHuaweiReleaseResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseUnitTestSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="wrapper" type="org.gradle.api.tasks.wrapper.Wrapper">Generates Gradle wrapper files. [incubating]&lt;p&gt;&lt;i&gt;Task group: Build Setup&lt;i&gt;</task>
+            <task name="transformNativeLibsWithMergeJniLibsForHuaweiDebug" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="androidDependencies" type="com.android.build.gradle.internal.tasks.DependencyReportTask">Displays the Android dependencies of the project.&lt;p&gt;&lt;i&gt;Task group: Android&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseNdk" type="com.android.build.gradle.tasks.NdkCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiDebug" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="uploadHuaweiDebugSymtabFile">&lt;i&gt;Task group: bugly&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportCoreUi2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-core-ui:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiReleaseSources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="installHuaweiRelease" type="com.android.build.gradle.internal.tasks.InstallVariantTask">Installs the ReleaseHuawei build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="installHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.tasks.InstallVariantTask">Installs the android (on device) tests for the HuaweiDebug build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugShaders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="connectedAndroidTest" type="com.android.build.gradle.internal.tasks.AndroidReportTask">Installs and runs instrumentation tests for all flavors on connected devices.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestRenderscript" type="com.android.build.gradle.tasks.RenderscriptCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="packageHuaweiDebugAndroidTest" type="com.android.build.gradle.tasks.PackageApplication">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="testHuaweiReleaseUnitTest" type="com.android.build.gradle.tasks.factory.AndroidUnitTest">Run unit tests for the HuaweiRelease build.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="uninstallHuaweiDebug" type="com.android.build.gradle.internal.tasks.UninstallTask">Uninstalls the DebugHuawei build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseShaders" type="com.android.build.gradle.tasks.ShaderCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareCnBmobAndroidBmobSdk350Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare cn.bmob.android:bmob-sdk:3.5.0&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugSources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugResources" type="com.android.build.gradle.tasks.ProcessAndroidResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportV42421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-v4:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportFragment2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-fragment:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestExposedInstrumentationApiPublish05Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test:exposed-instrumentation-api-publish:0.5&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="ideaWorkspace" type="org.gradle.plugins.ide.idea.GenerateIdeaWorkspace">Generates an IDEA workspace file (IWS)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="incrementalHuaweiReleaseJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportAnimatedVectorDrawable2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:animated-vector-drawable:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiDebug" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="signingReport" type="com.android.build.gradle.internal.tasks.SigningReportTask">Displays the signing info for each variant.&lt;p&gt;&lt;i&gt;Task group: Android&lt;i&gt;</task>
+            <task name="clean" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleHuawei">Assembles all Huawei builds.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="generateHuaweiDebugResValues" type="com.android.build.gradle.tasks.GenerateResValues">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="transformNativeLibsWithMergeJniLibsForHuaweiRelease" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestEspressoEspressoCore222Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test.espresso:espresso-core:2.2.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of root project 'Fanpul'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestShaders" type="com.android.build.gradle.tasks.ShaderCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugBuildConfig" type="com.android.build.gradle.tasks.GenerateBuildConfig">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="cleanIdeaWorkspace" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <conf name="classpath" scriptClasspath="true" />
+          </extensions>
+        </project>
+        <project path="$PROJECT_DIR$/app">
+          <extensions parent="$PROJECT_DIR$">
+            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
+            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
+            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
+            <ext name="android" type="com.android.build.gradle.AppExtension" />
+            <ext name="bugly" type="com.tencent.bugly.gradle.BuglyPluginExtension" />
+            <task name="generateHuaweiReleaseResValues" type="com.android.build.gradle.tasks.GenerateResValues">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="incrementalHuaweiReleaseUnitTestJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of project ':app'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="assembleHuaweiRelease">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="incrementalHuaweiDebugUnitTestJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAndroidTestShaders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAidl" type="com.android.build.gradle.tasks.AidlCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportConstraintConstraintLayout102Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.constraint:constraint-layout:1.0.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="checkHuaweiDebugManifest" type="com.android.build.gradle.internal.tasks.CheckManifest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestResValues" type="com.android.build.gradle.tasks.GenerateResValues">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="packageHuaweiDebug" type="com.android.build.gradle.tasks.PackageApplication">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestUiautomatorUiautomatorV18212Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test.uiautomator:uiautomator-v18:2.1.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugShaders" type="com.android.build.gradle.tasks.ShaderCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseRenderscript" type="com.android.build.gradle.tasks.RenderscriptCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mockableAndroidJar" type="com.android.build.gradle.internal.tasks.MockableAndroidJarTask">Creates a version of android.jar that's suitable for unit tests.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of project ':app'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="processHuaweiReleaseUnitTestJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiDebugAndroidTest" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugManifest" type="com.android.build.gradle.tasks.MergeManifests">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="lintVitalHuaweiRelease" type="com.android.build.gradle.tasks.Lint">Runs lint on just the fatal issues in the HuaweiRelease build.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from project ':app'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAssets">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="preHuaweiReleaseUnitTestBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestSources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="deviceCheck">Runs all device checks using Device Providers and Test Servers.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiReleaseUnitTest" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in project ':app'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportRecyclerviewV72421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:recyclerview-v7:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiReleaseAssets" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="lint" type="com.android.build.gradle.tasks.Lint">Runs lint on all variants.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="prepareComFlycoTablayoutFlycoTabLayout_Lib212Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportCoreUtils2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-core-utils:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareHuaweiDebugAndroidTestDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestAssets">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="mergeHuaweiReleaseResources" type="com.android.build.gradle.tasks.MergeResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareCnYipianfengyeAndroidZxingLibrary18Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare cn.yipianfengye.android:zxing-library:1.8&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="cleanBuildCache" type="com.android.build.gradle.tasks.CleanBuildCache">Deletes the build cache directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="preHuaweiDebugUnitTestBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by project ':app'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="preHuaweiDebugAndroidTestBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestNdk" type="com.android.build.gradle.tasks.NdkCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportVectorDrawable2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-vector-drawable:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestEspressoEspressoIdlingResource222Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test.espresso:espresso-idling-resource:2.2.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugRenderscript" type="com.android.build.gradle.tasks.RenderscriptCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="packageHuaweiRelease" type="com.android.build.gradle.tasks.PackageApplication">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleDebug">Assembles all Debug builds.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="assembleHuaweiDebugUnitTest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestRules05Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test:rules:0.5&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestAidl" type="com.android.build.gradle.tasks.AidlCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="jarHuaweiReleaseClasses" type="com.android.build.gradle.tasks.AndroidJarTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAndroidTestAssets" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="validateSigningHuaweiDebug" type="com.android.build.gradle.internal.tasks.ValidateSigningTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiDebugUnitTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiReleaseBuildConfig" type="com.android.build.gradle.tasks.GenerateBuildConfig">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiRelease" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareDeHdodenhofCircleimageview130Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare de.hdodenhof:circleimageview:1.3.0&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiReleaseManifest" type="com.android.build.gradle.tasks.MergeManifests">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleHuaweiReleaseUnitTest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleHuaweiDebugAndroidTest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiReleaseUnitTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugAndroidTestJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="compileHuaweiDebugUnitTestJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportCardviewV72421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:cardview-v7:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareHuaweiReleaseDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="preHuaweiReleaseBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAndroidTestResources" type="com.android.build.gradle.tasks.MergeResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="validateSigningHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.tasks.ValidateSigningTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseUnitTestJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="jarHuaweiDebugClasses" type="com.android.build.gradle.tasks.AndroidJarTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugUnitTestSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="deviceAndroidTest" type="com.android.build.gradle.internal.tasks.AndroidReportTask">Installs and runs instrumentation tests using all Device Providers.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="installHuaweiDebug" type="com.android.build.gradle.internal.tasks.InstallVariantTask">Installs the DebugHuawei build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportV132421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-v13:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="lintHuaweiDebug" type="com.android.build.gradle.tasks.Lint">Runs lint on the HuaweiDebug build.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="incrementalHuaweiDebugJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleHuaweiDebug">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in project ':app'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAssets" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugAndroidTestJniLibFolders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assemble">Assembles all variants of all applications and secondary packages.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="transformClassesWithDexForHuaweiDebug" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiReleaseResources" type="com.android.build.gradle.tasks.ProcessAndroidResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugAndroidTestManifest" type="com.android.build.gradle.tasks.ProcessTestManifest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="lintHuaweiRelease" type="com.android.build.gradle.tasks.Lint">Runs lint on the HuaweiRelease build.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="prepareComTencentBuglyCrashreport250Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.tencent.bugly:crashreport:2.5.0&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugJniLibFolders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportCompat2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-compat:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="connectedCheck">Runs all device checks on currently connected devices.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="uninstallAll">Uninstall all applications.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestBuildConfig" type="com.android.build.gradle.tasks.GenerateBuildConfig">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="incrementalHuaweiDebugAndroidTestJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleAndroidTest">Assembles all the Test applications.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="compileHuaweiDebugSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="generateHuaweiReleaseResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformClassesWithDexForHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseUnitTestSources">&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="processHuaweiDebugUnitTestJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareHuaweiDebugDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugAndroidTestResources" type="com.android.build.gradle.tasks.ProcessAndroidResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformNativeLibsWithMergeJniLibsForHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportMediaCompat2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-media-compat:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugAndroidTestResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileLint" type="com.android.build.gradle.internal.tasks.LintCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformNativeLibsWithMergeJniLibsForHuaweiDebug" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportAppcompatV72421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:appcompat-v7:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareHuaweiDebugUnitTestDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="androidDependencies" type="com.android.build.gradle.internal.tasks.DependencyReportTask">Displays the Android dependencies of the project.&lt;p&gt;&lt;i&gt;Task group: Android&lt;i&gt;</task>
+            <task name="prepareHuaweiReleaseUnitTestDependencies" type="com.android.build.gradle.internal.tasks.PrepareDependenciesTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="testHuaweiDebugUnitTest" type="com.android.build.gradle.tasks.factory.AndroidUnitTest">Run unit tests for the HuaweiDebug build.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="extractProguardFiles" type="com.android.build.gradle.internal.tasks.ExtractProguardFiles">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseNdk" type="com.android.build.gradle.tasks.NdkCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiDebug" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformClassesWithDexForHuaweiRelease" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="uninstallHuaweiRelease" type="com.android.build.gradle.internal.tasks.UninstallTask">Uninstalls the ReleaseHuawei build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportDesign2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:design:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="uploadHuaweiDebugSymtabFile">&lt;i&gt;Task group: bugly&lt;i&gt;</task>
+            <task name="test">Run unit tests for all variants.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportCoreUi2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-core-ui:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiReleaseSources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="connectedHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.tasks.DeviceProviderInstrumentTestTask">Installs and runs the tests for HuaweiDebug on connected devices.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="installHuaweiRelease" type="com.android.build.gradle.internal.tasks.InstallVariantTask">Installs the ReleaseHuawei build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="installHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.tasks.InstallVariantTask">Installs the android (on device) tests for the HuaweiDebug build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugShaders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="uploadHuaweiReleaseSymtabFile">&lt;i&gt;Task group: bugly&lt;i&gt;</task>
+            <task name="connectedAndroidTest" type="com.android.build.gradle.internal.tasks.AndroidReportTask">Installs and runs instrumentation tests for all flavors on connected devices.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="prepareComTencentBuglyNativecrashreport312Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.tencent.bugly:nativecrashreport:3.1.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiDebugResources" type="com.android.build.gradle.tasks.MergeResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiReleaseJavaRes" type="org.gradle.api.tasks.Sync">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareOrgLitepalAndroidCore150Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare org.litepal.android:core:1.5.0&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComWangAviLibrary101Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.wang.avi:library:1.0.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestRenderscript" type="com.android.build.gradle.tasks.RenderscriptCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="preBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="checkHuaweiReleaseManifest" type="com.android.build.gradle.internal.tasks.CheckManifest">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestRunner05Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test:runner:0.5&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="packageHuaweiDebugAndroidTest" type="com.android.build.gradle.tasks.PackageApplication">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="testHuaweiReleaseUnitTest" type="com.android.build.gradle.tasks.factory.AndroidUnitTest">Run unit tests for the HuaweiRelease build.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
+            <task name="uninstallHuaweiDebugAndroidTest" type="com.android.build.gradle.internal.tasks.UninstallTask">Uninstalls the android (on device) tests for the HuaweiDebug build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
+            <task name="dependentComponents" type="org.gradle.api.reporting.dependents.DependentComponentsReport">Displays the dependent components of components in project ':app'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in project ':app'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <task name="uninstallHuaweiDebug" type="com.android.build.gradle.internal.tasks.UninstallTask">Uninstalls the DebugHuawei build.&lt;p&gt;&lt;i&gt;Task group: Install&lt;i&gt;</task>
+            <task name="mergeHuaweiReleaseShaders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="sourceSets" type="com.android.build.gradle.internal.tasks.SourceSetsTask">Prints out all the source sets defined in this project.&lt;p&gt;&lt;i&gt;Task group: Android&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseShaders" type="com.android.build.gradle.tasks.ShaderCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareCnBmobAndroidBmobSdk350Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare cn.bmob.android:bmob-sdk:3.5.0&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugSources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="javaPreCompileHuaweiDebugUnitTest" type="com.android.build.gradle.tasks.JavaPreCompileTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="processHuaweiDebugResources" type="com.android.build.gradle.tasks.ProcessAndroidResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="preHuaweiDebugBuild">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportV42421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-v4:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugNdk" type="com.android.build.gradle.tasks.NdkCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="mergeHuaweiReleaseJniLibFolders" type="com.android.build.gradle.tasks.MergeSourceSetFolders">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportSupportFragment2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:support-fragment:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiReleaseAssets">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestExposedInstrumentationApiPublish05Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test:exposed-instrumentation-api-publish:0.5&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareCnBmobAndroidBmobIm205Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare cn.bmob.android:bmob-im:2.0.5&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
+            <task name="generateHuaweiDebugResources">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="incrementalHuaweiReleaseJavaCompilationSafeguard" type="com.android.build.gradle.tasks.factory.IncrementalSafeguard">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="validateSigningHuaweiRelease" type="com.android.build.gradle.internal.tasks.ValidateSigningTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseAidl" type="com.android.build.gradle.tasks.AidlCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportAnimatedVectorDrawable2421Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support:animated-vector-drawable:24.2.1&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiDebug" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="signingReport" type="com.android.build.gradle.internal.tasks.SigningReportTask">Displays the signing info for each variant.&lt;p&gt;&lt;i&gt;Task group: Android&lt;i&gt;</task>
+            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="assembleHuawei">Assembles all Huawei builds.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="generateHuaweiDebugResValues" type="com.android.build.gradle.tasks.GenerateResValues">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="transformNativeLibsWithMergeJniLibsForHuaweiRelease" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="assembleRelease">Assembles all Release builds.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
+            <task name="prepareComAndroidSupportTestEspressoEspressoCore222Library" type="com.android.build.gradle.internal.tasks.PrepareLibraryTask">Prepare com.android.support.test.espresso:espresso-core:2.2.2&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiReleaseJavaWithJavac" type="com.android.build.gradle.tasks.factory.AndroidJavaCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="transformResourcesWithMergeJavaResForHuaweiRelease" type="com.android.build.gradle.internal.pipeline.TransformTask">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="compileHuaweiDebugAndroidTestShaders" type="com.android.build.gradle.tasks.ShaderCompile">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="generateHuaweiDebugBuildConfig" type="com.android.build.gradle.tasks.GenerateBuildConfig">&lt;i&gt;Task group: other&lt;i&gt;</task>
+            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of project ':app'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
+            <conf name="HuaweiAnnotationProcessor" visible="false">Classpath for the annotation processor for 'Huawei'.</conf>
+            <conf name="HuaweiApk" visible="false">Classpath packaged with the compiled 'Huawei' classes.</conf>
+            <conf name="HuaweiCompile" visible="false">Classpath for compiling the Huawei sources.</conf>
+            <conf name="HuaweiDebugAnnotationProcessor" visible="false">Classpath for the annotation processor for 'HuaweiDebug'.</conf>
+            <conf name="HuaweiDebugApk" visible="false">Classpath packaged with the compiled 'HuaweiDebug' classes.</conf>
+            <conf name="HuaweiDebugCompile" visible="false">Classpath for compiling the HuaweiDebug sources.</conf>
+            <conf name="HuaweiDebugJackPlugin" visible="false">Classpath for the 'HuaweiDebug' Jack plugins.</conf>
+            <conf name="HuaweiDebugProvided" visible="false">Classpath for only compiling the HuaweiDebug sources.</conf>
+            <conf name="HuaweiDebugWearApp" visible="false">Link to a wear app to embed for object 'HuaweiDebug'.</conf>
+            <conf name="HuaweiJackPlugin" visible="false">Classpath for the 'Huawei' Jack plugins.</conf>
+            <conf name="HuaweiProvided" visible="false">Classpath for only compiling the Huawei sources.</conf>
+            <conf name="HuaweiReleaseAnnotationProcessor" visible="false">Classpath for the annotation processor for 'HuaweiRelease'.</conf>
+            <conf name="HuaweiReleaseApk" visible="false">Classpath packaged with the compiled 'HuaweiRelease' classes.</conf>
+            <conf name="HuaweiReleaseCompile" visible="false">Classpath for compiling the HuaweiRelease sources.</conf>
+            <conf name="HuaweiReleaseJackPlugin" visible="false">Classpath for the 'HuaweiRelease' Jack plugins.</conf>
+            <conf name="HuaweiReleaseProvided" visible="false">Classpath for only compiling the HuaweiRelease sources.</conf>
+            <conf name="HuaweiReleaseWearApp" visible="false">Link to a wear app to embed for object 'HuaweiRelease'.</conf>
+            <conf name="HuaweiWearApp" visible="false">Link to a wear app to embed for object 'Huawei'.</conf>
+            <conf name="_HuaweiDebugAndroidTestAnnotationProcessor" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugAndroidTestApk" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugAndroidTestCompile" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugAndroidTestJackPlugin" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugAnnotationProcessor" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugApk" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugCompile" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugJackPlugin" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugUnitTestAnnotationProcessor" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugUnitTestApk" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugUnitTestCompile" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiDebugUnitTestJackPlugin" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiReleaseAnnotationProcessor" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiReleaseApk" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiReleaseCompile" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiReleaseJackPlugin" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiReleaseUnitTestAnnotationProcessor" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiReleaseUnitTestApk" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiReleaseUnitTestCompile" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="_HuaweiReleaseUnitTestJackPlugin" visible="false">## Internal use, do not manually configure ##</conf>
+            <conf name="androidJacocoAgent" visible="false">The Jacoco agent to use to get coverage data.</conf>
+            <conf name="androidJacocoAnt" visible="false">The Jacoco ant tasks to use to get execute Gradle tasks.</conf>
+            <conf name="androidTestAnnotationProcessor" visible="false">Classpath for the annotation processor for 'androidTest'.</conf>
+            <conf name="androidTestApk" visible="false">Classpath packaged with the compiled 'androidTest' classes.</conf>
+            <conf name="androidTestCompile" visible="false">Classpath for compiling the androidTest sources.</conf>
+            <conf name="androidTestHuaweiAnnotationProcessor" visible="false">Classpath for the annotation processor for 'androidTestHuawei'.</conf>
+            <conf name="androidTestHuaweiApk" visible="false">Classpath packaged with the compiled 'androidTestHuawei' classes.</conf>
+            <conf name="androidTestHuaweiCompile" visible="false">Classpath for compiling the androidTestHuawei sources.</conf>
+            <conf name="androidTestHuaweiJackPlugin" visible="false">Classpath for the 'androidTestHuawei' Jack plugins.</conf>
+            <conf name="androidTestHuaweiProvided" visible="false">Classpath for only compiling the androidTestHuawei sources.</conf>
+            <conf name="androidTestHuaweiWearApp" visible="false">Link to a wear app to embed for object 'androidTestHuawei'.</conf>
+            <conf name="androidTestJackPlugin" visible="false">Classpath for the 'androidTest' Jack plugins.</conf>
+            <conf name="androidTestProvided" visible="false">Classpath for only compiling the androidTest sources.</conf>
+            <conf name="androidTestWearApp" visible="false">Link to a wear app to embed for object 'androidTest'.</conf>
+            <conf name="annotationProcessor" visible="false">Classpath for the annotation processor for 'main'.</conf>
+            <conf name="apk" visible="false">Classpath packaged with the compiled 'main' classes.</conf>
+            <conf name="archives">Configuration for archive artifacts.</conf>
+            <conf name="compile" visible="false">Classpath for compiling the main sources.</conf>
+            <conf name="debugAnnotationProcessor" visible="false">Classpath for the annotation processor for 'debug'.</conf>
+            <conf name="debugApk" visible="false">Classpath packaged with the compiled 'debug' classes.</conf>
+            <conf name="debugCompile" visible="false">Classpath for compiling the debug sources.</conf>
+            <conf name="debugJackPlugin" visible="false">Classpath for the 'debug' Jack plugins.</conf>
+            <conf name="debugProvided" visible="false">Classpath for only compiling the debug sources.</conf>
+            <conf name="debugWearApp" visible="false">Link to a wear app to embed for object 'debug'.</conf>
+            <conf name="default">Configuration for default artifacts.</conf>
+            <conf name="default-mapping">Configuration for default mapping artifacts.</conf>
+            <conf name="default-metadata">Metadata for the produced APKs.</conf>
+            <conf name="jackPlugin" visible="false">Classpath for the 'main' Jack plugins.</conf>
+            <conf name="provided" visible="false">Classpath for only compiling the main sources.</conf>
+            <conf name="releaseAnnotationProcessor" visible="false">Classpath for the annotation processor for 'release'.</conf>
+            <conf name="releaseApk" visible="false">Classpath packaged with the compiled 'release' classes.</conf>
+            <conf name="releaseCompile" visible="false">Classpath for compiling the release sources.</conf>
+            <conf name="releaseJackPlugin" visible="false">Classpath for the 'release' Jack plugins.</conf>
+            <conf name="releaseProvided" visible="false">Classpath for only compiling the release sources.</conf>
+            <conf name="releaseWearApp" visible="false">Link to a wear app to embed for object 'release'.</conf>
+            <conf name="testAnnotationProcessor" visible="false">Classpath for the annotation processor for 'test'.</conf>
+            <conf name="testApk" visible="false">Classpath packaged with the compiled 'test' classes.</conf>
+            <conf name="testCompile" visible="false">Classpath for compiling the test sources.</conf>
+            <conf name="testDebugAnnotationProcessor" visible="false">Classpath for the annotation processor for 'testDebug'.</conf>
+            <conf name="testDebugApk" visible="false">Classpath packaged with the compiled 'testDebug' classes.</conf>
+            <conf name="testDebugCompile" visible="false">Classpath for compiling the testDebug sources.</conf>
+            <conf name="testDebugJackPlugin" visible="false">Classpath for the 'testDebug' Jack plugins.</conf>
+            <conf name="testDebugProvided" visible="false">Classpath for only compiling the testDebug sources.</conf>
+            <conf name="testDebugWearApp" visible="false">Link to a wear app to embed for object 'testDebug'.</conf>
+            <conf name="testHuaweiAnnotationProcessor" visible="false">Classpath for the annotation processor for 'testHuawei'.</conf>
+            <conf name="testHuaweiApk" visible="false">Classpath packaged with the compiled 'testHuawei' classes.</conf>
+            <conf name="testHuaweiCompile" visible="false">Classpath for compiling the testHuawei sources.</conf>
+            <conf name="testHuaweiDebugAnnotationProcessor" visible="false">Classpath for the annotation processor for 'testHuaweiDebug'.</conf>
+            <conf name="testHuaweiDebugApk" visible="false">Classpath packaged with the compiled 'testHuaweiDebug' classes.</conf>
+            <conf name="testHuaweiDebugCompile" visible="false">Classpath for compiling the testHuaweiDebug sources.</conf>
+            <conf name="testHuaweiDebugJackPlugin" visible="false">Classpath for the 'testHuaweiDebug' Jack plugins.</conf>
+            <conf name="testHuaweiDebugProvided" visible="false">Classpath for only compiling the testHuaweiDebug sources.</conf>
+            <conf name="testHuaweiDebugWearApp" visible="false">Link to a wear app to embed for object 'testHuaweiDebug'.</conf>
+            <conf name="testHuaweiJackPlugin" visible="false">Classpath for the 'testHuawei' Jack plugins.</conf>
+            <conf name="testHuaweiProvided" visible="false">Classpath for only compiling the testHuawei sources.</conf>
+            <conf name="testHuaweiReleaseAnnotationProcessor" visible="false">Classpath for the annotation processor for 'testHuaweiRelease'.</conf>
+            <conf name="testHuaweiReleaseApk" visible="false">Classpath packaged with the compiled 'testHuaweiRelease' classes.</conf>
+            <conf name="testHuaweiReleaseCompile" visible="false">Classpath for compiling the testHuaweiRelease sources.</conf>
+            <conf name="testHuaweiReleaseJackPlugin" visible="false">Classpath for the 'testHuaweiRelease' Jack plugins.</conf>
+            <conf name="testHuaweiReleaseProvided" visible="false">Classpath for only compiling the testHuaweiRelease sources.</conf>
+            <conf name="testHuaweiReleaseWearApp" visible="false">Link to a wear app to embed for object 'testHuaweiRelease'.</conf>
+            <conf name="testHuaweiWearApp" visible="false">Link to a wear app to embed for object 'testHuawei'.</conf>
+            <conf name="testJackPlugin" visible="false">Classpath for the 'test' Jack plugins.</conf>
+            <conf name="testProvided" visible="false">Classpath for only compiling the test sources.</conf>
+            <conf name="testReleaseAnnotationProcessor" visible="false">Classpath for the annotation processor for 'testRelease'.</conf>
+            <conf name="testReleaseApk" visible="false">Classpath packaged with the compiled 'testRelease' classes.</conf>
+            <conf name="testReleaseCompile" visible="false">Classpath for compiling the testRelease sources.</conf>
+            <conf name="testReleaseJackPlugin" visible="false">Classpath for the 'testRelease' Jack plugins.</conf>
+            <conf name="testReleaseProvided" visible="false">Classpath for only compiling the testRelease sources.</conf>
+            <conf name="testReleaseWearApp" visible="false">Link to a wear app to embed for object 'testRelease'.</conf>
+            <conf name="testWearApp" visible="false">Link to a wear app to embed for object 'test'.</conf>
+            <conf name="wearApp" visible="false">Link to a wear app to embed for object 'main'.</conf>
+            <conf name="classpath" scriptClasspath="true" />
+          </extensions>
+        </project>
+      </sub-project>
+    </project>
+  </component>
+</project>
