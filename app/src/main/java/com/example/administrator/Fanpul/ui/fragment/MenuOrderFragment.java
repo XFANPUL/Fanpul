@@ -4,7 +4,11 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -25,6 +29,7 @@ import com.example.administrator.Fanpul.ui.component.magicindicator.buildins.com
 import com.example.administrator.Fanpul.ui.component.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
 import com.example.administrator.Fanpul.ui.component.magicindicator.buildins.commonnavigator.indicators.WrapPagerIndicator;
 import com.example.administrator.Fanpul.ui.component.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
+import com.example.administrator.Fanpul.utils.StatusBarUtil;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
@@ -38,11 +43,13 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/2/17.
  */
 
-public class MainPageFragment extends BaseFragment implements
+public class MenuOrderFragment extends BaseFragment implements
         ViewPager.OnPageChangeListener
 {
     //private List<TB_CustomCategory> customCategoryDatas;
      private List<MenuCategory> menuCategoryList;
+    @Bind(R.id.toolbar)
+    public Toolbar toolbar;
 
     @Bind(R.id.magic_indicator)
     public MagicIndicator magicIndicator;
@@ -80,7 +87,24 @@ public class MainPageFragment extends BaseFragment implements
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            getActivity().finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        StatusBarUtil.setImmersiveStatusBar(getActivity());
+        StatusBarUtil.setImmersiveStatusBarToolbar(toolbar, getActivity());
+
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setDisplayHomeAsUpEnabled(true);
         menuCategoryList = new ArrayList<>();
         if(getActivity().getIntent().getStringExtra(ZxingFragment.TAG_ZXING)!=null) {
             String[] str = getActivity().getIntent().getStringExtra(ZxingFragment.TAG_ZXING).split(" ");

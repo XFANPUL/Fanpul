@@ -26,26 +26,18 @@ public class BmobUtil {
             public void done(BmobQueryResult<Restaurant> bmobQueryResult, BmobException e) {
                 if(e==null){
                    // Log.i("SucSSSS",bmobQueryResult.getResults().toString());
-                    callback.Success(bmobQueryResult.getResults());
+                    if(bmobQueryResult.getResults().size()>0) {
+                        callback.Success(bmobQueryResult.getResults());
+                    }
+                    else{
+                        callback.Failed();
+                    }
                 }else{
                     Log.i("Failed","Fai");
                     callback.Failed();
                 }
             }
         });
-       /* new BmobQuery().doSQLQuery(bql,new SQLQueryListener() {
-            @Override
-            public void done(BmobQueryResult bmobQueryResult, BmobException e) {
-                if (e == null) {
-                    List<BmobObject> list = bmobQueryResult.getResults();
-                    callback.Success(list);
-                    Log.i("queryObjS", "查询数据成功");
-                } else {
-                    Log.i("queryObjF", "查询数据失败");
-                }
-
-            }
-        });*/
     }
     public static void queryRestaurantCategory(String restaurantName, final BmobQueryCallback callback){
         String bql = "select * from Restaurant where restaurantName = '"+restaurantName+"'";

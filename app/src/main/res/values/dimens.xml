@@ -35,4 +35,22 @@
 
     <!-- 高度 -->
     <dimen name="normal_input_height">40dp</dimen>
+
+    <dimen name="dip_1">1dip</dimen>
+    <dimen name="my_header_height">180dp</dimen>
+    <dimen name="dip_5">5dip</dimen>
+    <dimen name="dip_7">7dip</dimen>
+    <dimen name="dip_30">30dip</dimen>
+    <dimen name="dip_60">60dip</dimen>
+    <dimen name="dip_20">20dip</dimen>
+
+
+    <!--未登录个人中心头像大小-->
+    <dimen name="personal_unlogin_userpic">80dp</dimen>
+    <dimen name="personal_paddingLR">12dp</dimen>
+    <!--登录个人中心字体-->
+    <dimen name="personal_login_textview">14sp</dimen>
+    <dimen name="personal_login_texthint">12sp</dimen>
+    <dimen name="personal_browse">10sp</dimen>
+
 </resources>

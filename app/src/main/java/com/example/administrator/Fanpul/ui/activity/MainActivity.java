@@ -5,6 +5,7 @@ import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
 import com.example.administrator.Fanpul.ui.fragment.HomeFragment;
+import com.example.administrator.Fanpul.ui.fragment.MyFragment;
 import com.example.administrator.Fanpul.ui.fragment.ZxingFragment;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
@@ -32,6 +33,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     //@ViewInject(R.id.main_bottom_tabs)
     public static final String APPLICATIONID = "3b60c6eb37caced9f0023a6515b2d8a5";
     private RadioGroup group;
+    private MyFragment my;
     //@ViewInject(R.id.main_home)
     private RadioButton main_home;
     private FragmentManager fragmentManager;
@@ -69,6 +71,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         if(savedInstanceState!=null){
             home=(HomeFragment)fragmentManager.findFragmentByTag("0");
             zxingFragment = (ZxingFragment)fragmentManager.findFragmentByTag("1");
+            my=(MyFragment)fragmentManager.findFragmentByTag("3");
         }
         main_home.setChecked(true);
         group.setOnCheckedChangeListener(this);
@@ -118,27 +121,39 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                     // mTextView.setText(result);
                     final Intent intent = new Intent(MainActivity.this, OrderMenuActivity.class);
                     if(result.split(" ").length==2) {
-                        String sql = "select * from Restaurant where restaurantName = '" + result.split(" ")[0] + "'";
-                        BmobUtil.queryBmobObject(sql, new BmobQueryCallback() {
-                            @Override
-                            public void Success(List bmobObjectList) {
-                                intent.putExtra(ZxingFragment.TAG_ZXING, result);
-                                startActivity(intent);
+                        String tableSizeAndNumber = result.split(" ")[1];
+                        if(tableSizeAndNumber.matches("^[ABC]\\d*$")){
+                            String tableSize = tableSizeAndNumber.substring(0,1);
+                            if(tableSize.equals("A")){
+                                tableSize = "bigTableLeft";
                             }
+                            else if(tableSize.equals("B")){
+                                tableSize = "middleTableLeft";
+                            }
+                            else if(tableSize.equals("C")){
+                                tableSize = "smallTableLeft";
+                            }
+                            Integer tableNumber = Integer.parseInt(tableSizeAndNumber.substring(1,tableSizeAndNumber.length()));
+                            String sql = "select * from Restaurant where restaurantName = '" + result.split(" ")[0] + "' and " +
+                                    tableSize+ " = "+tableNumber;
 
-                            @Override
-                            public void Failed() {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                                builder.setTitle("扫码失败");
-                                builder.setMessage("无法识别该二维码,请重新扫描1");
-                                builder.create().show();
-                            }
-                        });
+                            BmobUtil.queryBmobObject(sql, new BmobQueryCallback() {
+                                @Override
+                                public void Success(List bmobObjectList) {
+                                    intent.putExtra(ZxingFragment.TAG_ZXING, result);
+                                    startActivity(intent);
+                                }
+                                @Override
+                                public void Failed() {
+                                    showDialog();
+                                }
+                            });
+                        }
+                        else{
+                            showDialog();
+                          }
                     }else{
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                        builder.setTitle("扫码失败");
-                        builder.setMessage("无法识别该二维码,请重新扫描");
-                        builder.create().show();
+                        showDialog();
                     }
                     // Toast.makeText(this,result.toString(),Toast.LENGTH_SHORT);
                     //用默认浏览器打开扫描得到的地址
@@ -154,6 +169,12 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         }
     }
 
+    public void showDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("扫码失败");
+        builder.setMessage("无法识别该二维码,请重新扫描");
+        builder.create().show();
+    }
     public void changeFragment(int index)
     {
         FragmentTransaction beginTransaction = fragmentManager.beginTransaction();
@@ -179,6 +200,12 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
             case 2:
                 break;
             case 3:
+                if(my==null){
+                    my=new MyFragment();
+                    beginTransaction.add(R.id.main_content,my,"3");
+                }else{
+                    beginTransaction.show(my);
+                }
                 break;
 
             default:
@@ -192,6 +219,10 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 
        if(zxingFragment!=null)
             transaction.hide(zxingFragment);
+
+        if (my != null)
+            transaction.hide(my);
+
 
     }
     @Override
@@ -214,6 +245,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 
     public static void startActivity(Context context){
         Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
 

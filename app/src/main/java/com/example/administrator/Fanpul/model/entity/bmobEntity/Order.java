@@ -20,6 +20,15 @@ public class Order extends BmobObject {
     private Integer evaluateState;//0表示待评价，1已评价,2表示排队中
     private String evaluateInformation;//评价信息
     private Integer orderNumber;//点击再来一单时加一
+    private List<Integer> menuNumberList;
+
+    public List<Integer> getMenuNumberList() {
+        return menuNumberList;
+    }
+
+    public void setMenuNumberList(List<Integer> menuNumberList) {
+        this.menuNumberList = menuNumberList;
+    }
 
     public String getUserName() {
         return userName;

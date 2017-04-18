@@ -40,7 +40,7 @@
         app:backgroundTint="@color/colorPrimary"
         app:borderWidth="0dp" />
 
-    <com.example.administrator.Fanpul.ui.component.fab_transformation.widget.RevealFrameLayout
+ <!--   <com.example.administrator.Fanpul.ui.component.fab_transformation.widget.RevealFrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -199,6 +199,6 @@
 
         </android.support.v7.widget.CardView>
 
-    </com.example.administrator.Fanpul.ui.component.fab_transformation.widget.RevealFrameLayout>
+    </com.example.administrator.Fanpul.ui.component.fab_transformation.widget.RevealFrameLayout>-->
 
 </RelativeLayout>

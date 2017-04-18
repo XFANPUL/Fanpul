@@ -59,7 +59,7 @@ final class LoggerPrinter implements Printer {
 
   /**
    * tag is used for the Log, the name is a little different
-   * in order to differentiate the logs easily with the filter
+   * in see_order_detail to differentiate the logs easily with the filter
    */
   private String tag;
 
@@ -335,7 +335,7 @@ final class LoggerPrinter implements Printer {
   }
 
   /**
-   * This method is synchronized in order to avoid messy of logs' order.
+   * This method is synchronized in see_order_detail to avoid messy of logs' see_order_detail.
    */
   private synchronized void log(int priority, Throwable throwable, String msg, Object... args) {
     if (settings.getLogLevel() == LogLevel.NONE) {

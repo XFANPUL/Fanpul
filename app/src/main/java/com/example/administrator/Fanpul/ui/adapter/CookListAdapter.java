@@ -2,7 +2,6 @@ package com.example.administrator.Fanpul.ui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +46,8 @@ public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
 
         @Bind(R.id.text_name)
         TextView textName;
+        @Bind(R.id.text_price)
+        TextView textPrice;
 
         @Bind(R.id.delete)
         Button deleteButton;
@@ -65,6 +66,7 @@ public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
         @Override
         public void bindData(final Menu cook) {
             textName.setText(cook.getMenuName());
+            textPrice.setText("￥"+cook.getPrice());
             if(cookListFragment!=null&&cookListFragment.getBuy(cook.getObjectId()).getMenu()!=null){
                 numberText.setText(cookListFragment.getBuy(cook.getObjectId()).getNumber()+"");
                 currentNum = cookListFragment.getBuy(cook.getObjectId()).getNumber();
@@ -107,12 +109,12 @@ public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(currentNum<9) {
+                    if(currentNum<4) {
                         cookListFragment = MainPageViewPageAdapter.getCurrentCookListCurrentFragment();
                        // Toast.makeText(activity,MainPageViewPageAdapter.getCurrentCookListCurrentFragment().toString(),Toast.LENGTH_SHORT).show();
                         MainPageViewPageAdapter.Buy buy = cookListFragment.getBuy(cook.getObjectId());
                         currentNum++;
-                       buy.setNumber(currentNum);
+                        buy.setNumber(currentNum);
                         buy.setMenu(cook);
                         cookListFragment.AddCurrentNum(cook.getObjectId(),buy);
                         numberText.setText(currentNum + "");

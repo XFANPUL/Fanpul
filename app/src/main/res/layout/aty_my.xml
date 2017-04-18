@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defaultBg"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.Fanpul.ui.fragment.MyFragment">
+
+    <ScrollView
+        android:id="@+id/operationList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:orientation="vertical">
+            <!-- 已登录 -->
+            <RelativeLayout
+                android:id="@+id/head_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/my_header_height"
+                android:background="@drawable/img_my_head_bg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dip_30"
+                    android:layout_marginRight="@dimen/dip_16"
+                    android:layout_marginTop="@dimen/dip_7"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iv_baijin"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/baijin"/>
+                        <ImageView
+                            android:id="@+id/my_head_login"
+                            android:layout_width="@dimen/personal_unlogin_userpic"
+                            android:layout_height="@dimen/personal_unlogin_userpic"
+                            android:layout_marginTop="@dimen/dip_20"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/icon_head_pic"/>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/rlyt_top_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/top_login_btnset"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:background="@color/transparent"
+                            android:paddingBottom="@dimen/dip_10"
+                            android:paddingLeft="@dimen/dip_16"
+                            android:paddingRight="@dimen/dip_16"
+                            android:paddingTop="@dimen/dip_10"
+                            android:src="@drawable/but_setting"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/dip_20"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/lty_user"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <TextView
+                                    android:id="@+id/my_login_username"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="@dimen/dip_5"
+                                    android:paddingRight="@dimen/dip_10"
+                                    android:paddingTop="@dimen/dip_5"
+                                    android:text="苏珊珊"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/personal_login_textview"/>
+
+                                <TextView
+                                    android:id="@+id/my_member_lv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/tv_member"
+                                    android:paddingBottom="@dimen/dip_5"
+                                    android:paddingLeft="@dimen/dip_10"
+                                    android:paddingRight="@dimen/dip_10"
+                                    android:paddingTop="@dimen/dip_5"
+                                    android:text="普通用户"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/personal_texthint"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/lyt_collect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dip_60"
+                        android:layout_marginRight="@dimen/dip_1"
+                        android:layout_weight="1"
+                        android:background="@color/my_translucence"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/mylogin_att_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dip_5"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/personal_login_texthint"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dip_5"
+                            android:text="@string/usercenter_login_dish"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/personal_login_textview"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/browseHistoryNumLyt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dip_60"
+                        android:layout_marginLeft="@dimen/dip_1"
+                        android:layout_weight="1"
+                        android:background="@color/my_translucence"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/mylogin_browse_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dip_5"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/personal_login_texthint"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dip_5"
+                            android:text="@string/usercenter_login_store"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/personal_login_textview"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- 个人中心部分 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dip_10"
+                android:background="@drawable/affordshop_detail_border"
+                android:clickable="false"
+                android:orientation="vertical">
+
+                <include layout="@layout/line_view"/>
+
+                <LinearLayout
+                    android:id="@+id/orderLyt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dip_48"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dip_16"
+                    android:paddingRight="@dimen/dip_6">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:drawableLeft="@drawable/icon_my_order"
+                        android:drawablePadding="@dimen/dip_15"
+                        android:text="@string/usercenter_login_myorder"
+                        android:textColor="@color/personal_textview"
+                        android:textSize="@dimen/personal_login_textview"/>
+
+                    <TextView
+                        android:id="@+id/personal_allorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/dip_15"
+                        android:drawableRight="@drawable/btn_into_gray"
+                        android:padding="@dimen/dip_10"
+                        android:text="@string/usercenter_login_allorder"
+                        android:textColor="@color/personal_hinttext"
+                        android:textSize="@dimen/personal_login_textview"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dip_0.5"
+                    android:layout_marginLeft="@dimen/dip_16"
+                    android:background="@color/confirmorder_line"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_wallet"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dip_48"
+                android:layout_marginTop="@dimen/dip_10"
+                android:background="@drawable/affordshop_detail_border"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dip_16"
+                android:paddingRight="@dimen/dip_16">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/dip_16"
+                    android:background="@drawable/img_my_wallet"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="16dp"
+                    android:drawableRight="@drawable/btn_into_gray"
+                    android:text="@string/youhuiquan"
+                    android:textColor="@color/personal_textview"
+                    android:textSize="@dimen/personal_textview" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_storedetail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dip_48"
+                android:layout_marginTop="@dimen/dip_10"
+                android:background="@drawable/affordshop_detail_border"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dip_16"
+                android:paddingRight="@dimen/dip_16">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/icon_my_store"
+                    android:drawablePadding="16dp"
+                    android:drawableRight="@drawable/btn_into_gray"
+                    android:text="@string/huiyuan"
+                    android:textColor="@color/personal_textview"
+                    android:textSize="@dimen/personal_textview"/>
+            </LinearLayout>
+
+
+            <!-- 反馈交流 -->
+
+            <LinearLayout
+                android:id="@+id/feedbackSuggestionPart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp">
+
+                <include layout="@layout/line_view"/>
+                <!-- 反馈与建议 -->
+                <LinearLayout
+                    android:id="@+id/lyt_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dip_48"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dip_16"
+                    android:paddingRight="@dimen/dip_16">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/icon_feedback_suggestion"
+                        android:drawablePadding="16dp"
+                        android:drawableRight="@drawable/btn_into_gray"
+                        android:text="@string/feedbackSuggestion"
+                        android:textColor="@color/personal_textview"
+                        android:textSize="@dimen/personal_textview"/>
+                </LinearLayout>
+                <!-- 分隔线 -->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dip_0.5"
+                    android:layout_marginLeft="@dimen/dip_16"
+                    android:background="@color/confirmorder_line"/>
+                <!-- 关于饭谱 -->
+
+                <!-- 把饭谱告诉朋友 -->
+
+                <LinearLayout
+                    android:id="@+id/lyt_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dip_48"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dip_16"
+                    android:paddingRight="@dimen/dip_16">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/icon_my_share"
+                        android:drawablePadding="16dp"
+                        android:drawableRight="@drawable/btn_into_gray"
+                        android:text="@string/shareWith"
+                        android:textColor="@color/personal_textview"
+                        android:textSize="@dimen/personal_textview"/>
+                </LinearLayout>
+
+                <include layout="@layout/line_view"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
