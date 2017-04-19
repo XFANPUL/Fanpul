@@ -32,7 +32,6 @@ public class SeeOrderDetailActivity extends AppCompatActivity {
     private TextView seeOrderRestaurantNameText;
     private TextView seeCookDetailTotalMoneyText;
     private TextView seeOrderCustomNameText;
-    private TextView seeOrderObjectIdText;
     private TextView cookOrderFinishedTimeText;
     private TextView seeOrderNumber;
 
@@ -55,7 +54,7 @@ public class SeeOrderDetailActivity extends AppCompatActivity {
         seeCookDetailTotalMoneyText.setText("金额:￥"+order.getTotalPrice());
         seeOrderCustomNameText = (TextView)findViewById(R.id.see_order_custom_name);
         seeOrderCustomNameText.setText("顾客名:"+order.getUserName());
-        seeOrderObjectIdText = (TextView)findViewById(R.id.see_order_object_id);
+       // seeOrderObjectIdText = (TextView)findViewById(R.id.see_order_object_id);
        // seeOrderObjectIdText.setText("订单号:"+order.getObjectId());
         cookOrderFinishedTimeText = (TextView)findViewById(R.id.cook_order_finished_time);
         cookOrderFinishedTimeText.setText("订单完成时间:"+order.getOrderDate());

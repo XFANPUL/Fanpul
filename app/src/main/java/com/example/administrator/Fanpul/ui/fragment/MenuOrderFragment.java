@@ -19,7 +19,6 @@ import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.Fanpul.presenter.Presenter;
-import com.example.administrator.Fanpul.ui.activity.CookChannelActivity;
 import com.example.administrator.Fanpul.ui.activity.OrderMenuActivity;
 import com.example.administrator.Fanpul.ui.adapter.MainPageViewPageAdapter;
 import com.example.administrator.Fanpul.ui.component.magicindicator.MagicIndicator;
@@ -215,12 +214,19 @@ public class MenuOrderFragment extends BaseFragment implements
         magicIndicator.setNavigator(commonNavigator);
 
         mainPageViewPageAdapter = new MainPageViewPageAdapter(getFragmentManager(), menuCategoryList);
-
         viewPager.addOnPageChangeListener(this);
         viewPager.setAdapter(mainPageViewPageAdapter);
+
     }
 
-   /* public boolean onBackPressed() {
+    public MainPageViewPageAdapter getMainPageViewPageAdapter() {
+        return mainPageViewPageAdapter;
+    }
+
+    public void setMainPageViewPageAdapter(MainPageViewPageAdapter mainPageViewPageAdapter) {
+        this.mainPageViewPageAdapter = mainPageViewPageAdapter;
+    }
+/* public boolean onBackPressed() {
         SearchFragment fragment = (SearchFragment)getFragmentManager().findFragmentByTag("fragment_search");
         if(fragment != null) {
             return fragment.onBackPressed();

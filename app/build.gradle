@@ -108,19 +108,21 @@ dependencies {
     compile 'com.android.support:cardview-v7:24.2.1'
     compile 'com.android.support:support-v13:24.2.1'
     compile 'com.android.support:design:24.2.1'
-  /*  compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'io.reactivex:rxjava:1.1.0'*/
+    /*  compile 'io.reactivex:rxandroid:1.1.0'
+        compile 'io.reactivex:rxjava:1.1.0'*/
+    compile('com.squareup.retrofit2:retrofit:2.1.0') { exclude group: 'com.squareup.okhttp3' }
+    compile('com.squareup.retrofit2:converter-gson:2.1.0') {
+        exclude group: 'com.google.code.gson'
+        exclude group: 'com.squareup.okhttp3'
+    }
+    compile('com.squareup.retrofit2:adapter-rxjava:2.1.0') {
+        exclude group: 'io.reactivex'
+        exclude group: 'com.squareup.okhttp3'
+    }
+    /* compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'*/
 
-    compile('com.squareup.retrofit2:retrofit:2.1.0')
-            { exclude group: 'com.squareup.okhttp3' }
-    compile('com.squareup.retrofit2:converter-gson:2.1.0')
-            { exclude group: 'com.google.code.gson'
-                exclude group: 'com.squareup.okhttp3' }
-    compile('com.squareup.retrofit2:adapter-rxjava:2.1.0')
-            { exclude group: 'io.reactivex'
-                exclude group: 'com.squareup.okhttp3' }
-   /* compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'*/
-  /*  compile 'com.google.code.gson:gson:2.8.0'*/
+    /*  compile 'com.google.code.gson:gson:2.8.0'*/
+
     /*compile 'com.squareup.okhttp3:okhttp:3.6.0'*/
     compile 'org.litepal.android:core:1.5.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
@@ -130,17 +132,17 @@ dependencies {
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
     compile 'com.wang.avi:library:1.0.1'
     compile 'de.hdodenhof:circleimageview:1.3.0'
-
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
     testCompile 'junit:junit:4.12'
     compile files('libs/android-smart-image-view-1.0.0.jar')
     compile files('libs/xUtils-2.6.14.jar')
     compile 'cn.yipianfengye.android:zxing-library:1.8'
     compile 'cn.bmob.android:bmob-sdk:3.5.0'
-      /*      {
-        exclude group: 'io.reactivex:rxandroid'
-        exclude group: 'io.reactivex:rxjava'
-    }*/
+    /*      {
+            exclude group: 'io.reactivex:rxandroid'
+            exclude group: 'io.reactivex:rxjava'
+        }*/
+
     //bmob-push：Bmob的推送包
     compile 'cn.bmob.android:bmob-push:0.8'
     compile 'cn.bmob.android:http-legacy:1.0'
@@ -149,5 +151,5 @@ dependencies {
     //bmob-sms ：Bmob单独为短信服务提供的包
     compile 'cn.bmob.android:bmob-sms:1.0.1'
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
-
+    compile files('libs/locSDK_4.0.jar')
 }

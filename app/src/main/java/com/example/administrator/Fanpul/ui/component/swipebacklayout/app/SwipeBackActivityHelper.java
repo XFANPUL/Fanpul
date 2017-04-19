@@ -11,9 +11,7 @@ import com.example.administrator.Fanpul.ui.component.swipebacklayout.SwipeBackLa
 import com.example.administrator.Fanpul.ui.component.swipebacklayout.Utils;
 
 
-/**
- * @author Yrom  设置背景透明，绑定SwipeBackLayout
- */
+
 public class SwipeBackActivityHelper {
     private Activity mActivity;
 

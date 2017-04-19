@@ -81,8 +81,10 @@ public class CookListFragment extends BaseFragment implements ICookListView {
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray));
-        floatingActionButton.setEnabled(false);
+        if(buyMap.isEmpty()) {
+            floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray));
+            floatingActionButton.setEnabled(false);
+        }
         recyclerList.setLayoutManager(new LinearLayoutManager(recyclerList.getContext()));
         cookListAdapter = new CookListAdapter(getActivity());
         recyclerList.setAdapter(cookListAdapter);
@@ -249,18 +251,44 @@ public class CookListFragment extends BaseFragment implements ICookListView {
             if (buyMap.isEmpty()){
                 floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray));
                 floatingActionButton.setEnabled(false);
+                //updatePos();
             }
         }
-
     }
-
     public void AddCurrentNum(String menuId, MainPageViewPageAdapter.Buy buy){
        int number = buy.getNumber();
         if(number == 1){
             buyMap.put(menuId,buy);
             floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.colorAccent));
             floatingActionButton.setEnabled(true);
+          //  updatePos();
         }
         //Toast.makeText(getActivity(),"添加成功"+buy.getCookDetail().getMenuId(),Toast.LENGTH_SHORT).show();
+    }
+
+    public void updatePos(){
+        MenuOrderFragment menuOrderFragment = (MenuOrderFragment)getFragmentManager().findFragmentById(R.id.fragment_main_content);
+        int pos = menuOrderFragment.getMainPageViewPageAdapter().getCurPosition();
+        if(  pos>0&& pos<  menuOrderFragment.getMainPageViewPageAdapter().getCount()) {
+            menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos + 1);
+            menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos - 1);
+        }
+        else if(pos==0){
+            menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos + 1);
+        }
+        else if(pos==menuOrderFragment.getMainPageViewPageAdapter().getCount()){
+            menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos - 1);
+        }
+    }
+
+    public void updateUI(){
+        if(buyMap.isEmpty()) {
+            floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray));
+            floatingActionButton.setEnabled(false);
+        }
+        else{
+            floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.colorAccent));
+            floatingActionButton.setEnabled(true);
+        }
     }
 }

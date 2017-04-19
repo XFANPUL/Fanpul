@@ -6,11 +6,9 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -42,8 +40,6 @@
             tl:tl_indicator_margin_top="2dp"
             tl:tl_tab_space_equal="true"
           />
-
-
         <android.support.v4.view.ViewPager
             android:id="@+id/shopinner_tab_vp"
             android:layout_width="match_parent"

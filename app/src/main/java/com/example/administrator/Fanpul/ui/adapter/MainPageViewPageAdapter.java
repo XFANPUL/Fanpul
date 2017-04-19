@@ -8,6 +8,7 @@ import com.example.administrator.Fanpul.model.entity.bmobEntity.Menu;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.Fanpul.ui.fragment.CookListFragment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,11 +21,22 @@ public class MainPageViewPageAdapter extends FragmentPagerAdapter {
 
    // private List<TB_CustomCategory> customCategoryDatas;
     private List<MenuCategory> menuCategoryList;
-    public static  Map<String,Buy> buyMap = new HashMap<>();
 
+    public int getCurPosition() {
+        return curPosition;
+    }
+
+    public void setCurPosition(int curPosition) {
+        this.curPosition = curPosition;
+    }
+
+    public static  Map<String,Buy> buyMap = new HashMap<>();
+    private FragmentManager fragmentManager;
     private static CookListFragment cookListCurrentFragment;
+    private int curPosition;
     public MainPageViewPageAdapter(FragmentManager fm, List<MenuCategory> menuCategoryList){//List<TB_CustomCategory> customCategoryDatas){
         super(fm);
+        fragmentManager =fm;
        // this.customCategoryDatas = customCategoryDatas;
         this.menuCategoryList= menuCategoryList;
     }
@@ -58,13 +70,36 @@ public class MainPageViewPageAdapter extends FragmentPagerAdapter {
         return menuCategoryList.size();
     }
 
+    private List<String> tagList = new ArrayList<>();
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        tagList.add(makeFragmentName(container.getId(), getItemId(position)));
+        return super.instantiateItem(container, position);
+    }
+    private static String makeFragmentName(int viewId, long id) {
+        return "android:switcher:" + viewId + ":" + id;
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        if(object instanceof CookListFragment){
+           ((CookListFragment) object).updateUI();
+        }
+        return super.getItemPosition(object);
+    }
+
+    public void updateUI(int item){
+        CookListFragment cookListFragment = (CookListFragment)fragmentManager.findFragmentByTag(tagList.get(item));
+        if(cookListFragment!=null)
+        cookListFragment.updateUI();
+        curPosition = item;
+    }
     @Override
     public long getItemId(int position) {
         // 获取当前数据的hashCode
         int hashCode = menuCategoryList.get(position).hashCode();
         return hashCode;
     }
-
 
     public static class Buy{
         private Menu menu;

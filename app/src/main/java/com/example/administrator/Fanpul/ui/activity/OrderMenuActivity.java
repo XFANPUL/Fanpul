@@ -6,17 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.presenter.Presenter;
 import com.example.administrator.Fanpul.ui.adapter.MainPageViewPageAdapter;
 import com.example.administrator.Fanpul.ui.fragment.MenuOrderFragment;
-import com.example.administrator.Fanpul.utils.StatusBarUtil;
-
-import butterknife.Bind;
 
 public class OrderMenuActivity extends BaseSwipeBackActivity {
 
@@ -86,6 +81,12 @@ public class OrderMenuActivity extends BaseSwipeBackActivity {
             }
         }, 2000);*/
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        MainPageViewPageAdapter.buyMap.clear();
+        super.onDestroy();
     }
 
     @Override

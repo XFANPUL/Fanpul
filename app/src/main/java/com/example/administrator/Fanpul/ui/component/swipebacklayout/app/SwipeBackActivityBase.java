@@ -3,9 +3,7 @@ package com.example.administrator.Fanpul.ui.component.swipebacklayout.app;
 
 import com.example.administrator.Fanpul.ui.component.swipebacklayout.SwipeBackLayout;
 
-/**
- * @author Yrom
- */
+
 public interface SwipeBackActivityBase {
     /**
      * @return the SwipeBackLayout associated with this activity.
