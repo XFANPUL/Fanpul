@@ -11,28 +11,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-               <!-- <ImageView
-                    android:id="@+id/shop_pic"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="2dp"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/shop_pic" />-->
-            <TextView
+            <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
-                android:text="小厨小菜"
-                android:textColor="@color/gray"
-                android:textSize="18sp"
-                android:id="@+id/shop_cart_restaurant_name_text"/>
-            </android.support.v7.widget.CardView>
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="5dp">
 
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:navigationIcon="@null"
+                    android:background="?attr/colorPrimary">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="小厨小菜"
+                            android:id="@+id/shop_cart_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/fragment_main_text_size"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.Toolbar>
+
+            </android.support.design.widget.AppBarLayout>
 
            <FrameLayout
                android:layout_width="match_parent"

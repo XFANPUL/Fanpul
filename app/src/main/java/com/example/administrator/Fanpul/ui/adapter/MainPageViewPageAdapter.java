@@ -54,6 +54,7 @@ public class MainPageViewPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
+        curPosition = position;
         cookListCurrentFragment = (CookListFragment)object;
         super.setPrimaryItem(container, position, object);
     }
@@ -80,19 +81,11 @@ public class MainPageViewPageAdapter extends FragmentPagerAdapter {
         return "android:switcher:" + viewId + ":" + id;
     }
 
-    @Override
-    public int getItemPosition(Object object) {
-        if(object instanceof CookListFragment){
-           ((CookListFragment) object).updateUI();
-        }
-        return super.getItemPosition(object);
-    }
-
     public void updateUI(int item){
         CookListFragment cookListFragment = (CookListFragment)fragmentManager.findFragmentByTag(tagList.get(item));
         if(cookListFragment!=null)
         cookListFragment.updateUI();
-        curPosition = item;
+
     }
     @Override
     public long getItemId(int position) {

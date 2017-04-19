@@ -251,7 +251,7 @@ public class CookListFragment extends BaseFragment implements ICookListView {
             if (buyMap.isEmpty()){
                 floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray));
                 floatingActionButton.setEnabled(false);
-                //updatePos();
+                updatePos();
             }
         }
     }
@@ -261,7 +261,7 @@ public class CookListFragment extends BaseFragment implements ICookListView {
             buyMap.put(menuId,buy);
             floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.colorAccent));
             floatingActionButton.setEnabled(true);
-          //  updatePos();
+            updatePos();
         }
         //Toast.makeText(getActivity(),"添加成功"+buy.getCookDetail().getMenuId(),Toast.LENGTH_SHORT).show();
     }

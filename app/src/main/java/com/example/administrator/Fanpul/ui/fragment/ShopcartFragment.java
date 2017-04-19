@@ -109,7 +109,7 @@ public class ShopcartFragment extends Fragment {
         });
 
         restaurantName = getActivity().getIntent().getStringExtra(CookListFragment.restaurantNameIntent);
-        restaurantNameText =(TextView) getActivity().findViewById(R.id.shop_cart_restaurant_name_text);
+        restaurantNameText =(TextView) getActivity().findViewById(R.id.shop_cart_name);
         restaurantNameText.setText(restaurantName);
         payHint = (TextView)getActivity().findViewById(R.id.pay_ways_hint);
         payHint.setVisibility(View.INVISIBLE);
