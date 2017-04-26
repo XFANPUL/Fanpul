@@ -88,4 +88,6 @@
     <color name="personal_line">#dddddd</color>
     <color name="personal_textbg">#ffffff</color>
     <color name="line">#dddddd</color>
+    <color name="confirmorder_textbg">#ffffff</color>
+    <color name="confirmorder_textview">#555555</color>
 </resources>

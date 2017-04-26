@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.administrator.Fanpul.R;
-import com.example.administrator.Fanpul.ui.fragment.SimpleCardFragment;
+import com.example.administrator.Fanpul.ui.fragment.FragmentManager;
 import com.example.administrator.Fanpul.utils.ViewFindUtils;
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -33,7 +32,7 @@ public class OrdersTabActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //tab
         for (String title : mTitles) {
-            mFragments.add(SimpleCardFragment.getInstance(title));
+            mFragments.add(FragmentManager.getFragment(title));
         }
 
         mDecorView = getWindow().getDecorView();
@@ -79,7 +78,7 @@ public class OrdersTabActivity extends AppCompatActivity {
 
     //tab的fragment 适配器
     private class MyPagerAdapter extends FragmentPagerAdapter {
-        public MyPagerAdapter(FragmentManager fm) {
+        public MyPagerAdapter(android.support.v4.app.FragmentManager fm) {
             super(fm);
         }
 

@@ -35,7 +35,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.example.administrator.Fanpul.ui.activity.OrderMenuActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -51,7 +52,8 @@
 
         <activity
             android:name="com.example.administrator.Fanpul.ui.activity.SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:configChanges="orientation|keyboardHidden|screenSize"  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,7 +65,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.administrator.Fanpul.ui.activity.CookCategoryActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name="com.example.administrator.Fanpul.ui.activity.CookDetailActivity"
             android:theme="@style/AppThemeFullImage" />
@@ -78,17 +81,31 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name="com.example.administrator.Fanpul.ui.activity.ShoppingCartActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
 
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.MainActivity"></activity>
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.MadeCodeActivity"></activity>
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.OrderFormActivity"></activity>
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.MadeCodeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.OrderFormActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
         <activity android:name="com.example.administrator.Fanpul.ui.activity.MenuInDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"  >
         </activity>
-        <activity android:name=".ui.activity.SegmentTabActivity"></activity>
-        <activity android:name=".ui.activity.OrdersTabActivity"></activity>
-        <activity android:name=".ui.activity.SeeOrderDetailActivity"></activity>
+
+        <activity android:name=".ui.activity.SegmentTabActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.OrdersTabActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.SeeOrderDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
     </application>
 
     </manifest>

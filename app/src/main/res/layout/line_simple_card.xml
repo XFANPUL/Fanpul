@@ -2,22 +2,154 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/test_line"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/background_card"
+        android:background="@color/confirmorder_textbg"
         android:gravity="center"
-        android:textSize="18sp"/>
+        android:orientation="vertical"
+        android:padding="@dimen/dip_5">
 
-    <Button
-        android:id="@+id/order_menu_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/test_line"
-        android:text="点餐" />
+        <!--<TextView
+            android:id="@+id/test_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/background_card"
+            android:gravity="center"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/order_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/test_line"
+            android:text="点餐" />-->
+
+
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/deskA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/transparent"
+                android:button="@null"
+                android:checked="true"
+                android:drawableLeft="@drawable/bg_checked"
+                android:layout_marginLeft="@dimen/dip_60"
+                android:drawablePadding="@dimen/dip_6"
+                android:padding="@dimen/dip_5"
+                android:text="A桌（2-4人）"
+                android:textColor="@color/confirmorder_textview"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/waitA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="@dimen/dip_60"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="有4桌在等待，预计等待时间为8分钟"/>
+
+            <RadioButton
+                android:id="@+id/deskB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dip_60"
+                android:background="@color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableLeft="@drawable/bg_checked"
+                android:drawablePadding="@dimen/dip_6"
+                android:padding="@dimen/dip_5"
+                android:text="B桌（5-8人）"
+                android:textColor="@color/confirmorder_textview"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/waitB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="@dimen/dip_60"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="有4桌在等待，预计等待时间为8分钟"/>
+
+            <RadioButton
+                android:id="@+id/deskC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dip_60"
+                android:background="@color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableLeft="@drawable/bg_checked"
+                android:drawablePadding="@dimen/dip_6"
+                android:padding="@dimen/dip_5"
+                android:text="C桌（8人以上）"
+                android:textColor="@color/confirmorder_textview"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/waitC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="@dimen/dip_60"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="有4桌在等待，预计等待时间为8分钟"/>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/want_book"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_marginRight="@dimen/dip_10"
+            android:background="@drawable/btn_order"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/dip_8"
+            android:paddingLeft="@dimen/dip_26"
+            android:paddingRight="@dimen/dip_26"
+            android:paddingTop="@dimen/dip_8"
+            android:text="我要点单"
+            android:textColor="@drawable/btn_order_clicktext"
+            android:textSize="@dimen/personal_texthint"
+            android:visibility="visible"/>
+
+        <Button
+            android:id="@+id/want_line"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_marginRight="@dimen/dip_10"
+            android:background="@drawable/btn_order"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/dip_8"
+            android:paddingLeft="@dimen/dip_26"
+            android:paddingRight="@dimen/dip_26"
+            android:paddingTop="@dimen/dip_8"
+            android:text="我要排队"
+            android:textColor="@drawable/btn_order_clicktext"
+            android:textSize="@dimen/personal_texthint"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>

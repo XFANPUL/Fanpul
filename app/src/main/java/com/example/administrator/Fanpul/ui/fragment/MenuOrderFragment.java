@@ -73,6 +73,8 @@ public class MenuOrderFragment extends BaseFragment implements
     }
 
     private  String restaurantName;
+    private  String tableSize;
+    private  String tableNum;
 
     /********************************************************************************************/
     @Override
@@ -104,6 +106,7 @@ public class MenuOrderFragment extends BaseFragment implements
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
+
         menuCategoryList = new ArrayList<>();
         if(getActivity().getIntent().getStringExtra(ZxingFragment.TAG_ZXING)!=null) {
             String[] str = getActivity().getIntent().getStringExtra(ZxingFragment.TAG_ZXING).split(" ");
@@ -114,14 +117,18 @@ public class MenuOrderFragment extends BaseFragment implements
                 //Matcher matcher = pattern.matcher(str[1]);
                 //if(matcher.matches()) {
                     tableNumber.setText("桌号:"+str[1]);
+                    tableSize = str[1].substring(0,1);
+                    tableNum = str[1].substring(1,str[1].length());
                     tableNumber.setVisibility(View.VISIBLE);
               //  }
             }
         }
+
         if(getActivity().getIntent().getStringExtra(OrderMenuActivity.SHOP_NAME)!=null){
             shopName.setText(getActivity().getIntent().getStringExtra(OrderMenuActivity.SHOP_NAME));
             restaurantName = getActivity().getIntent().getStringExtra(OrderMenuActivity.SHOP_NAME);
         }
+
         BmobUtil.queryRestaurantCategory(restaurantName, new BmobQueryCallback<MenuCategory>() {
             @Override
             public void Success(List<MenuCategory> bmobObjectList) {
@@ -175,6 +182,23 @@ public class MenuOrderFragment extends BaseFragment implements
 
         CookChannelActivity.startActivity(getActivity());
     }*/
+
+    public String getTableSize() {
+        return tableSize;
+    }
+
+    public void setTableSize(String tableSize) {
+        this.tableSize = tableSize;
+    }
+
+    public String getTableNum() {
+        return tableNum;
+    }
+
+    public void setTableNum(String tableNum) {
+        this.tableNum = tableNum;
+    }
+
     /********************************************************************************************/
 
     private void initIndicatorView(){

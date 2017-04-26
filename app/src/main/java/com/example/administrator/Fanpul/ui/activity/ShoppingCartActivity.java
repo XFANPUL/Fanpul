@@ -4,13 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,21 +21,42 @@ import android.widget.Toast;
 import com.example.administrator.Fanpul.R;
 
 import com.example.administrator.Fanpul.constants.Constants;
+import com.example.administrator.Fanpul.presenter.Presenter;
 import com.example.administrator.Fanpul.ui.fragment.ShopcartFragment;
+import com.example.administrator.Fanpul.utils.StatusBarUtil;
 
 import butterknife.Bind;
 
 
-public class ShoppingCartActivity extends AppCompatActivity {
+public class ShoppingCartActivity extends BaseSwipeBackActivity {
     private TextView totalmoneyText;
     private TextView totalItemNumber;
     private TextView totalMoneyText1;
     private EditText editText ;
+    private Toolbar toolbar;
+
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.shopping_cart);
+    protected Presenter getPresenter() {
+        return null;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.shopping_cart;
+    }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        StatusBarUtil.setImmersiveStatusBar(this);
+        StatusBarUtil.setImmersiveStatusBarToolbar(toolbar, this);
+
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setDisplayHomeAsUpEnabled(true);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         totalItemNumber= (TextView) findViewById(R.id.textview_total_item);
         totalmoneyText = (TextView)findViewById(R.id.total_money_item);
@@ -53,6 +77,15 @@ public class ShoppingCartActivity extends AppCompatActivity {
         editText.addTextChangedListener(mTextWatcher);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+           finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     TextWatcher mTextWatcher = new TextWatcher() {
         private CharSequence temp;
         private int editStart ;

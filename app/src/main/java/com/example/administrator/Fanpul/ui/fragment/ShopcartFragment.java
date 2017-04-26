@@ -48,7 +48,6 @@ public class ShopcartFragment extends Fragment {
     private CheckBox showNameCheckBox;
     private TextView restaurantNameText;
     private TextView payHint;
-
     private String payWays;
     private String restaurantName;
     private Integer showName;
@@ -57,13 +56,15 @@ public class ShopcartFragment extends Fragment {
     private Integer evaluateState;
     private float totalmoney;
     private List<Integer> menuNumberList;
+    private String tableSize;
+    private String tableNum;
 
     private List<Menu> menuList = new ArrayList<>();
     private List<MainPageViewPageAdapter.Buy> lists = new ArrayList<>();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        showName = 0;
+        showName = 1;
         evaluateState=0;
         glideUtil = new GlideUtil();
         userName = "张三";
@@ -75,9 +76,10 @@ public class ShopcartFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.shopcart_recycler, container, false);
-        if(savedInstanceState!=null){
+      /*  if(savedInstanceState!=null){
             savedInstanceState=null;
-        }
+        }*/
+
         recyclerView = (RecyclerView) view.findViewById(R.id.shopcart_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new shopcartAdapter(lists));
@@ -101,14 +103,17 @@ public class ShopcartFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    showName=0;
-                }else{
                     showName=1;
+                }else{
+                    showName=0;
                 }
             }
         });
 
         restaurantName = getActivity().getIntent().getStringExtra(CookListFragment.restaurantNameIntent);
+        tableSize = getActivity().getIntent().getStringExtra(CookListFragment.TABLESIZE);
+        tableNum = getActivity().getIntent().getStringExtra(CookListFragment.TABLENUM);
+
         restaurantNameText =(TextView) getActivity().findViewById(R.id.shop_cart_name);
         restaurantNameText.setText(restaurantName);
         payHint = (TextView)getActivity().findViewById(R.id.pay_ways_hint);
@@ -155,6 +160,8 @@ public class ShopcartFragment extends Fragment {
                     order.setShowName(showName);
                     order.setUserName(userName);
                     order.setMenuNumberList(menuNumberList);
+                    order.setTableNum(tableNum);
+                    order.setTableSize(tableSize);
                     order.save(new SaveListener<String>() {
                         @Override
                         public void done(String s, BmobException e) {

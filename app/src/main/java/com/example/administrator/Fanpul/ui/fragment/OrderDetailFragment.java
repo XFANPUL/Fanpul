@@ -1,9 +1,7 @@
 package com.example.administrator.Fanpul.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -36,7 +34,7 @@ public class OrderDetailFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         for (String title : mTitles) {
-            mFragments.add(SimpleCardFragment.getInstance(title));
+            mFragments.add(FragmentManager.getFragment(title));
         }
     }
     @Override
@@ -91,7 +89,7 @@ public class OrderDetailFragment extends BaseFragment {
 
     //tab的fragment 适配器
     private class MyPagerAdapter extends FragmentPagerAdapter {
-        public MyPagerAdapter(FragmentManager fm) {
+        public MyPagerAdapter(android.support.v4.app.FragmentManager fm) {
             super(fm);
         }
 

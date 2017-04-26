@@ -128,13 +128,16 @@ public class CookListFragment extends BaseFragment implements ICookListView {
     }*/
     public static final String restaurantNameIntent = "com.example.administrator.cookman.ui.fragment.CookListFragment";
 
-
+    public static final String TABLESIZE = "com.example.administrator.cookman.ui.fragment.CookListFragment.TABLESIZE";
+    public static final String TABLENUM = "com.example.administrator.cookman.ui.fragment.CookListFragment.TABLENUM";
     @OnClick(R.id.fab_app)
     public void onClickBuy(){
         if(!buyMap.isEmpty()) {
             MenuOrderFragment main = (MenuOrderFragment) getFragmentManager().findFragmentById(R.id.fragment_main_content);
             Intent intent = new Intent(getActivity(), ShoppingCartActivity.class);
             intent.putExtra(restaurantNameIntent, main.getRestaurantName());
+            intent.putExtra(TABLESIZE,main.getTableSize());
+            intent.putExtra(TABLENUM,main.getTableNum());
             startActivity(intent);
         }else{
             Toast.makeText(getActivity(),"购物车不能为空",Toast.LENGTH_SHORT).show();
@@ -269,14 +272,14 @@ public class CookListFragment extends BaseFragment implements ICookListView {
     public void updatePos(){
         MenuOrderFragment menuOrderFragment = (MenuOrderFragment)getFragmentManager().findFragmentById(R.id.fragment_main_content);
         int pos = menuOrderFragment.getMainPageViewPageAdapter().getCurPosition();
-        if(  pos>0&& pos<  menuOrderFragment.getMainPageViewPageAdapter().getCount()) {
+        if(  pos>0&& pos<  menuOrderFragment.getMainPageViewPageAdapter().getCount()-1) {
             menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos + 1);
             menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos - 1);
         }
         else if(pos==0){
             menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos + 1);
         }
-        else if(pos==menuOrderFragment.getMainPageViewPageAdapter().getCount()){
+        else if(pos==menuOrderFragment.getMainPageViewPageAdapter().getCount()-1){
             menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos - 1);
         }
     }

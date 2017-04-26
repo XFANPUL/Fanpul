@@ -131,17 +131,17 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                         if(tableSizeAndNumber.matches("^[ABC]\\d*$")){
                             String tableSize = tableSizeAndNumber.substring(0,1);
                             String sizeABC="";
-                            if(tableSize.equals("A")){
+                            if(tableSize.equals("C")){
                                 tableSize = "bigTableLeft";
-                                sizeABC = "A";
+                                sizeABC = "C";
                             }
                             else if(tableSize.equals("B")){
                                 tableSize = "middleTableLeft";
                                 sizeABC = "B";
                             }
-                            else if(tableSize.equals("C")){
+                            else if(tableSize.equals("A")){
                                 tableSize = "smallTableLeft";
-                                sizeABC = "C";
+                                sizeABC = "A";
                             }
                             final Integer tableNumber = Integer.parseInt(tableSizeAndNumber.substring(1,tableSizeAndNumber.length()));
                             String sql = "select * from Restaurant where restaurantName = '" + result.split(" ")[0] + "' and " +
@@ -153,7 +153,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                                 public void Success(List<Restaurant> bmobObjectList) {
                                     intent.putExtra(ZxingFragment.TAG_ZXING, result);
                                     List<Integer> integers = null;
-                                    if(finalSizeABC .equals("A") ) {
+                                    if(finalSizeABC .equals("C") ) {
                                         integers = bmobObjectList.get(0).getBigTableLeft();
                                         integers.remove(tableNumber);
                                         Restaurant restaurant = bmobObjectList.get(0);
@@ -177,7 +177,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                                         restaurant.setMiddleTableLeft(integers);
                                         restaurant.update();
                                     }
-                                    else if(finalSizeABC.equals("C")){
+                                    else if(finalSizeABC.equals("A")){
                                         integers = bmobObjectList.get(0).getSmallTableLeft();
                                         integers.remove(tableNumber);
                                         Restaurant restaurant = bmobObjectList.get(0);
