@@ -11,29 +11,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/shop_pic"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="2dp"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/shop_pic" />
-            <TextView
+            <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="15dp"
-                android:paddingLeft="50dp"
-                android:paddingTop="15dp"
-                android:text="小厨小菜"
-                android:textColor="@color/gray"
-                android:textSize="18sp"
-                android:id="@+id/shop_cart_restaurant_name_text"/>
-            </android.support.v7.widget.CardView>
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="5dp">
 
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:navigationIcon="@null"
+                    android:background="?attr/colorPrimary">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="小厨小菜"
+                            android:id="@+id/shop_cart_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/fragment_main_text_size"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.Toolbar>
+
+            </android.support.design.widget.AppBarLayout>
 
            <FrameLayout
                android:layout_width="match_parent"
@@ -46,7 +54,7 @@
             </FrameLayout>-->
 
             <EditText
-
+                android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
@@ -93,6 +101,7 @@
                 android:background="@color/black_alpha_light" />
 
             <LinearLayout
+                android:id="@+id/linear_pay_ways"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/white"
@@ -107,6 +116,17 @@
                     android:text="支付方式"
                     android:id="@+id/pay_ways"
                     android:textColor="@color/gray" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
+                    android:text="支付方式不能为空"
+                    android:id="@+id/pay_ways_hint"
+                    android:textColor="@color/red"
+                    android:visibility="invisible"/>
+
 
                 <ImageView
                     android:layout_width="wrap_content"

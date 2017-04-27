@@ -40,8 +40,6 @@
             tl:tl_indicator_margin_top="2dp"
             tl:tl_tab_space_equal="true"
           />
-
-
         <android.support.v4.view.ViewPager
             android:id="@+id/shopinner_tab_vp"
             android:layout_width="match_parent"

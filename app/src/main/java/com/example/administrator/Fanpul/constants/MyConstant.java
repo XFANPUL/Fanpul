@@ -17,6 +17,7 @@ public class MyConstant {
 			R.drawable.nav_yinpin,R.drawable.nav_yuntun,R.drawable.nav_xiaoshi,R.drawable.nav_jianbing,
 			R.drawable.nav_pengzha,R.drawable.nav_tangbao,R.drawable.nav_gaodian,R.drawable.nav_liangcai,};
 
+
 	public static String[] shopName = {"店铺1","店铺2","店铺3","店铺4","店铺5","店铺6","店铺7","店铺8","店铺9","店铺10"
 			,"店铺11","店铺12","店铺13","店铺14","店铺15","店铺16","店铺17"};
 }

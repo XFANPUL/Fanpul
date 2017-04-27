@@ -8,12 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-/**
- * 标签流容器
- *
- * @author fyales
- * @since date 2015-03-04
- */
 public class TagCloudLayout extends ViewGroup {
 
     private int mLineSpacing;

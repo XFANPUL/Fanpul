@@ -75,7 +75,7 @@ final class Helper {
   }
 
   /**
-   * Copied from "android.util.Log.getStackTraceString()" in order to avoid usage of Android stack
+   * Copied from "android.util.Log.getStackTraceString()" in see_order_detail to avoid usage of Android stack
    * in unit tests.
    *
    * @return Stack trace in form of String

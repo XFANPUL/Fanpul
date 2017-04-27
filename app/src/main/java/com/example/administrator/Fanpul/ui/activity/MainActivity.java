@@ -4,8 +4,10 @@ package com.example.administrator.Fanpul.ui.activity;
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
+import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
 import com.example.administrator.Fanpul.ui.fragment.HomeFragment;
 import com.example.administrator.Fanpul.ui.fragment.MyFragment;
+import com.example.administrator.Fanpul.ui.fragment.OrderDetailFragment;
 import com.example.administrator.Fanpul.ui.fragment.ZxingFragment;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
@@ -28,6 +30,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class MainActivity extends FragmentActivity implements OnCheckedChangeListener{
     //@ViewInject(R.id.main_bottom_tabs)
@@ -38,6 +42,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     private FragmentManager fragmentManager;
     private HomeFragment home;
     private MyFragment my;
+    private OrderDetailFragment orderDetailFragment;
     private ZxingFragment zxingFragment;
     private long exitTime=0;
     private RadioButton main_tuan_radio;
@@ -71,6 +76,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         if(savedInstanceState!=null){
             home=(HomeFragment)fragmentManager.findFragmentByTag("0");
             zxingFragment = (ZxingFragment)fragmentManager.findFragmentByTag("1");
+            orderDetailFragment = (OrderDetailFragment)fragmentManager.findFragmentByTag("2");
             my=(MyFragment)fragmentManager.findFragmentByTag("3");
         }
         main_home.setChecked(true);
@@ -121,27 +127,73 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                     // mTextView.setText(result);
                     final Intent intent = new Intent(MainActivity.this, OrderMenuActivity.class);
                     if(result.split(" ").length==2) {
-                        String sql = "select * from Restaurant where restaurantName = '" + result.split(" ")[0] + "'";
-                        BmobUtil.queryBmobObject(sql, new BmobQueryCallback() {
-                            @Override
-                            public void Success(List bmobObjectList) {
-                                intent.putExtra(ZxingFragment.TAG_ZXING, result);
-                                startActivity(intent);
+                        String tableSizeAndNumber = result.split(" ")[1];
+                        if(tableSizeAndNumber.matches("^[ABC]\\d*$")){
+                            String tableSize = tableSizeAndNumber.substring(0,1);
+                            String sizeABC="";
+                            if(tableSize.equals("C")){
+                                tableSize = "bigTableLeft";
+                                sizeABC = "C";
                             }
+                            else if(tableSize.equals("B")){
+                                tableSize = "middleTableLeft";
+                                sizeABC = "B";
+                            }
+                            else if(tableSize.equals("A")){
+                                tableSize = "smallTableLeft";
+                                sizeABC = "A";
+                            }
+                            final Integer tableNumber = Integer.parseInt(tableSizeAndNumber.substring(1,tableSizeAndNumber.length()));
+                            String sql = "select * from Restaurant where restaurantName = '" + result.split(" ")[0] + "' and " +
+                                    tableSize+ " = "+tableNumber;
 
-                            @Override
-                            public void Failed() {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                                builder.setTitle("扫码失败");
-                                builder.setMessage("无法识别该二维码,请重新扫描1");
-                                builder.create().show();
-                            }
-                        });
+                            final String finalSizeABC = sizeABC;
+                            BmobUtil.queryBmobObject(sql, new BmobQueryCallback<Restaurant>() {
+                                @Override
+                                public void Success(List<Restaurant> bmobObjectList) {
+                                    intent.putExtra(ZxingFragment.TAG_ZXING, result);
+                                    List<Integer> integers = null;
+                                    if(finalSizeABC .equals("C") ) {
+                                        integers = bmobObjectList.get(0).getBigTableLeft();
+                                        integers.remove(tableNumber);
+                                        Restaurant restaurant = bmobObjectList.get(0);
+                                        restaurant.setBigTableLeft(integers);
+                                        restaurant.update(restaurant.getObjectId(), new UpdateListener() {
+                                            @Override
+                                            public void done(BmobException e) {
+                                                if(e == null){
+                                                    Log.i("Success","Success");
+                                                }
+                                                else{
+                                                    Log.i("Failed","Failed");
+                                                }
+                                            }
+                                        });
+                                    }
+                                    else if(finalSizeABC.equals("B")){
+                                        integers = bmobObjectList.get(0).getMiddleTableLeft();
+                                        integers.remove(tableNumber);
+                                        Restaurant restaurant = bmobObjectList.get(0);
+                                        restaurant.setMiddleTableLeft(integers);
+                                        restaurant.update();
+                                    }
+                                    else if(finalSizeABC.equals("A")){
+                                        integers = bmobObjectList.get(0).getSmallTableLeft();
+                                        integers.remove(tableNumber);
+                                        Restaurant restaurant = bmobObjectList.get(0);
+                                        restaurant.setSmallTableLeft(integers);
+                                        restaurant.update();
+                                    }
+                                    startActivity(intent);
+                                }
+                                @Override
+                                public void Failed() {
+                                    showDialog();
+                                }
+                            });
+                        }
                     }else{
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                        builder.setTitle("扫码失败");
-                        builder.setMessage("无法识别该二维码,请重新扫描");
-                        builder.create().show();
+                        showDialog();
                     }
                     // Toast.makeText(this,result.toString(),Toast.LENGTH_SHORT);
                     //用默认浏览器打开扫描得到的地址
@@ -157,6 +209,12 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         }
     }
 
+    public void showDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("扫码失败");
+        builder.setMessage("无法识别该二维码,请重新扫描");
+        builder.create().show();
+    }
     public void changeFragment(int index)
     {
         FragmentTransaction beginTransaction = fragmentManager.beginTransaction();
@@ -180,6 +238,12 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                 }
                 break;
             case 2:
+                if(orderDetailFragment==null){
+                    orderDetailFragment=new OrderDetailFragment();
+                    beginTransaction.add(R.id.main_content,orderDetailFragment,"2");
+                }else{
+                    beginTransaction.show(orderDetailFragment);
+                }
                 break;
             case 3:
                 if(my==null){
@@ -198,12 +262,12 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     private void hideFragments(FragmentTransaction transaction) {
         if (home != null)
             transaction.hide(home);
-
        if(zxingFragment!=null)
             transaction.hide(zxingFragment);
+        if (orderDetailFragment != null)
+            transaction.hide(orderDetailFragment);
         if (my != null)
             transaction.hide(my);
-
     }
     @Override
     public void onBackPressed() {
@@ -225,6 +289,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 
     public static void startActivity(Context context){
         Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
 

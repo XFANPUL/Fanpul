@@ -36,7 +36,6 @@
     <!-- 高度 -->
     <dimen name="normal_input_height">40dp</dimen>
 
-
     <dimen name="dip_1">1dip</dimen>
     <dimen name="my_header_height">180dp</dimen>
     <dimen name="dip_5">5dip</dimen>
@@ -53,6 +52,5 @@
     <dimen name="personal_login_textview">14sp</dimen>
     <dimen name="personal_login_texthint">12sp</dimen>
     <dimen name="personal_browse">10sp</dimen>
-
 
 </resources>

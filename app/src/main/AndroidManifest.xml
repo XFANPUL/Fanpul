@@ -18,6 +18,11 @@
     <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 百度定位需要的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
 
     <application
         android:name="com.example.administrator.Fanpul.CookManApplication"
@@ -29,10 +34,25 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.example.administrator.Fanpul.ui.activity.OrderMenuActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-       <activity
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+
+        </service>
+
+        <!-- meta-data需要写在application中 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="gTXcuaFqzuD6wi5aeoY79FGytzbmfZD2" />
+
+
+        <activity
             android:name="com.example.administrator.Fanpul.ui.activity.SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:configChanges="orientation|keyboardHidden|screenSize"  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +64,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.administrator.Fanpul.ui.activity.CookCategoryActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name="com.example.administrator.Fanpul.ui.activity.CookDetailActivity"
             android:theme="@style/AppThemeFullImage" />
@@ -59,16 +80,31 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name="com.example.administrator.Fanpul.ui.activity.ShoppingCartActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
 
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.MainActivity"></activity>
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.MadeCodeActivity"></activity>
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.OrderFormActivity"></activity>
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.MadeCodeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name="com.example.administrator.Fanpul.ui.activity.OrderFormActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
         <activity android:name="com.example.administrator.Fanpul.ui.activity.MenuInDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"  >
         </activity>
-        <activity android:name=".ui.activity.SegmentTabActivity"></activity>
-        <activity android:name=".ui.activity.OrdersTabActivity"></activity>
+
+        <activity android:name=".ui.activity.SegmentTabActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.OrdersTabActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.SeeOrderDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
     </application>
 
     </manifest>

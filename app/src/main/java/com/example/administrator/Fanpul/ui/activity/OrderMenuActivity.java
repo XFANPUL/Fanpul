@@ -6,16 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.MenuItem;
 
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.presenter.Presenter;
 import com.example.administrator.Fanpul.ui.adapter.MainPageViewPageAdapter;
-import com.example.administrator.Fanpul.ui.fragment.MainPageFragment;
+import com.example.administrator.Fanpul.ui.fragment.MenuOrderFragment;
 
-public class OrderMenuActivity extends BaseActivity {
+public class OrderMenuActivity extends BaseSwipeBackActivity {
+
 
     private FragmentManager fragmentManager;
-    private MainPageFragment mainPageFragment;
+    private MenuOrderFragment menuOrderFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,15 @@ public class OrderMenuActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
     protected Presenter getPresenter(){
         return null;
     }
@@ -38,11 +49,11 @@ public class OrderMenuActivity extends BaseActivity {
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        mainPageFragment = new MainPageFragment();
+        menuOrderFragment = new MenuOrderFragment();
 
         transaction
-                .add(R.id.fragment_main_content, mainPageFragment)
-                .show(mainPageFragment)
+                .add(R.id.fragment_main_content, menuOrderFragment)
+                .show(menuOrderFragment)
                 .commit();
     }
     /**********************************************************/
@@ -73,12 +84,18 @@ public class OrderMenuActivity extends BaseActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        MainPageViewPageAdapter.buyMap.clear();
+        super.onDestroy();
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == CookChannelActivity.Request_Code_Channel && resultCode == CookChannelActivity.Result_Code_Channel_NoChanged){
-            if(mainPageFragment != null)
-                mainPageFragment.updateChannel();
+            if(menuOrderFragment != null)
+                menuOrderFragment.updateChannel();
         }
     }
 

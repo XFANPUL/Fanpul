@@ -1,5 +1,7 @@
 package com.example.administrator.Fanpul.ui.fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +20,11 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
@@ -30,13 +37,15 @@ import com.example.administrator.Fanpul.ui.view.ImageCycleView;
 import com.example.administrator.Fanpul.ui.view.WrapContentHeightViewPager;
 import com.example.administrator.Fanpul.constants.MyConstant;
 import com.example.administrator.Fanpul.utils.GlideUtil;
+import com.example.administrator.Fanpul.utils.Utils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.Bind;
 import cn.bmob.v3.datatype.BmobFile;
-
+import android.app.AlertDialog.Builder;
+import android.widget.Toast;
 public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaurant> {
 	@ViewInject(R.id.index_home_viewpager)
 	private WrapContentHeightViewPager viewPager;
@@ -71,6 +80,15 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
 	private String imageTitle2 = "222";
 	private String imageTitle3 = "333";
 
+	//自动定位
+	@ViewInject(R.id.home_top_city)
+	TextView cityView;
+	//city=(TextView)findViewById(R.id.home_top_city);
+	public LocationClient mLocationClient = null;
+	public BDLocationListener myListener = new MyLocationListener();
+	private ProgressDialog dialog;
+	private String city;
+	private Builder builder;
 
 	@Override
 	public void onStart() {
@@ -87,6 +105,7 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
         restaurantItemAdapter = new RestaurantItemAdapter();
         List<Restaurant> restaurantList;restaurantList = new ArrayList<>();
         restaurantItemAdapter.setDataList(restaurantList);
+		initCity();
         initGridView();
         initStoreList();
         initImageCycleView();
@@ -191,6 +210,149 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
 			return convertView;
 		}
 	}
+	/**
+	 * 实现BDLocationListener接口
+	 *
+	 * BDLocationListener接口有2个方法需要实现： 1.接收异步返回的定位结果，参数是BDLocation类型参数。
+	 * 2.接收异步返回的POI查询结果，参数是BDLocation类型参数。
+	 *
+	 * @author 晨彦
+	 *
+	 */
+	class MyLocationListener implements BDLocationListener {
+
+
+		public void onReceiveLocation(BDLocation location) {
+			if (location == null)
+				return;
+
+			dialog.cancel();
+			int code = location.getLocType();
+			String addr = location.getAddrStr();
+			addr="海淀";
+			if (/*code == 161 && addr != null*/true) {
+				// 定位成功
+				System.out.println(addr);
+				//city = formatCity(addr);
+				cityView.setText(addr);
+			} else {
+				// 定位失败
+				builder = new Builder(getActivity());
+				builder.setTitle("提示");
+				builder.setMessage("自动定位失败。");
+				builder.setPositiveButton("重试",
+						new DialogInterface.OnClickListener() {
+
+
+							public void onClick(DialogInterface dialog,
+												int which) {
+								if (Utils.checkNetwork(getActivity()) == false) {
+									Toast.makeText(getActivity(),
+											"网络异常,请检查网络设置", Toast.LENGTH_SHORT)
+											.show();
+									return;
+								}
+
+								requestLocation();
+							}
+						});
+				builder.setNegativeButton("取消", null);
+				builder.setCancelable(false);
+				builder.show();
+			}
+		}
+
+
+		public void onReceivePoi(BDLocation poiLocation) {
+		}
+
+	}
+
+	/**
+	 * 设置定位参数。 定位模式（单次定位，定时定位），返回坐标类型，是否打开GPS等等。
+	 */
+	private void setLocationOption() {
+		LocationClientOption option = new LocationClientOption();
+		option.setOpenGps(true);
+		option.setAddrType("all");// 返回的定位结果包含地址信息
+
+		option.setCoorType("bd09ll");// 返回的定位结果是百度经纬度,默认值gcj02
+		option.setScanSpan(24 * 60 * 60 * 1000);// 设置发起定位请求的间隔时间为5000ms
+		option.disableCache(true);// 禁止启用缓存定位
+		option.setPoiNumber(5); // 最多返回POI个数
+		option.setPoiDistance(1000); // poi查询距离
+		option.setPoiExtraInfo(true); // 是否需要POI的电话和地址等详细信息
+		mLocationClient.setLocOption(option);
+	}
+
+	/**
+	 * 请求位置信息
+	 */
+	private void requestLocation() {
+		if (mLocationClient.isStarted() == false) {
+			mLocationClient.start();
+		} else {
+			mLocationClient.requestLocation();
+		}
+	}
+
+	/**
+	 * 将位置信息转换为城市
+	 *
+	 * @param addr
+	 *            位置
+	 * @return 城市名称
+	 */
+	private String formatCity(String addr) {
+		String city = null;
+		if (addr.contains("北京市") && addr.contains("区")) {
+			city = addr.substring(addr.indexOf("市") + 1, addr.indexOf("区"));
+		} else if (addr.contains("县")) {
+			city = addr.substring(addr.indexOf("市") + 1, addr.indexOf("县"));
+		} else {
+			int start = addr.indexOf("市");
+			int end = addr.lastIndexOf("市");
+			if (start == end) {
+				if (addr.contains("省")) {
+					city = addr.substring(addr.indexOf("省") + 1,
+							addr.indexOf("市"));
+				} else if (addr.contains("市")) {
+					city = addr.substring(0, addr.indexOf("市"));
+				}
+			} else {
+				city = addr.substring(addr.indexOf("市") + 1,
+						addr.lastIndexOf("市"));
+			}
+		}
+		return city;
+	}
+
+
+	private void initCity(){
+		// 声明LocationClient类
+		mLocationClient = new LocationClient(getActivity().getApplicationContext());
+		// 注册监听函数
+		mLocationClient.registerLocationListener(myListener);
+		// 设置定位参数
+		setLocationOption();
+		dialog = new ProgressDialog(getActivity());
+		dialog.setMessage("正在定位...");
+		dialog.setCanceledOnTouchOutside(false);
+		cityView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				//通过定位设置城市
+				if (Utils.checkNetwork(getActivity()) == false) {
+					Toast.makeText(getActivity(), "网络异常,请检查网络设置",
+							Toast.LENGTH_SHORT).show();
+					return;
+				}
+				dialog.show();
+				requestLocation();
+			}
+		});
+	}
+
 	private class ViewHolder{
 		@ViewInject(R.id.index_home_iv_navsort)
         ImageView iv_navsort;

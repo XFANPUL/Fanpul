@@ -4,16 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
 import com.example.administrator.Fanpul.presenter.Presenter;
-import com.example.administrator.Fanpul.ui.fragment.SimpleCardFragment;
+import com.example.administrator.Fanpul.ui.fragment.FragmentManager;
 import com.example.administrator.Fanpul.ui.view.ImageCycleView;
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -32,7 +30,17 @@ public class SegmentTabActivity extends BaseSwipeBackActivity {
     private String[] mTitles = {"排队", "菜谱", "店铺", "更多"};
     private SegmentTabLayout mShopinner_tab;
 
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
     @Override
+
     protected Presenter getPresenter() {
         return null;
     }
@@ -56,7 +64,8 @@ public class SegmentTabActivity extends BaseSwipeBackActivity {
         mAdView.setImageResources(mImageUrl ,mImageTitle, mAdCycleViewListener,stype);
 
         for (String title : mTitles) {
-            mFragments.add(SimpleCardFragment.getInstance(title));
+           // mFragments.add(FragmentManager.getInstance(title));
+            mFragments.add(FragmentManager.getFragment(title));
         }
         mShopinner_tab = (SegmentTabLayout) findViewById(R.id.shopinner_tab);    //装入fragement
         init_tab_data();  //加载数据
@@ -118,7 +127,7 @@ public class SegmentTabActivity extends BaseSwipeBackActivity {
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
-        public MyPagerAdapter(FragmentManager fm) {
+        public MyPagerAdapter(android.support.v4.app.FragmentManager fm) {
             super(fm);
         }
 

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.administrator.Fanpul.IView.ICookListView;
 import com.example.administrator.Fanpul.R;
@@ -53,8 +54,8 @@ public class CookListFragment extends BaseFragment implements ICookListView {
     public View viewOverlay;
     @Bind(R.id.fab_app)
     public FloatingActionButton floatingActionButton;
-    @Bind(R.id.view_sheet)
-    public View viewSheet;
+/*    @Bind(R.id.view_sheet)
+    public View viewSheet;*/
 
     private CookListAdapter cookListAdapter;
 
@@ -80,6 +81,10 @@ public class CookListFragment extends BaseFragment implements ICookListView {
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        if(buyMap.isEmpty()) {
+            floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray));
+            floatingActionButton.setEnabled(false);
+        }
         recyclerList.setLayoutManager(new LinearLayoutManager(recyclerList.getContext()));
         cookListAdapter = new CookListAdapter(getActivity());
         recyclerList.setAdapter(cookListAdapter);
@@ -115,23 +120,32 @@ public class CookListFragment extends BaseFragment implements ICookListView {
         });
     }
 
-    @OnClick(R.id.fab_app)
+/*    @OnClick(R.id.fab_app)
     public void onClickFabApp(){
         if (floatingActionButton.getVisibility() == View.VISIBLE) {
             FabTransformation.with(floatingActionButton).setOverlay(viewOverlay).transformTo(viewSheet);
         }
-    }
+    }*/
     public static final String restaurantNameIntent = "com.example.administrator.cookman.ui.fragment.CookListFragment";
-    @OnClick(R.id.relative_buy)
+
+    public static final String TABLESIZE = "com.example.administrator.cookman.ui.fragment.CookListFragment.TABLESIZE";
+    public static final String TABLENUM = "com.example.administrator.cookman.ui.fragment.CookListFragment.TABLENUM";
+    @OnClick(R.id.fab_app)
     public void onClickBuy(){
-        MainPageFragment main = (MainPageFragment) getFragmentManager().findFragmentById(R.id.fragment_main_content);
-        Intent intent  = new Intent(getActivity(), ShoppingCartActivity.class);
-        intent.putExtra(restaurantNameIntent,main.getRestaurantName());
-        startActivity(intent);
-        onClickOverlay();
+        if(!buyMap.isEmpty()) {
+            MenuOrderFragment main = (MenuOrderFragment) getFragmentManager().findFragmentById(R.id.fragment_main_content);
+            Intent intent = new Intent(getActivity(), ShoppingCartActivity.class);
+            intent.putExtra(restaurantNameIntent, main.getRestaurantName());
+            intent.putExtra(TABLESIZE,main.getTableSize());
+            intent.putExtra(TABLENUM,main.getTableNum());
+            startActivity(intent);
+        }else{
+            Toast.makeText(getActivity(),"购物车不能为空",Toast.LENGTH_SHORT).show();
+        }
+        /*onClickOverlay();*/
     }
 
-    @OnClick(R.id.view_overlay)
+   /* @OnClick(R.id.view_overlay)
     public void onClickOverlay() {
         closeFabMenu();
     }
@@ -151,7 +165,7 @@ public class CookListFragment extends BaseFragment implements ICookListView {
         CookCollectionListActivity.startActivity(getActivity());
         onClickOverlay();
     }
-
+*/
     /********************************************************************************************/
     public void onCookListUpdateRefreshSuccess(ArrayList<CookDetail> list){
         //twinklingRefreshLayout.finishRefreshing();
@@ -203,14 +217,14 @@ public class CookListFragment extends BaseFragment implements ICookListView {
         return datas;
     }*/
 
-    public boolean closeFabMenu(){
+/*    public boolean closeFabMenu(){
         if (floatingActionButton.getVisibility() != View.VISIBLE) {
             FabTransformation.with(floatingActionButton).setOverlay(viewOverlay).transformFrom(viewSheet);
             return true;
         }
 
         return false;
-    }
+    }*/
 
     /*public void setCustomCategoryData(TB_CustomCategory customCategoryData){
         this.customCategoryData = customCategoryData;
@@ -237,15 +251,47 @@ public class CookListFragment extends BaseFragment implements ICookListView {
 
         if(number==0){
             buyMap.remove(menuId);
+            if (buyMap.isEmpty()){
+                floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray));
+                floatingActionButton.setEnabled(false);
+                updatePos();
+            }
         }
-
     }
-
     public void AddCurrentNum(String menuId, MainPageViewPageAdapter.Buy buy){
        int number = buy.getNumber();
         if(number == 1){
             buyMap.put(menuId,buy);
+            floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.colorAccent));
+            floatingActionButton.setEnabled(true);
+            updatePos();
         }
         //Toast.makeText(getActivity(),"添加成功"+buy.getCookDetail().getMenuId(),Toast.LENGTH_SHORT).show();
+    }
+
+    public void updatePos(){
+        MenuOrderFragment menuOrderFragment = (MenuOrderFragment)getFragmentManager().findFragmentById(R.id.fragment_main_content);
+        int pos = menuOrderFragment.getMainPageViewPageAdapter().getCurPosition();
+        if(  pos>0&& pos<  menuOrderFragment.getMainPageViewPageAdapter().getCount()-1) {
+            menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos + 1);
+            menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos - 1);
+        }
+        else if(pos==0){
+            menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos + 1);
+        }
+        else if(pos==menuOrderFragment.getMainPageViewPageAdapter().getCount()-1){
+            menuOrderFragment.getMainPageViewPageAdapter().updateUI(pos - 1);
+        }
+    }
+
+    public void updateUI(){
+        if(buyMap.isEmpty()) {
+            floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray));
+            floatingActionButton.setEnabled(false);
+        }
+        else{
+            floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.colorAccent));
+            floatingActionButton.setEnabled(true);
+        }
     }
 }

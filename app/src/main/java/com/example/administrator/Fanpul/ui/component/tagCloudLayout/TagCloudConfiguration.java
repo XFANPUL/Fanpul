@@ -6,10 +6,7 @@ import android.util.AttributeSet;
 
 import com.example.administrator.Fanpul.R;
 
-/**
- * @author fyales
- * @since date 11/3/15
- */
+
 public class TagCloudConfiguration {
 
     private static final int DEFAULT_LINE_SPACING = 5;

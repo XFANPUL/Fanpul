@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/little_sapce">
+                android:padding="5dp">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -33,6 +33,7 @@
                         android:id="@+id/shop_icon"
                         android:layout_width="80dp"
                         android:layout_height="55dp"
+                        android:paddingLeft="10dp"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true" />
                 </FrameLayout>

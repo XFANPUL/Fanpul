@@ -270,7 +270,7 @@ public class ViewDragHelper {
         }
 
         /**
-         * Called to determine the Z-order of child views.
+         * Called to determine the Z-see_order_detail of child views.
          *
          * @param index the ordered position to query for
          * @return index of the view that should be ordered at position
@@ -1543,7 +1543,7 @@ public class ViewDragHelper {
 
     /**
      * Find the topmost child under the given point within the parent view's
-     * coordinate system. The child order is determined using
+     * coordinate system. The child see_order_detail is determined using
      * {@link me.imid.swipebacklayout.lib.ViewDragHelper.Callback#getOrderedChildIndex(int)}
      * .
      *

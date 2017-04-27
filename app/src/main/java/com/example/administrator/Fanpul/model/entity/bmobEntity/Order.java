@@ -15,11 +15,38 @@ public class Order extends BmobObject {
     private Float totalPrice; //订单菜品总额
     private String payMeasure; //支付方式
     private Integer menuNumber; //商品数量
-    private Integer showName; //0表示显示姓名,1表示匿名;默认0
+    private Integer showName; //1表示显示姓名,0表示匿名;默认1
     private String orderDate;  //订单完成日期
     private Integer evaluateState;//0表示待评价，1已评价,2表示排队中
     private String evaluateInformation;//评价信息
     private Integer orderNumber;//点击再来一单时加一
+    private List<Integer> menuNumberList;//每个菜品的数量
+    private String tableSize;//桌的类型
+    private String tableNum;//桌号
+
+    public String getTableNum() {
+        return tableNum;
+    }
+
+    public void setTableNum(String tableNum) {
+        this.tableNum = tableNum;
+    }
+
+    public List<Integer> getMenuNumberList() {
+        return menuNumberList;
+    }
+
+    public void setMenuNumberList(List<Integer> menuNumberList) {
+        this.menuNumberList = menuNumberList;
+    }
+
+    public String getTableSize() {
+        return tableSize;
+    }
+
+    public void setTableSize(String tableSize) {
+        this.tableSize = tableSize;
+    }
 
     public String getUserName() {
         return userName;

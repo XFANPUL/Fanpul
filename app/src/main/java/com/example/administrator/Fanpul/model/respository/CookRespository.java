@@ -10,10 +10,6 @@ import com.google.gson.Gson;
 
 import rx.Observable;
 
-/**
- * Created by Administrator on 2017/2/17.
- */
-
 public class CookRespository implements ICookRespository {
 
     private static CookRespository Instance = null;

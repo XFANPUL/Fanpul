@@ -11,6 +11,14 @@ import com.example.administrator.Fanpul.R;
 import com.lidroid.xutils.ViewUtils;
 
 public class MyFragment extends Fragment {
+    private static MyFragment myFragment;
+
+    public static MyFragment getMyFragment(){
+          if(myFragment == null ){
+              myFragment = new MyFragment();
+          }
+          return myFragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

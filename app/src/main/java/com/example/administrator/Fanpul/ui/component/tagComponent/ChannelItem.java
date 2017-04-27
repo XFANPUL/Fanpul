@@ -4,9 +4,7 @@ import com.example.administrator.Fanpul.model.entity.tb_cook.TB_CustomCategory;
 
 import java.io.Serializable;
 
-/** 
- * ITEM�Ķ�Ӧ���򻯶�������
- *  */
+
 public class ChannelItem implements Serializable {
 
 	private static final long serialVersionUID = -6465237897027410019L;

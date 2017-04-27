@@ -24,7 +24,7 @@ public final class Logger {
   }
 
   /**
-   * It is used to get the settings object in order to change settings
+   * It is used to get the settings object in see_order_detail to change settings
    *
    * @return the settings object
    */
