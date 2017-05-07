@@ -22,8 +22,9 @@ public class OrdersTabActivity extends AppCompatActivity {
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private String[] mTitles = {"排队中", "待评论", "历史的"};
-    private View mDecorView;
     private SegmentTabLayout mOrders_tab;
+    private int startTab;
+    public static final String START = "com.example.administrator.Fanpul.ui.activity.OrdersTabActivity.START";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +35,13 @@ public class OrdersTabActivity extends AppCompatActivity {
         for (String title : mTitles) {
             mFragments.add(FragmentManager.getFragment(title));
         }
-
-        mDecorView = getWindow().getDecorView();
-        mOrders_tab = ViewFindUtils.find(mDecorView, R.id.orders_tab);    //装入fragement
+        mOrders_tab = (SegmentTabLayout)findViewById(R.id.orders_tab);    //装入fragement
         init_tab_data();  //加载tab标签数据
     }
 
     //
     private void init_tab_data(){
-        final ViewPager vp = ViewFindUtils.find(mDecorView, R.id.orders_tab_vp);
+        final ViewPager vp = (ViewPager)findViewById(R.id.orders_tab_vp);
         vp.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
         mOrders_tab.setTabData(mTitles);
@@ -73,7 +72,8 @@ public class OrdersTabActivity extends AppCompatActivity {
 
             }
         });
-        vp.setCurrentItem(1);
+        startTab = getIntent().getIntExtra(START,0);
+        vp.setCurrentItem(startTab);
     }
 
     //tab的fragment 适配器
@@ -98,8 +98,9 @@ public class OrdersTabActivity extends AppCompatActivity {
         }
     }
 
-    public static void startActivity(Context context){
+    public static void startActivity(Context context,int start){
         Intent intent = new Intent(context,OrdersTabActivity.class);
+        intent.putExtra(START,start);
         context.startActivity(intent);
     }
 }

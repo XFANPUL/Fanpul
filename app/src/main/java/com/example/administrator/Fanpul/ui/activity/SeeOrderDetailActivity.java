@@ -106,7 +106,7 @@ public class SeeOrderDetailActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(SeeOrderHolder holder, int position) {
              holder.bindHolder(menulist.get(position).getImgUrl(),menulist.get(position).getMenuName()
-             ,menulist.get(position).getPrice(),order.getMenuNumber());
+             ,menulist.get(position).getPrice(),order.getMenuNumberList().get(position));
         }
 
         @Override
