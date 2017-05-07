@@ -57,7 +57,7 @@ public class ShopcartFragment extends Fragment {
     private float totalmoney;
     private List<Integer> menuNumberList;
     private String tableSize;
-    private String tableNum;
+    private Integer tableNum;
 
     private List<Menu> menuList = new ArrayList<>();
     private List<MainPageViewPageAdapter.Buy> lists = new ArrayList<>();
@@ -112,7 +112,7 @@ public class ShopcartFragment extends Fragment {
 
         restaurantName = getActivity().getIntent().getStringExtra(CookListFragment.restaurantNameIntent);
         tableSize = getActivity().getIntent().getStringExtra(CookListFragment.TABLESIZE);
-        tableNum = getActivity().getIntent().getStringExtra(CookListFragment.TABLENUM);
+        tableNum = getActivity().getIntent().getIntExtra(CookListFragment.TABLENUM,0);
 
         restaurantNameText =(TextView) getActivity().findViewById(R.id.shop_cart_name);
         restaurantNameText.setText(restaurantName);
@@ -166,9 +166,9 @@ public class ShopcartFragment extends Fragment {
                         @Override
                         public void done(String s, BmobException e) {
                             if (e == null) {
-                                Log.i("Success", s);
+                                Log.i("SuccessASS", s);
                             } else {
-                                Log.i("Error", e.getMessage());
+                                Log.i("ErrorASS", e.getMessage());
                             }
                         }
                     });

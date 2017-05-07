@@ -33,7 +33,7 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class MainActivity extends FragmentActivity implements OnCheckedChangeListener{
+public class MainActivity extends FragmentActivity implements OnCheckedChangeListener {
     //@ViewInject(R.id.main_bottom_tabs)
     public static final String APPLICATIONID = "3b60c6eb37caced9f0023a6515b2d8a5";
     private RadioGroup group;
@@ -44,13 +44,13 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     private MyFragment my;
     private OrderDetailFragment orderDetailFragment;
     private ZxingFragment zxingFragment;
-    private long exitTime=0;
+    private long exitTime = 0;
     private RadioButton main_tuan_radio;
 
     @Override
     protected void onResume() {
-        if(group.getCheckedRadioButtonId()==R.id.main_tuan){
-            if(main_home!=null) {
+        if (group.getCheckedRadioButtonId() == R.id.main_tuan) {
+            if (main_home != null) {
                 main_home.setChecked(true);
                 main_tuan_radio.setChecked(false);
                 changeFragment(0);
@@ -67,17 +67,17 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 
         Bmob.initialize(this, MainActivity.APPLICATIONID);
 
-        group=(RadioGroup)findViewById(R.id.main_bottom_tabs);
-        main_home = (RadioButton)findViewById(R.id.main_home);
-        main_tuan_radio = (RadioButton)findViewById(R.id.main_tuan);
-       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        group = (RadioGroup) findViewById(R.id.main_bottom_tabs);
+        main_home = (RadioButton) findViewById(R.id.main_home);
+        main_tuan_radio = (RadioButton) findViewById(R.id.main_tuan);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //ViewUtils.inject(this);
-        fragmentManager=getSupportFragmentManager();
-        if(savedInstanceState!=null){
-            home=(HomeFragment)fragmentManager.findFragmentByTag("0");
-            zxingFragment = (ZxingFragment)fragmentManager.findFragmentByTag("1");
-            orderDetailFragment = (OrderDetailFragment)fragmentManager.findFragmentByTag("2");
-            my=(MyFragment)fragmentManager.findFragmentByTag("3");
+        fragmentManager = getSupportFragmentManager();
+        if (savedInstanceState != null) {
+            home = (HomeFragment) fragmentManager.findFragmentByTag("0");
+            zxingFragment = (ZxingFragment) fragmentManager.findFragmentByTag("1");
+            orderDetailFragment = (OrderDetailFragment) fragmentManager.findFragmentByTag("2");
+            my = (MyFragment) fragmentManager.findFragmentByTag("3");
         }
         main_home.setChecked(true);
         group.setOnCheckedChangeListener(this);
@@ -86,7 +86,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 
     @Override
     protected void onDestroy() {
-        Log.i("MMss","Destory");
+        Log.i("MMss", "Destory");
         ButterKnife.unbind(this);
         super.onDestroy();
     }
@@ -99,7 +99,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                 break;
             case R.id.main_tuan:
                 //changeFragment(1);
-                Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+                Intent intent = new Intent(MainActivity.this, ZxingActivity.class);
                 startActivityForResult(intent, ZxingFragment.REQUEST_CODE);
                 break;
             case R.id.main_search:
@@ -112,6 +112,10 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                 break;
         }
     }
+
+    public static final String RES_NAME = "com.example.administrator.Fanpul.ui.activity.MainActivity.RES_NAME";
+    public static final String TABLE_SIZE = "com.example.administrator.Fanpul.ui.activity.MainActivity.TABLE_SIZE";
+    public static final String TABLE_NUMBER = "com.example.administrator.Fanpul.ui.activity.MainActivity.TABLE_NUMBER";
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -126,82 +130,30 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                     final String result = bundle.getString(CodeUtils.RESULT_STRING);
                     // mTextView.setText(result);
                     final Intent intent = new Intent(MainActivity.this, OrderMenuActivity.class);
-                    if(result.split(" ").length==2) {
+                    if (result.split(" ").length == 2) {
                         String tableSizeAndNumber = result.split(" ")[1];
-                        if(tableSizeAndNumber.matches("^[ABC]\\d*$")){
-                            String tableSize = tableSizeAndNumber.substring(0,1);
-                            String sizeABC="";
-                            if(tableSize.equals("C")){
-                                tableSize = "bigTableLeft";
-                                sizeABC = "C";
-                            }
-                            else if(tableSize.equals("B")){
-                                tableSize = "middleTableLeft";
-                                sizeABC = "B";
-                            }
-                            else if(tableSize.equals("A")){
-                                tableSize = "smallTableLeft";
-                                sizeABC = "A";
-                            }
-                            final Integer tableNumber = Integer.parseInt(tableSizeAndNumber.substring(1,tableSizeAndNumber.length()));
-                            String sql = "select * from Restaurant where restaurantName = '" + result.split(" ")[0] + "' and " +
-                                    tableSize+ " = "+tableNumber;
-
-                            final String finalSizeABC = sizeABC;
-                            BmobUtil.queryBmobObject(sql, new BmobQueryCallback<Restaurant>() {
+                        if (tableSizeAndNumber.matches("^[ABC]\\d*$")) {
+                            final String tableSize = tableSizeAndNumber.substring(0, 1);
+                            final Integer tableNumber = Integer.parseInt(tableSizeAndNumber.substring(1, tableSizeAndNumber.length()));
+                            final String restaurantName = result.split(" ")[0];
+                            BmobUtil.RemoveRestaurantTableNumber(restaurantName, tableSize, tableNumber, new BmobQueryCallback<Restaurant>() {
                                 @Override
                                 public void Success(List<Restaurant> bmobObjectList) {
-                                    intent.putExtra(ZxingFragment.TAG_ZXING, result);
-                                    List<Integer> integers = null;
-                                    if(finalSizeABC .equals("C") ) {
-                                        integers = bmobObjectList.get(0).getBigTableLeft();
-                                        integers.remove(tableNumber);
-                                        Restaurant restaurant = bmobObjectList.get(0);
-                                        restaurant.setBigTableLeft(integers);
-                                        restaurant.update(restaurant.getObjectId(), new UpdateListener() {
-                                            @Override
-                                            public void done(BmobException e) {
-                                                if(e == null){
-                                                    Log.i("Success","Success");
-                                                }
-                                                else{
-                                                    Log.i("Failed","Failed");
-                                                }
-                                            }
-                                        });
-                                    }
-                                    else if(finalSizeABC.equals("B")){
-                                        integers = bmobObjectList.get(0).getMiddleTableLeft();
-                                        integers.remove(tableNumber);
-                                        Restaurant restaurant = bmobObjectList.get(0);
-                                        restaurant.setMiddleTableLeft(integers);
-                                        restaurant.update();
-                                    }
-                                    else if(finalSizeABC.equals("A")){
-                                        integers = bmobObjectList.get(0).getSmallTableLeft();
-                                        integers.remove(tableNumber);
-                                        Restaurant restaurant = bmobObjectList.get(0);
-                                        restaurant.setSmallTableLeft(integers);
-                                        restaurant.update();
-                                    }
+                                    intent.putExtra(RES_NAME, restaurantName);
+                                    intent.putExtra(TABLE_SIZE,tableSize);
+                                    intent.putExtra(TABLE_NUMBER,tableNumber);
                                     startActivity(intent);
                                 }
+
                                 @Override
                                 public void Failed() {
                                     showDialog();
                                 }
                             });
                         }
-                    }else{
+                    } else {
                         showDialog();
                     }
-                    // Toast.makeText(this,result.toString(),Toast.LENGTH_SHORT);
-                    //用默认浏览器打开扫描得到的地址
-                    //  Intent intent = new Intent();
-                    // intent.setAction("android.intent.action.VIEW");
-                    //  Uri content_url = Uri.parse(result.toString());
-                    // intent.setData(content_url);
-                    // startActivity(intent);
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
                 }
@@ -209,47 +161,46 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         }
     }
 
-    public void showDialog(){
+    public void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("扫码失败");
         builder.setMessage("无法识别该二维码,请重新扫描");
         builder.create().show();
     }
-    public void changeFragment(int index)
-    {
+
+    public void changeFragment(int index) {
         FragmentTransaction beginTransaction = fragmentManager.beginTransaction();
         hideFragments(beginTransaction);
         switch (index) {
             case 0:
-                if(home==null){
-                    home=new HomeFragment();
-                    beginTransaction.add(R.id.main_content,	home,"0");
-                }else{
+                if (home == null) {
+                    home = new HomeFragment();
+                    beginTransaction.add(R.id.main_content, home, "0");
+                } else {
                     beginTransaction.show(home);
                 }
                 break;
             case 1:
-                if(zxingFragment==null) {
+                if (zxingFragment == null) {
                     zxingFragment = new ZxingFragment();
-                    beginTransaction.add(R.id.main_content, zxingFragment,"1");
-                }
-                else{
+                    beginTransaction.add(R.id.main_content, zxingFragment, "1");
+                } else {
                     beginTransaction.show(zxingFragment);
                 }
                 break;
             case 2:
-                if(orderDetailFragment==null){
-                    orderDetailFragment=new OrderDetailFragment();
-                    beginTransaction.add(R.id.main_content,orderDetailFragment,"2");
-                }else{
+                if (orderDetailFragment == null) {
+                    orderDetailFragment = new OrderDetailFragment();
+                    beginTransaction.add(R.id.main_content, orderDetailFragment, "2");
+                } else {
                     beginTransaction.show(orderDetailFragment);
                 }
                 break;
             case 3:
-                if(my==null){
-                    my=new MyFragment();
-                    beginTransaction.add(R.id.main_content,my,"3");
-                }else{
+                if (my == null) {
+                    my = new MyFragment();
+                    beginTransaction.add(R.id.main_content, my, "3");
+                } else {
                     beginTransaction.show(my);
                 }
                 break;
@@ -259,20 +210,23 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         }
         beginTransaction.commit();
     }
+
     private void hideFragments(FragmentTransaction transaction) {
         if (home != null)
             transaction.hide(home);
-       if(zxingFragment!=null)
+        if (zxingFragment != null)
             transaction.hide(zxingFragment);
         if (orderDetailFragment != null)
             transaction.hide(orderDetailFragment);
         if (my != null)
             transaction.hide(my);
     }
+
     @Override
     public void onBackPressed() {
         exit();
     }
+
     public void exit() {
         if ((System.currentTimeMillis() - exitTime) > 2000) {
             Toast.makeText(getApplicationContext(), "再按一次退出程序",
@@ -282,12 +236,13 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
             finish();
         }
     }
+
     @Override
     public void finish() {
         super.finish();
     }
 
-    public static void startActivity(Context context){
+    public static void startActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
