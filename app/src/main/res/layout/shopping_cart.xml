@@ -7,10 +7,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -21,21 +23,21 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:navigationIcon="@null"
-                    android:background="?attr/colorPrimary">
+                    android:background="?attr/colorPrimary"
+                    app:navigationIcon="@null">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:text="小厨小菜"
                             android:id="@+id/shop_cart_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
+                            android:text="小厨小菜"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/fragment_main_text_size"/>
+                            android:textSize="@dimen/fragment_main_text_size" />
 
                     </RelativeLayout>
 
@@ -43,10 +45,10 @@
 
             </android.support.design.widget.AppBarLayout>
 
-           <FrameLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:id="@+id/shopcart_container"></FrameLayout>
+            <FrameLayout
+                android:id="@+id/shopcart_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></FrameLayout>
             <!--<FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -61,10 +63,10 @@
                 android:layout_marginRight="5dp"
                 android:background="@mipmap/bg_menu_edit"
                 android:hint="给卖家留言（口味偏好）"
-                android:textSize="15sp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textSize="15sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -83,16 +85,16 @@
                     android:textSize="17sp" />
 
                 <TextView
+                    android:id="@+id/textview_total_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="18dp"
-                    android:text="共2件商品"
-                    android:id="@+id/textview_total_item"
-                    android:textColor="@color/gray"
                     android:layout_alignBaseline="@+id/total_money_item"
                     android:layout_alignBottom="@+id/total_money_item"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginRight="18dp"
                     android:layout_toStartOf="@+id/total_money_item"
-                    android:layout_marginEnd="18dp" />
+                    android:text="共2件商品"
+                    android:textColor="@color/gray" />
             </RelativeLayout>
 
             <View
@@ -109,23 +111,23 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/pay_ways"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="支付方式"
-                    android:id="@+id/pay_ways"
                     android:textColor="@color/gray" />
 
                 <TextView
+                    android:id="@+id/pay_ways_hint"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="2"
                     android:text="支付方式不能为空"
-                    android:id="@+id/pay_ways_hint"
                     android:textColor="@color/red"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
 
 
                 <ImageView
@@ -172,9 +174,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginBottom="50dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:layout_marginBottom="50dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -186,11 +188,11 @@
                     android:textColor="@color/gray" />
 
                 <CheckBox
+                    android:id="@+id/shop_cart_checkbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:id="@+id/shop_cart_checkbox"/>
+                    android:layout_marginRight="10dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -218,15 +220,14 @@
             android:textSize="17sp" />
 
         <TextView
+            android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/tv_buy_ok"
             android:layout_marginRight="15dp"
             android:layout_toLeftOf="@+id/tv_buy_ok"
-            android:id="@+id/total"
             android:text="合计：￥8997.0"
-            android:textColor="@color/red"
-            />
+            android:textColor="@color/red" />
     </RelativeLayout>
 
 </RelativeLayout>

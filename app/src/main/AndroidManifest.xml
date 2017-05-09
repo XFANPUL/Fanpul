@@ -106,6 +106,14 @@
 
         <activity android:name=".ui.activity.SeeOrderDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.ZxingActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.OrderedMenuActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+        <service android:name=".ui.RestaurantService"></service>
     </application>
 
     </manifest>

@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        tl:cardCornerRadius="12dp">
 
-        <android.support.v7.widget.CardView
+        <com.example.administrator.Fanpul.ui.view.ImageCycleView
+            android:id="@+id/shopinner_image_cycle_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tl:cardCornerRadius="12dp"
-            android:layout_marginTop="15dp">
+            android:layout_height="150dp" />
+    </android.support.v7.widget.CardView>
 
-            <com.example.administrator.Fanpul.ui.view.ImageCycleView
-                android:id="@+id/shopinner_image_cycle_view"
-                android:layout_width="match_parent"
-                android:layout_height="150dp" />
-        </android.support.v7.widget.CardView>
+    <com.flyco.tablayout.SegmentTabLayout
+        android:id="@+id/shopinner_tab"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        tl:tl_indicator_anim_enable="true"
+        tl:tl_indicator_bounce_enable="false"
+        tl:tl_indicator_color="@color/normal_orange"
+        tl:tl_indicator_margin_bottom="2dp"
+        tl:tl_indicator_margin_left="2dp"
+        tl:tl_indicator_margin_right="2dp"
+        tl:tl_indicator_margin_top="2dp"
+        tl:tl_tab_space_equal="true" />
 
-        <com.flyco.tablayout.SegmentTabLayout
-            android:id="@+id/shopinner_tab"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_gravity="center_horizontal"
-            android:paddingLeft="35dp"
-            android:paddingRight="35dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
-            tl:tl_indicator_anim_enable="true"
-            tl:tl_indicator_bounce_enable="false"
-            tl:tl_indicator_color="@color/normal_orange"
-            tl:tl_indicator_margin_bottom="2dp"
-            tl:tl_indicator_margin_left="2dp"
-            tl:tl_indicator_margin_right="2dp"
-            tl:tl_indicator_margin_top="2dp"
-            tl:tl_tab_space_equal="true"
-          />
-        <android.support.v4.view.ViewPager
-            android:id="@+id/shopinner_tab_vp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/shopinner_tab_vp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+

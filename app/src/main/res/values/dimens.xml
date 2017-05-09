@@ -52,5 +52,5 @@
     <dimen name="personal_login_textview">14sp</dimen>
     <dimen name="personal_login_texthint">12sp</dimen>
     <dimen name="personal_browse">10sp</dimen>
-
+    <dimen name="dialog_corners">10dp</dimen>
 </resources>

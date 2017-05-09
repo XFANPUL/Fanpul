@@ -148,7 +148,6 @@
             android:textColor="@drawable/btn_order_clicktext"
             android:textSize="@dimen/personal_texthint"
             android:visibility="gone"/>
-
     </LinearLayout>
 
 
