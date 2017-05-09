@@ -20,6 +20,9 @@ import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
 import com.example.administrator.Fanpul.model.bmob.OneObjectCallBack;
+
+import com.example.administrator.Fanpul.model.entity.bmobEntity.Eating;
+
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Queue;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
 import com.example.administrator.Fanpul.presenter.Presenter;
@@ -30,7 +33,9 @@ import com.example.administrator.Fanpul.ui.component.dialog.LineDialog;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
+
 import java.util.Date;
 import java.util.List;
 
@@ -56,6 +61,7 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
     public TextView waitB_Info;
     @Bind(R.id.waitC)
     public TextView waitC_Info;
+
     @Bind(R.id.waitTimeBtn)
     public Button waitTimeBtn;
 
@@ -63,6 +69,7 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
     public TextView test;
     @Bind(R.id.test1)
     public TextView test1;*/
+
     private int smallTableLeft;  //小桌剩余量，为负数时表示有人排队
     private int middleTableLeft;//中桌桌剩余量
     private int bigTableLeft; //大桌剩余量
@@ -169,10 +176,25 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
         showed_wb.setOnClickListener(new View.OnClickListener() {  //book我要点单
             @Override
             public void onClick(View v) {
+
                 BmobUtil.RemoveRestaurantTableIndex(restaurant.getRestaurantName(), tableSize,
                         new OneObjectCallBack<Integer>() {
                             @Override
                             public void Success(Integer tableNumber) {
+
+                                Eating eating = new Eating();
+                                eating.setRestaurantName(restaurant.getRestaurantName());
+                                eating.setUserName("张三");
+                                eating.setTableNumber(tableNumber);
+                                eating.setTableSize(tableSize);
+                                eating.save(new SaveListener<String>() {
+                                    @Override
+                                    public void done(String s, BmobException e) {
+
+                                    }
+                                });
+
+
                                 Intent intent = new Intent(getActivity(), OrderMenuActivity.class);
                                 intent.putExtra(RES_NAME, restaurant.getRestaurantName());
                                 intent.putExtra(TABLE_SIZE, tableSize);
@@ -210,12 +232,24 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
                         queue.setUserName("张三");
                         queue.setOrder(true);
                         queue.setTableSize(tableSize);
+
+                        queue.setOrder(false);
+                        queue.setArrived(false);
+                        queue.save(new SaveListener<String>() {
+                            @Override
+                            public void done(String s, BmobException e) {
+                                if (e == null) {
+
+                                    OrdersTabActivity.startActivity(getActivity(), 0);
+                                } else
+
                         queue.save(new SaveListener<String>() {
                             @Override
                             public void done(String s, BmobException e) {
                                 if (e == null)
                                     OrdersTabActivity.startActivity(getActivity(), 0);
                                 else
+
                                     Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -417,6 +451,153 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
         }
     }
 
+
+    public void init() {
+        reqHandlerThread = new HandlerThread("UPDATE");
+        reqHandlerThread.start();
+        mRequestHandler = new Handler(reqHandlerThread.getLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+
+                if (msg.what == MESSAGE_UPDATE) {
+                    String bql = "select * from Restaurant where restaurantName = '" + restaurant.getRestaurantName() + "'";
+                    BmobUtil.queryBmobObject(bql, new BmobQueryCallback<Restaurant>() {
+                        @Override
+                        public void Success(List<Restaurant> bmobObjectList) {
+                            final Restaurant restaurant1 = bmobObjectList.get(0);
+                            BmobUtil.queryQueueByResName(restaurant1.getRestaurantName(), new BmobQueryCallback<Queue>() {
+                                @Override
+                                public void Success(List<Queue> bmobObjectList) {
+                                    checkForUpdate(bmobObjectList, restaurant1);
+                                }
+
+                                @Override
+                                public void Failed() {
+
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void Failed() {
+
+                        }
+                    });
+                    if (isUpdate)
+                        mRequestHandler.sendEmptyMessageDelayed(MESSAGE_UPDATE, 1500);
+
+                }
+            }
+        };
+        mRequestHandler.sendEmptyMessage(MESSAGE_UPDATE);
+
+    }
+
+    public void checkForUpdate(final List<Queue> queues, final Restaurant restaurant1) {
+        responseHander.post(new Runnable() {
+            @Override
+            public void run() {
+                updateUI(queues, restaurant1);
+            }
+        });
+    }
+
+
+    public void updateUI(List<Queue> bmobObjectList, Restaurant restaurant1) {
+        int ATableNumber = 0;
+        int BTableNumber = 0;
+        int CTableNumber = 0;
+        for (int i = 0; i < bmobObjectList.size(); i++) {
+            if (bmobObjectList.get(i).getTableSize().equals("A")) {
+                ATableNumber++;
+            } else if (bmobObjectList.get(i).getTableSize().equals("B")) {
+                BTableNumber++;
+            } else if (bmobObjectList.get(i).getTableSize().equals("C")) {
+                CTableNumber++;
+            }
+        }
+
+        smallTableLeft = restaurant1.getSmallTableLeft().size() - ATableNumber;
+        middleTableLeft = restaurant1.getMiddleTableLeft().size() - BTableNumber;
+        bigTableLeft = restaurant1.getBigTableLeft().size() - CTableNumber;
+
+        if (smallTableLeft > 0) {
+            waitA_Info.setText("当前无人等待，可以直接点单");
+            if (tableSize.equals("A")) {
+                showed_wb.setVisibility(View.VISIBLE);
+                showed_wl.setVisibility(View.GONE);
+            }
+        } else {
+            //waitA_Info.setText("有" + Math.abs(smallTableLeft) + "桌在等待，预计等待时间为"+8+"分钟");
+           BmobUtil.getEatingByIndex(Math.abs(smallTableLeft% restaurant.getSmalltableNum()),"A",restaurant, new OneObjectCallBack<Long>() {
+                @Override
+                public void Success(Long result) {
+                    waitA_Info.setText("有" + Math.abs(smallTableLeft) + "桌在等待，预计等待时间为"+result+"分钟");
+                }
+
+                @Override
+                public void Failed() {
+
+                }
+            });
+            if (tableSize.equals("A")) {
+                showed_wb.setVisibility(View.GONE);
+                showed_wl.setVisibility(View.VISIBLE);
+                curTableNum = smallTableLeft;
+            }
+
+        }
+        if (middleTableLeft > 0) {
+            waitB_Info.setText("当前无人等待，可以直接点单");
+            if (tableSize.equals("B")) {
+                showed_wb.setVisibility(View.VISIBLE);
+                showed_wl.setVisibility(View.GONE);
+            }
+        } else {
+            BmobUtil.getEatingByIndex(Math.abs(middleTableLeft% restaurant.getMiddletableNum()),"B",restaurant, new OneObjectCallBack<Long>() {
+                @Override
+                public void Success(Long result) {
+                    waitB_Info.setText("有" + Math.abs(middleTableLeft) + "桌在等待，预计等待时间为"+result+"分钟");
+                }
+
+                @Override
+                public void Failed() {
+
+                }
+            });
+            //waitB_Info.setText("有" + Math.abs(smallTableLeft) + "桌在等待，预计等待时间为"+8+"分钟");
+            if (tableSize.equals("B")) {
+                showed_wb.setVisibility(View.GONE);
+                showed_wl.setVisibility(View.VISIBLE);
+                curTableNum = middleTableLeft;
+            }
+        }
+        if (bigTableLeft > 0) {
+            waitC_Info.setText("当前无人等待，可以直接点单");
+            if (tableSize.equals("C")) {
+                showed_wb.setVisibility(View.VISIBLE);
+                showed_wl.setVisibility(View.GONE);
+            }
+        } else {
+            BmobUtil.getEatingByIndex(Math.abs(bigTableLeft%restaurant.getBigtableNum()),"C",restaurant, new OneObjectCallBack<Long>() {
+                @Override
+                public void Success(Long result) {
+                    waitC_Info.setText("有" + Math.abs(bigTableLeft) + "桌在等待，预计等待时间为"+result+"分钟");
+                }
+
+                @Override
+                public void Failed() {
+
+                }
+            });
+           // waitC_Info.setText("有" + Math.abs(smallTableLeft) + "桌在等待，预计等待时间为"+8+"分钟");
+            if (tableSize.equals("C")) {
+                showed_wb.setVisibility(View.GONE);
+                showed_wl.setVisibility(View.VISIBLE);
+                curTableNum = bigTableLeft;
+            }
+        }
+
     public void getPreWaitTime(Queue queue){
         String date = queue.getCreatedAt();//正在吃饭的最早的人开始吃饭的时间
         int avgTime = restaurant.getAvgTime();//餐馆平均吃饭时间,单位是分钟
@@ -453,6 +634,7 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
 
         }catch (Exception e) {
         }
+
 
     }
 

@@ -18,7 +18,11 @@ import butterknife.Bind;
  * Created by Administrator on 2017/4/26 0026.
  */
 
+
+public class PreCommentFragment extends BaseFragment { //待评论fragment
+
 public class PreCommentFragment extends BaseFragment { //带评论fragment
+
 
     public static PreCommentFragment CreateFragment() {
         return new PreCommentFragment();

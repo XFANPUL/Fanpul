@@ -19,8 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.Fanpul.R;
+import com.example.administrator.Fanpul.model.bmob.BmobUtil;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Menu;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Order;
+import com.example.administrator.Fanpul.model.entity.bmobEntity.Queue;
 import com.example.administrator.Fanpul.ui.activity.OrderFormActivity;
 import com.example.administrator.Fanpul.ui.activity.ShoppingCartActivity;
 import com.example.administrator.Fanpul.ui.adapter.MainPageViewPageAdapter;
@@ -59,13 +61,18 @@ public class ShopcartFragment extends Fragment {
     private String tableSize;
     private Integer tableNum;
 
+    private Queue queue;
+    private Order order;
+
+
     private List<Menu> menuList = new ArrayList<>();
     private List<MainPageViewPageAdapter.Buy> lists = new ArrayList<>();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         showName = 1;
-        evaluateState=0;
+        evaluateState = 0;
         glideUtil = new GlideUtil();
         userName = "张三";
         menuNumberList = new ArrayList<>();
@@ -83,14 +90,14 @@ public class ShopcartFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.shopcart_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new shopcartAdapter(lists));
-        payWaysText = (TextView)getActivity().findViewById(R.id.pay_ways);
+        payWaysText = (TextView) getActivity().findViewById(R.id.pay_ways);
        /* payWaysText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPayDialog();
             }
         });*/
-        okText = (TextView)getActivity().findViewById(R.id.tv_buy_ok);
+        okText = (TextView) getActivity().findViewById(R.id.tv_buy_ok);
         okText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,25 +105,45 @@ public class ShopcartFragment extends Fragment {
             }
         });
 
-        showNameCheckBox = (CheckBox)getActivity().findViewById(R.id.shop_cart_checkbox);
+        showNameCheckBox = (CheckBox) getActivity().findViewById(R.id.shop_cart_checkbox);
         showNameCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    showName=1;
-                }else{
-                    showName=0;
+                if (isChecked) {
+                    showName = 1;
+                } else {
+                    showName = 0;
                 }
             }
         });
+        if (getActivity().getIntent().getSerializableExtra(CookListFragment.QUEUE) == null) {
+            restaurantName = getActivity().getIntent().getStringExtra(CookListFragment.restaurantNameIntent);
+            tableSize = getActivity().getIntent().getStringExtra(CookListFragment.TABLESIZE);
+            tableNum = getActivity().getIntent().getIntExtra(CookListFragment.TABLENUM, 0);
+        } else {
+            queue = (Queue) getActivity().getIntent().getSerializableExtra(CookListFragment.QUEUE);
+            restaurantName = queue.getRestaurantName();
+            tableSize = queue.getTableSize();
+
+
+            if(!queue.isArrived()) {//没排到队时
+                evaluateState = 2;
+                tableNum = 0;
+            }
+            else{
+                tableNum = queue.getTableNumber();
+            }
+            //表示没选桌号
+        }
 
         restaurantName = getActivity().getIntent().getStringExtra(CookListFragment.restaurantNameIntent);
         tableSize = getActivity().getIntent().getStringExtra(CookListFragment.TABLESIZE);
         tableNum = getActivity().getIntent().getIntExtra(CookListFragment.TABLENUM,0);
 
-        restaurantNameText =(TextView) getActivity().findViewById(R.id.shop_cart_name);
+
+        restaurantNameText = (TextView) getActivity().findViewById(R.id.shop_cart_name);
         restaurantNameText.setText(restaurantName);
-        payHint = (TextView)getActivity().findViewById(R.id.pay_ways_hint);
+        payHint = (TextView) getActivity().findViewById(R.id.pay_ways_hint);
         payHint.setVisibility(View.INVISIBLE);
        /* payHint.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +151,7 @@ public class ShopcartFragment extends Fragment {
                 showPayDialog();
             }
         });*/
-        LinearLayout linearLayout = (LinearLayout)getActivity().findViewById(R.id.linear_pay_ways);
+        LinearLayout linearLayout = (LinearLayout) getActivity().findViewById(R.id.linear_pay_ways);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,7 +162,7 @@ public class ShopcartFragment extends Fragment {
         return view;
     }
 
-    private void showAgainOkDialog(){
+    private void showAgainOkDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("确认支付");
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
@@ -144,12 +171,12 @@ public class ShopcartFragment extends Fragment {
                 //Toast.makeText(ShoppingCartActivity.this,"确认",Toast.LENGTH_SHORT).show();
                 if (payWays == null || payWays.equals(" ")) {
                     payHint.setVisibility(View.VISIBLE);
-                    Toast.makeText(getActivity(),"支付失败",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "支付失败", Toast.LENGTH_SHORT).show();
                 } else {
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日    HH:mm:ss ");
                     Date curDate = new Date(System.currentTimeMillis());//获取当前时间
                     strCurDate = formatter.format(curDate);
-                    Order order = new Order();
+                    order = new Order();
                     order.setRestaurantName(restaurantName);
                     order.setTotalPrice(totalmoney);
                     order.setMenuList(menuList);
@@ -167,6 +194,9 @@ public class ShopcartFragment extends Fragment {
                         public void done(String s, BmobException e) {
                             if (e == null) {
                                 Log.i("SuccessASS", s);
+
+                                BmobUtil.updateQueue(queue, order);
+
                             } else {
                                 Log.i("ErrorASS", e.getMessage());
                             }
@@ -187,8 +217,8 @@ public class ShopcartFragment extends Fragment {
         builder.create().show();
     }
 
-    private void showPayDialog(){
-        final String items[] = {"支付宝支付","微信支付","网银支付"};
+    private void showPayDialog() {
+        final String items[] = {"支付宝支付", "微信支付", "网银支付"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("支付方式");
         builder.setTitle("请选择支付方式");
@@ -205,21 +235,21 @@ public class ShopcartFragment extends Fragment {
         builder.create().show();
     }
 
-    public void updateUI(){
-        ((ShoppingCartActivity)getActivity()).updateUI(totalmoney,lists.size());
+    public void updateUI() {
+        ((ShoppingCartActivity) getActivity()).updateUI(totalmoney, lists.size());
     }
 
-    public void updateData(){
-             totalmoney=0;
-            Iterator<String> iterator = MainPageViewPageAdapter.buyMap.keySet().iterator();
-            while (iterator.hasNext()) {
-                String menuId = iterator.next();
-                MainPageViewPageAdapter.Buy buy = MainPageViewPageAdapter.buyMap.get(menuId);
-                lists.add(buy);
-                menuList.add(buy.getMenu());
-                menuNumberList.add(buy.getNumber());
-                totalmoney+= buy.getNumber()*buy.getMenu().getPrice();
-            }
+    public void updateData() {
+        totalmoney = 0;
+        Iterator<String> iterator = MainPageViewPageAdapter.buyMap.keySet().iterator();
+        while (iterator.hasNext()) {
+            String menuId = iterator.next();
+            MainPageViewPageAdapter.Buy buy = MainPageViewPageAdapter.buyMap.get(menuId);
+            lists.add(buy);
+            menuList.add(buy.getMenu());
+            menuNumberList.add(buy.getNumber());
+            totalmoney += buy.getNumber() * buy.getMenu().getPrice();
+        }
     }
 
 
@@ -238,12 +268,12 @@ public class ShopcartFragment extends Fragment {
         }
 
         public void bindHolder(String url, String name, int perPrice, int num) {
-            if(url!=null&&url!="")
-            glideUtil.attach(menuImageView).injectImageWithNull(url);
+            if (url != null && url != "")
+                glideUtil.attach(menuImageView).injectImageWithNull(url);
 
             menuName.setText(name);
-            perprice.setText("￥"+perPrice+".00");
-            number.setText("×"+num);
+            perprice.setText("￥" + perPrice + ".00");
+            number.setText("×" + num);
         }
     }
 

@@ -149,11 +149,13 @@
             android:textSize="@dimen/personal_texthint"
             android:visibility="gone"/>
 
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/waitTimeBtn"
             android:text="显示等待时间"/>
+
 
     </LinearLayout>
 

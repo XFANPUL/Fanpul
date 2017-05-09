@@ -13,6 +13,7 @@ import java.util.List;
  */
 
 public class AdapterManager {  //adapter管理类
+
     //获得排队中的适配器
     public static RecyclerView.Adapter getQueuingAdapter(Context context, List<Queue> tList){
             return new OrdersListAdapter().CreateQueuingListAdapter(context,tList);

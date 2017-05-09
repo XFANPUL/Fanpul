@@ -2,10 +2,7 @@ package com.example.administrator.Fanpul.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,33 +15,30 @@ import android.widget.TextView;
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Menu;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Order;
+import com.example.administrator.Fanpul.model.entity.bmobEntity.Queue;
 import com.example.administrator.Fanpul.presenter.Presenter;
 import com.example.administrator.Fanpul.utils.GlideUtil;
 
 import java.util.List;
 
 import butterknife.Bind;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.QueryListener;
 
 /**
- * Created by Administrator on 2017/4/18 0018.
+ * Created by Administrator on 2017/5/6 0006.
  */
 
-public class SeeOrderDetailActivity extends BaseSwipeBackActivity {
-@Bind(R.id.recy_see_order_detail)
-    public RecyclerView recyOrderDetail;
-    @Bind(R.id.see_order_restaurant_name_text)
-    public TextView seeOrderRestaurantNameText;
-    @Bind(R.id.see_cook_detail_total_money)
-    public TextView seeCookDetailTotalMoneyText;
-    @Bind(R.id.see_order_custom_name)
-    public TextView seeOrderCustomNameText;
-    @Bind(R.id.cook_order_finished_time)
-    public TextView cookOrderFinishedTimeText;
-    @Bind(R.id.see_order_number)
-    public TextView seeOrderNumber;
+public class OrderedMenuActivity extends BaseSwipeBackActivity {//已点订单的Activity
+    @Bind(R.id.recy_order_view)
+    RecyclerView recyclerView;
 
+    private Queue queue;
     private Order order;
 
+    public static final String QUEUE = "com.example.administrator.Fanpul.ui.activity.OrderedMenuActivity.QUEUE";
     @Override
     protected Presenter getPresenter() {
         return null;
@@ -52,47 +46,55 @@ public class SeeOrderDetailActivity extends BaseSwipeBackActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.see_order_detail;
+        return R.layout.orders_list_card;
     }
 
     @Override
     protected void init(Bundle savedInstanceState) {
+        queue = (Queue)getIntent().getSerializableExtra(QUEUE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("饭谱");
-        Intent intent = getIntent();
-        order = (Order)intent.getSerializableExtra(OrderFormActivity.ORDER);
-        recyOrderDetail.setLayoutManager(new LinearLayoutManager(SeeOrderDetailActivity.this));
-        recyOrderDetail.setAdapter(new SeeOrderAdapter(order.getMenuList()));
-        seeOrderRestaurantNameText.setText(order.getRestaurantName());
-        seeCookDetailTotalMoneyText.setText("金额:￥"+order.getTotalPrice());
-        seeOrderCustomNameText.setText(order.getUserName()+"");
-        cookOrderFinishedTimeText.setText(order.getOrderDate()+"");
-        seeOrderNumber.setText("共"+order.getMenuNumber()+"件商品");
+        getSupportActionBar().setTitle(queue.getRestaurantName());
+        recyclerView.setLayoutManager(new LinearLayoutManager(OrderedMenuActivity.this));
+
+        new BmobQuery<Order>().getObject(queue.getMyOrder().getObjectId(), new QueryListener<Order>() {
+                    @Override
+                    public void done(Order orders, BmobException e) {
+                        if(e==null){
+                            order = orders;
+                            recyclerView.setAdapter(new OrderedAdapter(order.getMenuList()));
+                        }
+                    }
+                });
+
+
+
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-           finish();
+          finish();
         }
 
         return super.onOptionsItemSelected(item);
     }
-    public static void startActivity(Context context, Order order){
-        Intent intent = new Intent(context,SeeOrderDetailActivity.class);
-        intent.putExtra(OrderFormActivity.ORDER,order);
+
+    public static void startOrderedMenuActivity(Context context,Queue queue){
+        Intent intent = new Intent(context,OrderedMenuActivity.class);
+        intent.putExtra(QUEUE,queue);
         context.startActivity(intent);
     }
 
-    private class SeeOrderHolder extends  RecyclerView.ViewHolder{
+    private class OrderedHolder extends  RecyclerView.ViewHolder{
         private ImageView seeOrderImg;
         private TextView seeMenuName;
         private TextView seePerprice;
         private TextView seeNumber;
-        public SeeOrderHolder(View itemView) {
+        public OrderedHolder(View itemView) {
             super(itemView);
             seeOrderImg = (ImageView)itemView.findViewById(R.id.shop_cart_imageview1);
             seeMenuName = (TextView)itemView.findViewById(R.id.shop_cart_textview1);
@@ -102,30 +104,30 @@ public class SeeOrderDetailActivity extends BaseSwipeBackActivity {
 
         public void bindHolder(String url, String name, int perPrice, int num) {
             if(url!=null&&url!="")
-               new GlideUtil().attach(seeOrderImg).injectImageWithNull(url);
+                new GlideUtil().attach(seeOrderImg).injectImageWithNull(url);
             seeMenuName.setText(name);
             seePerprice.setText("￥"+perPrice+".00");
             seeNumber.setText("×"+num);
         }
     }
 
-    private class  SeeOrderAdapter extends RecyclerView.Adapter<SeeOrderHolder>{
+    private class  OrderedAdapter extends RecyclerView.Adapter<OrderedHolder>{
         private List<Menu> menulist;
-        public SeeOrderAdapter(List<Menu> menus){
-             menulist = menus;
+        public OrderedAdapter(List<Menu> menus){
+            menulist = menus;
         }
 
         @Override
-        public SeeOrderHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater layout = LayoutInflater.from(SeeOrderDetailActivity.this);
+        public OrderedHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater layout = LayoutInflater.from(OrderedMenuActivity.this);
             View v = layout.inflate(R.layout.shopcart_item,parent,false);
-            return new SeeOrderHolder(v);
+            return new OrderedHolder(v);
         }
 
         @Override
-        public void onBindViewHolder(SeeOrderHolder holder, int position) {
-             holder.bindHolder(menulist.get(position).getImgUrl(),menulist.get(position).getMenuName()
-             ,menulist.get(position).getPrice(),order.getMenuNumberList().get(position));
+        public void onBindViewHolder(OrderedHolder holder, int position) {
+            holder.bindHolder(menulist.get(position).getImgUrl(),menulist.get(position).getMenuName()
+                    ,menulist.get(position).getPrice(),order.getMenuNumberList().get(position));
         }
 
         @Override

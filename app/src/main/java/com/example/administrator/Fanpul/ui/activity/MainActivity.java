@@ -5,6 +5,7 @@ import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
+import com.example.administrator.Fanpul.ui.RestaurantService;
 import com.example.administrator.Fanpul.ui.fragment.HomeFragment;
 import com.example.administrator.Fanpul.ui.fragment.MyFragment;
 import com.example.administrator.Fanpul.ui.fragment.OrderDetailFragment;
@@ -12,13 +13,17 @@ import com.example.administrator.Fanpul.ui.fragment.ZxingFragment;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.RadioButton;
@@ -32,6 +37,10 @@ import butterknife.ButterKnife;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
+
+
+import static com.umeng.analytics.b.g.R;
+
 
 public class MainActivity extends FragmentActivity implements OnCheckedChangeListener {
     //@ViewInject(R.id.main_bottom_tabs)
@@ -66,6 +75,11 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         setContentView(R.layout.activity_main_fanpul);
 
         Bmob.initialize(this, MainActivity.APPLICATIONID);
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+               != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+        }
+        startService(RestaurantService.newIntent(this));//启动后台服务，一直监听数据库桌号变化
 
         group = (RadioGroup) findViewById(R.id.main_bottom_tabs);
         main_home = (RadioButton) findViewById(R.id.main_home);

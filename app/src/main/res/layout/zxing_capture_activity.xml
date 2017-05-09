@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/activity_second"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <Button
+              android:id="@+id/second_button1"
+               android:layout_width="70dp"
+               android:layout_height="45dp"
+               android:background="@color/gray"
+               android:text="返回"
+               android:src="@mipmap/icon_back"
+               android:textColor="@color/white"
+               android:textSize="18sp" />
+
+        <FrameLayout
+            android:id="@+id/fl_my_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+    </FrameLayout>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_second"
     android:layout_width="match_parent"
@@ -31,3 +54,4 @@
         android:layout_height="match_parent">
     </FrameLayout>
 </FrameLayout>
+

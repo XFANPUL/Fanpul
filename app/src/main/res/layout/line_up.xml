@@ -1,5 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="270dp"
+
     android:layout_width="250dp"
+
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@android:color/transparent"
@@ -16,9 +20,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:drawableLeft="@drawable/xiangqing"
+                android:drawablePadding="10dp"
+                android:padding="@dimen/normal_space"
+                android:text="排队详情"
+                android:textColor="@color/color_text_gray_darker"
+
                 android:drawablePadding="14dp"
                 android:padding="@dimen/normal_space"
                 android:text="排队详情"
+
                 android:textSize="18sp" />
 
             <View
@@ -32,9 +43,14 @@
                 android:layout_height="wrap_content"
 
                 android:drawableLeft="@drawable/icon_my_service"
+
+                android:drawablePadding="10dp"
+                android:padding="@dimen/normal_space"
+
                 android:drawablePadding="14dip"
                 android:paddingTop="@dimen/dip_11"
                 android:paddingBottom="@dimen/dip_11"
+
                 android:textColor="@color/afford_old_price"
                 android:text="您的桌型为A型，您前面还有23桌"
                 android:textSize="@dimen/size14" />
@@ -49,9 +65,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/serviceorde_icon_timebuying"
+
+            android:drawablePadding="10dp"
+            android:padding="@dimen/normal_space"
+
             android:drawablePadding="@dimen/dip_11"
             android:paddingBottom="@dimen/dip_9"
             android:paddingTop="@dimen/dip_9"
+
             android:textColor="@color/afford_old_price"
             android:text="预计等待时间40分钟"
             android:textSize="@dimen/size14" />
