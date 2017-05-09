@@ -38,7 +38,9 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 
+
 import static com.umeng.analytics.b.g.R;
+
 
 public class MainActivity extends FragmentActivity implements OnCheckedChangeListener {
     //@ViewInject(R.id.main_bottom_tabs)

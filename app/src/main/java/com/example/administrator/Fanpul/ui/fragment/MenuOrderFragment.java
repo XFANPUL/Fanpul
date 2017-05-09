@@ -23,7 +23,9 @@ import com.example.administrator.Fanpul.model.entity.bmobEntity.Order;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Queue;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
 import com.example.administrator.Fanpul.presenter.Presenter;
+
 import com.example.administrator.Fanpul.ui.RestaurantService;
+
 import com.example.administrator.Fanpul.ui.activity.MainActivity;
 import com.example.administrator.Fanpul.ui.activity.OrderMenuActivity;
 import com.example.administrator.Fanpul.ui.adapter.MainPageViewPageAdapter;
@@ -78,10 +80,15 @@ public class MenuOrderFragment extends BaseFragment implements
         this.restaurantName = restaurantName;
     }
 
+
     private String restaurantName;
     private String tableSize;
     private int tableNum;
     private Queue queue;
+
+    private  String restaurantName;
+    private  String tableSize;
+    private  int tableNum;
 
     /********************************************************************************************/
     @Override
@@ -120,6 +127,7 @@ public class MenuOrderFragment extends BaseFragment implements
             restaurantName = intent.getStringExtra(MainActivity.RES_NAME);
             shopName.setText(restaurantName);
             tableSize = intent.getStringExtra(MainActivity.TABLE_SIZE);
+
             tableNum = intent.getIntExtra(MainActivity.TABLE_NUMBER, 0);
             tableNumber.setText("桌号:" + tableSize + tableNum);
             tableNumber.setVisibility(View.VISIBLE);
@@ -153,8 +161,30 @@ public class MenuOrderFragment extends BaseFragment implements
             tableSize = intent.getStringExtra(RestaurantService.TABLESIZE);
             shopName.setText(restaurantName);
             tableNumber.setText("桌号:" + tableSize + tableNum);
+
+            tableNum = intent.getIntExtra(MainActivity.TABLE_NUMBER,0);
+            tableNumber.setText("桌号:" +tableSize+tableNum);
             tableNumber.setVisibility(View.VISIBLE);
         }
+        if (getActivity().getIntent().getStringExtra(QueueFragment.RES_NAME) != null) {
+            Intent intent = getActivity().getIntent();
+            restaurantName = intent.getStringExtra(QueueFragment.RES_NAME);
+            shopName.setText(restaurantName);
+            tableSize = intent.getStringExtra(QueueFragment.TABLE_SIZE);
+            tableNum = intent.getIntExtra(QueueFragment.TABLE_NUMBER,0);
+            tableNumber.setText("桌号:" +tableSize+tableNum);
+
+            tableNumber.setVisibility(View.VISIBLE);
+        }
+        if(getActivity().getIntent().getStringExtra(OrdersListAdapter.RES_NAME) != null){
+            Intent intent = getActivity().getIntent();
+            restaurantName = intent.getStringExtra(OrdersListAdapter.RES_NAME);
+            shopName.setText(restaurantName);
+            tableSize = intent.getStringExtra(OrdersListAdapter.TABLE_SIZE);
+            tableNumber.setText(tableSize+"桌");
+            tableNumber.setVisibility(View.VISIBLE);
+        }
+
 
 
         BmobUtil.queryRestaurantCategory(restaurantName, new BmobQueryCallback<MenuCategory>() {

@@ -60,8 +60,10 @@ public class ShopcartFragment extends Fragment {
     private List<Integer> menuNumberList;
     private String tableSize;
     private Integer tableNum;
+
     private Queue queue;
     private Order order;
+
 
     private List<Menu> menuList = new ArrayList<>();
     private List<MainPageViewPageAdapter.Buy> lists = new ArrayList<>();
@@ -123,6 +125,7 @@ public class ShopcartFragment extends Fragment {
             restaurantName = queue.getRestaurantName();
             tableSize = queue.getTableSize();
 
+
             if(!queue.isArrived()) {//没排到队时
                 evaluateState = 2;
                 tableNum = 0;
@@ -132,6 +135,11 @@ public class ShopcartFragment extends Fragment {
             }
             //表示没选桌号
         }
+
+        restaurantName = getActivity().getIntent().getStringExtra(CookListFragment.restaurantNameIntent);
+        tableSize = getActivity().getIntent().getStringExtra(CookListFragment.TABLESIZE);
+        tableNum = getActivity().getIntent().getIntExtra(CookListFragment.TABLENUM,0);
+
 
         restaurantNameText = (TextView) getActivity().findViewById(R.id.shop_cart_name);
         restaurantNameText.setText(restaurantName);
@@ -186,7 +194,9 @@ public class ShopcartFragment extends Fragment {
                         public void done(String s, BmobException e) {
                             if (e == null) {
                                 Log.i("SuccessASS", s);
+
                                 BmobUtil.updateQueue(queue, order);
+
                             } else {
                                 Log.i("ErrorASS", e.getMessage());
                             }

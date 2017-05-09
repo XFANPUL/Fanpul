@@ -34,7 +34,11 @@ public class OrderFormActivity extends AppCompatActivity {
         btnOrderEvaluate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 OrdersTabActivity.startActivity(OrderFormActivity.this, 1);
+
+                OrdersTabActivity.startActivity(OrderFormActivity.this,1);
+
             }
         });
         btnSeeOrder = (Button) findViewById(R.id.all_order_but);

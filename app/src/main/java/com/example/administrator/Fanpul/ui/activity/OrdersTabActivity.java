@@ -27,6 +27,7 @@ public class OrdersTabActivity extends BaseSwipeBackActivity {
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private String[] mTitles = {"排队中", "待评论", "历史的"};
+
     @Bind(R.id.orders_tab)
     public SegmentTabLayout mOrders_tab;
     private int startTab;
@@ -40,6 +41,11 @@ public class OrdersTabActivity extends BaseSwipeBackActivity {
         return R.layout.activity_orders_tab;
     }
 
+    private SegmentTabLayout mOrders_tab;
+    private int startTab;
+    public static final String START = "com.example.administrator.Fanpul.ui.activity.OrdersTabActivity.START";
+
+
     @Override
     protected void init(Bundle savedInstanceState) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -50,6 +56,10 @@ public class OrdersTabActivity extends BaseSwipeBackActivity {
         for (String title : mTitles) {
             mFragments.add(FragmentManager.getFragment(title));
         }
+
+
+        mOrders_tab = (SegmentTabLayout)findViewById(R.id.orders_tab);    //装入fragement
+
         init_tab_data();  //加载tab标签数据
     }
     @Override
