@@ -34,6 +34,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name="com.example.administrator.Fanpul.ui.activity.SplashActivity"
+            android:theme="@style/SplashTheme"
+            android:configChanges="orientation|keyboardHidden|screenSize"  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.example.administrator.Fanpul.ui.activity.OrderMenuActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|keyboardHidden|screenSize" />
@@ -49,17 +59,6 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="gTXcuaFqzuD6wi5aeoY79FGytzbmfZD2" />
 
-
-        <activity
-            android:name="com.example.administrator.Fanpul.ui.activity.SplashActivity"
-            android:theme="@style/SplashTheme"
-            android:configChanges="orientation|keyboardHidden|screenSize"  >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name="com.example.administrator.Fanpul.ui.activity.CookChannelActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -106,6 +105,14 @@
 
         <activity android:name=".ui.activity.SeeOrderDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.ZxingActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.OrderedMenuActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+        <service android:name=".ui.RestaurantService"></service>
     </application>
 
     </manifest>

@@ -22,13 +22,13 @@ public class Order extends BmobObject {
     private Integer orderNumber;//点击再来一单时加一
     private List<Integer> menuNumberList;//每个菜品的数量
     private String tableSize;//桌的类型
-    private String tableNum;//桌号
+    private Integer tableNum;//桌号
 
-    public String getTableNum() {
+    public Integer getTableNum() {
         return tableNum;
     }
 
-    public void setTableNum(String tableNum) {
+    public void setTableNum(Integer tableNum) {
         this.tableNum = tableNum;
     }
 
@@ -138,7 +138,6 @@ public class Order extends BmobObject {
     public void setShowName(Integer showName) {
         this.showName = showName;
     }
-
 
 
 }
