@@ -86,9 +86,6 @@ public class MenuOrderFragment extends BaseFragment implements
     private int tableNum;
     private Queue queue;
 
-    private  String restaurantName;
-    private  String tableSize;
-    private  int tableNum;
 
     /********************************************************************************************/
     @Override
@@ -154,16 +151,15 @@ public class MenuOrderFragment extends BaseFragment implements
             restaurantName = queue.getRestaurantName();
             tableSize = queue.getTableSize();
         }
-        if(getActivity().getIntent().getStringExtra(RestaurantService.TABLESIZE)!=null){
-            Intent intent = getActivity().getIntent();
-            restaurantName = intent.getStringExtra(RestaurantService.RESTAURANTNAME);
-            tableNum = intent.getIntExtra(RestaurantService.TABLENUMBER,0);
-            tableSize = intent.getStringExtra(RestaurantService.TABLESIZE);
+
+        if(getActivity().getIntent().getSerializableExtra(RestaurantService.QUEUE)!=null){
+            queue = (Queue)getActivity().getIntent().getSerializableExtra(RestaurantService.QUEUE);
+            restaurantName = queue.getRestaurantName();
+            tableNum = queue.getTableNumber();
+            tableSize = queue.getTableSize();
             shopName.setText(restaurantName);
             tableNumber.setText("桌号:" + tableSize + tableNum);
 
-            tableNum = intent.getIntExtra(MainActivity.TABLE_NUMBER,0);
-            tableNumber.setText("桌号:" +tableSize+tableNum);
             tableNumber.setVisibility(View.VISIBLE);
         }
         if (getActivity().getIntent().getStringExtra(QueueFragment.RES_NAME) != null) {
@@ -184,6 +180,7 @@ public class MenuOrderFragment extends BaseFragment implements
             tableNumber.setText(tableSize+"桌");
             tableNumber.setVisibility(View.VISIBLE);
         }
+
 
 
 

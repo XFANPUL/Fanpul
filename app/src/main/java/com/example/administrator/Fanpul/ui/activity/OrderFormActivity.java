@@ -37,8 +37,6 @@ public class OrderFormActivity extends AppCompatActivity {
 
                 OrdersTabActivity.startActivity(OrderFormActivity.this, 1);
 
-                OrdersTabActivity.startActivity(OrderFormActivity.this,1);
-
             }
         });
         btnSeeOrder = (Button) findViewById(R.id.all_order_but);

@@ -53,9 +53,6 @@ public class BmobUtil {
     public static void queryRestaurantByName(String restaurantName, final OneObjectCallBack callback) {
         String bql = "Select * from Restaurant where restaurantName = '" + restaurantName + "'";
 
-    public static void queryRestaurantByName(String restaurantName, final OneObjectCallBack callback) {
-        String bql = "Select * from Restaurant where restaurantName = '" + restaurantName + "' order by createAt";
-
         new BmobQuery<Restaurant>().doSQLQuery(bql, new SQLQueryListener<Restaurant>() {
             @Override
             public void done(BmobQueryResult<Restaurant> bmobQueryResult, BmobException e) {
@@ -77,9 +74,6 @@ public class BmobUtil {
     //通过用户名查找排队情况
     public static void queryQueueByUserName(String userName, final BmobQueryCallback callBack) {
         String sql = "Select * from Queue where userName = '" + userName + "' order by createdAt";
-
-    public static void queryQueueByUserName(String userName, final BmobQueryCallback callBack) {
-        String sql = "Select * from Queue where userName = '" + userName + "' order by createAt";
 
         new BmobQuery<Queue>().doSQLQuery(sql, new SQLQueryListener<Queue>() {
             @Override
@@ -111,6 +105,7 @@ public class BmobUtil {
 
 
     //通过店铺名查找菜单类别
+
 
     public static void queryRestaurantCategory(String restaurantName, final BmobQueryCallback callback) {
         String bql = "select * from Restaurant where restaurantName = '" + restaurantName + "'";
@@ -370,7 +365,9 @@ public class BmobUtil {
             }
         });
     }
-    public static void updateQueueIsArrive(Queue queue,Integer tableNumber){
+
+    public static void updateQueueIsArrive(Queue queue, final Integer tableNumber, final OneObjectCallBack callBack){
+
         queue.setArrived(true);
         queue.setTableNumber(tableNumber);
         queue.update(new UpdateListener() {
@@ -378,6 +375,9 @@ public class BmobUtil {
             public void done(BmobException e) {
                 if(e == null){
                     Log.i("Success","Success");
+
+                    callBack.Success(tableNumber);
+
                 }else{
                     Log.i("Fail1","Fail1");
                 }
@@ -435,7 +435,8 @@ public class BmobUtil {
         });
     }
 
-    public static void deleteEatingByTableNumber(Integer number,String tableSize,String restaurantName){
+
+    public static void deleteEatingByTableNumber(Integer number, String tableSize, String restaurantName, final OneObjectCallBack callBack){
         String sql = "Select * from Eating where restaurantName = '"+restaurantName+"' " +
                 "and tableSize = '"+tableSize+"' and tableNumber = "+number;
         new BmobQuery<Eating>().doSQLQuery(sql, new SQLQueryListener<Eating>() {
@@ -447,10 +448,13 @@ public class BmobUtil {
                         eating.delete(new UpdateListener() {
                             @Override
                             public void done(BmobException e) {
-
+                                  if(e==null){
+                                      callBack.Success(0);
+                                  }
                             }
                         });
                     }
+
 
                 }
             }
@@ -482,167 +486,12 @@ public class BmobUtil {
 
         } catch (Exception e) {
         }
+
+        if(time<0)
+            time=0;
+
         return time;
     }
-
-
-    public static void queryQueueByResName(String restaurantName, final BmobQueryCallback bmobQueryCallback) {
-        String bql = "select * from Queue where " +
-                "restaurantName = '" + restaurantName + "' order by createAt";
-        new BmobQuery<Queue>().doSQLQuery(bql, new SQLQueryListener<Queue>() {
-            @Override
-            public void done(BmobQueryResult<Queue> bmobQueryResult, BmobException e) {
-                if (e == null) {
-                    List<Queue> queueList = bmobQueryResult.getResults();
-                    bmobQueryCallback.Success(queueList);
-                } else {
-                    bmobQueryCallback.Failed();
-                }
-            }
-        });
-    }
-
-
-    public static void RemoveRestaurantTableNumber(String restaurantName, String tableSize,
-                                                   final Integer tableNum, final BmobQueryCallback bmobQueryCallback) { //获得桌号并锁定桌号
-        String SizeABC = "";//桌号的ABC类型
-        if (tableSize.equals("C")) {
-            SizeABC = "C";
-            tableSize = "bigTableLeft";//桌子的size
-        } else if (tableSize.equals("B")) {
-            SizeABC = "B";
-            tableSize = "middleTableLeft";
-        } else if (tableSize.equals("A")) {
-            SizeABC = "A";
-            tableSize = "smallTableLeft";
-        }
-        String sql = "select * from Restaurant where restaurantName = '" + restaurantName +
-                "' and " + tableSize + " = " + tableNum;
-        final String finalSizeABC = SizeABC;
-        new BmobQuery<Restaurant>().doSQLQuery(sql, new SQLQueryListener<Restaurant>() {
-            @Override
-            public void done(BmobQueryResult<Restaurant> bmobQueryResult, BmobException e) {
-                if (e == null) {
-                    List<Integer> integers = null;
-                    List<Restaurant> bmobObjectList = bmobQueryResult.getResults();
-                    if (finalSizeABC.equals("C")) {
-                        integers = bmobObjectList.get(0).getBigTableLeft();
-                        integers.remove(tableNum);
-                        Restaurant restaurant = bmobObjectList.get(0);
-                        restaurant.setBigTableLeft(integers);
-                        restaurant.update(new UpdateListener() {
-                            @Override
-                            public void done(BmobException e) {
-                                if (e == null) {
-                                    Log.i("Success", "Success");
-                                } else {
-                                    Log.i("Failed", "Failed");
-                                }
-                            }
-                        });
-                    } else if (finalSizeABC.equals("B")) {
-                        integers = bmobObjectList.get(0).getMiddleTableLeft();
-                        integers.remove(tableNum);
-                        Restaurant restaurant = bmobObjectList.get(0);
-                        restaurant.setMiddleTableLeft(integers);
-                        restaurant.update(new UpdateListener() {
-                            @Override
-                            public void done(BmobException e) {
-                                if (e == null) {
-                                    Log.i("Success", "Success");
-                                } else {
-                                    Log.i("Failed", "Failed");
-                                }
-                            }
-                        });
-                    } else if (finalSizeABC.equals("A")) {
-                        integers = bmobObjectList.get(0).getSmallTableLeft();
-                        integers.remove(tableNum);
-                        Restaurant restaurant = bmobObjectList.get(0);
-                        restaurant.setSmallTableLeft(integers);
-                        restaurant.update(new UpdateListener() {
-                            @Override
-                            public void done(BmobException e) {
-                                if (e == null) {
-                                    Log.i("Success", "Success");
-                                } else {
-                                    Log.i("Failed", "Failed");
-                                }
-                            }
-                        });
-                    }
-                    bmobQueryCallback.Success(bmobQueryResult.getResults());
-                } else {
-                    bmobQueryCallback.Failed();
-                }
-            }
-        });
-    }
-
-    public static int getRandomTableNumber(String tableSize, Restaurant restaurant) {
-        Random random = new Random();
-        int ran = 0;
-
-        if (tableSize.equals("A")) {
-            ran = Math.abs(random.nextInt() % (restaurant.getSmallTableLeft().size()));
-        } else if (tableSize.equals("B")) {
-            ran = Math.abs(random.nextInt() % (restaurant.getMiddleTableLeft().size()));
-        } else if (tableSize.equals("C")) {
-            ran = Math.abs(random.nextInt() % (restaurant.getBigTableLeft().size()));
-        }
-
-        return ran;
-    }
-
-    public static void RemoveRestaurantTableIndex(String restaurantName, final String tableSize,
-                                                  final OneObjectCallBack oneObjectCallBack) { //获得桌号并锁定桌号
-
-        String sql = "select * from Restaurant where restaurantName = '" + restaurantName + "'";
-        new BmobQuery<Restaurant>().doSQLQuery(sql, new SQLQueryListener<Restaurant>() {
-            @Override
-            public void done(BmobQueryResult<Restaurant> bmobQueryResult, BmobException e) {
-                if (e == null) {
-                    List<Integer> integers = null;
-                    Integer integer = 0;
-                    List<Restaurant> bmobObjectList = bmobQueryResult.getResults();
-                    Restaurant restaurant = bmobObjectList.get(0);
-                    int tableIndex = getRandomTableNumber(tableSize, restaurant);
-                    if (tableSize.equals("C")) {
-                        integers = bmobObjectList.get(0).getBigTableLeft();
-                        integer = integers.get(tableIndex);
-                        integers.remove(integer);
-                        restaurant.setBigTableLeft(integers);
-                    } else if (tableSize.equals("B")) {
-                        integers = bmobObjectList.get(0).getMiddleTableLeft();
-                        integer = integers.get(tableIndex);
-                        integers.remove(integer);
-                        restaurant.setMiddleTableLeft(integers);
-                    } else if (tableSize.equals("A")) {
-                        integers = bmobObjectList.get(0).getSmallTableLeft();
-                        integer = integers.get(tableIndex);
-                        integers.remove(integer);
-                        restaurant.setSmallTableLeft(integers);
-
-                    }
-                    restaurant.update(new UpdateListener() {
-                        @Override
-                        public void done(BmobException e) {
-                            if (e == null) {
-                                Log.i("Success", "Success");
-                            } else {
-                                Log.i("Failed", "Failed");
-                            }
-                        }
-                    });
-                    oneObjectCallBack.Success(integer);
-                } else {
-                    oneObjectCallBack.Failed();
-                }
-            }
-        });
-    }
-
-
 
 
 

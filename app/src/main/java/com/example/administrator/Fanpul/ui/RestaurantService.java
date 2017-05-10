@@ -1,15 +1,23 @@
 package com.example.administrator.Fanpul.ui;
 
+
+import android.app.IntentService;
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Binder;
 import android.os.IBinder;
+import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v7.app.AlertDialog;
+
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -17,6 +25,9 @@ import android.widget.Toast;
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
+
+import com.example.administrator.Fanpul.model.bmob.OneObjectCallBack;
+
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Eating;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Queue;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
@@ -27,6 +38,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
+
+
+import cn.bmob.v3.BmobQuery;
 
 import cn.bmob.v3.BmobRealTimeData;
 import cn.bmob.v3.exception.BmobException;
@@ -39,11 +53,44 @@ import cn.bmob.v3.listener.ValueEventListener;
  */
 
 public class RestaurantService extends Service {
-    public static final String TABLESIZE = "com.example.administrator.Fanpul.ui.RestaurantService.TABLESIZE";
-    public static final String TABLENUMBER = "com.example.administrator.Fanpul.ui.RestaurantService.TABLENUMBER";
-    public static final String RESTAURANTNAME ="com.example.administrator.Fanpul.ui.RestaurantService.RESTAURANTNAME";
-    private String tableSize;
 
+    public static final String QUEUE = "com.example.administrator.Fanpul.ui.RestaurantService.QUEUE";
+    private String tableSize;
+    public RestaurantBinder binder = new RestaurantBinder();
+    private static RestaurantService restaurantService;
+    private ServiceCallback serviceCallback;
+
+    public ServiceCallback getServiceCallback() {
+        return serviceCallback;
+    }
+
+    public void setServiceCallback(ServiceCallback serviceCallback) {
+        this.serviceCallback = serviceCallback;
+    }
+
+    public interface ServiceCallback{
+        void UpdateUI();
+    }
+    public void resetServiceCallback(){
+        serviceCallback = null;
+    }
+
+    public static RestaurantService getRestaurantService() {
+        if(restaurantService!=null)
+        return restaurantService;
+        else
+            return  null;
+    }
+
+    public static void setRestaurantService(RestaurantService restaurantService) {
+        RestaurantService.restaurantService = restaurantService;
+    }
+
+    public class RestaurantBinder  extends  Binder{
+        public RestaurantService getService(){
+            return  RestaurantService.this;
+        }
+    }
 
     @Override
     public void onDestroy() {
@@ -72,7 +119,9 @@ public class RestaurantService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+
+        return binder;
+
     }
 
 
@@ -178,44 +227,19 @@ public class RestaurantService extends Service {
     protected void showNotification(final Queue queue, final String tableSize, final Integer tableNumber){
         final boolean isOrder = queue.isOrder();
 
-        Notification notification;
-        if(isOrder){
-            Intent intent = OrdersTabActivity.newIntent(RestaurantService.this,1);
-            PendingIntent pi = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-            Bitmap largeIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.icon_my_order)).getBitmap();
-            notification = new NotificationCompat.Builder(this)
-                    .setTicker("排队成功")
-                    .setSmallIcon(R.drawable.icon_my_order)
-                    .setContentTitle("排队成功")
-                    .setContentText("您已排队成功，您的桌号是"+tableSize+tableNumber)
-                    .setLargeIcon(largeIcon)
-                    .setContentIntent(pi)
-                    .setAutoCancel(true)
-                    .build();
-        }
-        else{
-            Intent intent = new Intent(RestaurantService.this, OrderMenuActivity.class);
-            intent.putExtra(TABLESIZE,tableSize);
-            intent.putExtra(TABLENUMBER,tableNumber);
-            intent.putExtra(RESTAURANTNAME,queue.getRestaurantName());
 
-            PendingIntent pi = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-            Bitmap largeIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.icon_my_order)).getBitmap();
-            notification = new NotificationCompat.Builder(this)
-                    .setTicker("排队成功")
-                    .setSmallIcon(R.drawable.icon_my_order)
-                    .setContentTitle("排队成功")
-                    .setContentText("您已排队成功，您的桌号是"+tableSize+tableNumber+",你还未点餐，是否现在点餐？")
-                    .setLargeIcon(largeIcon)
-                    .setContentIntent(pi)
-                    .setAutoCancel(true)
-                    .build();
-        }
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
-        notificationManagerCompat.notify(0,notification);
+      /*  BmobUtil.deleteEatingByTableNumber(tableNumber, tableSize, queue.getRestaurantName(), new OneObjectCallBack() {
+            @Override
+            public void Success(Object result) {
 
+            }
 
-        BmobUtil.deleteEatingByTableNumber(tableNumber,tableSize,queue.getRestaurantName());
+            @Override
+            public void Failed() {
+
+            }
+        });*/
+
 
         BmobUtil.RemoveRestaurantTableNumber(queue.getRestaurantName(), tableSize, tableNumber, new BmobQueryCallback() {
             @Override
@@ -231,12 +255,38 @@ public class RestaurantService extends Service {
                 eating.save(new SaveListener<String>() {
                     @Override
                     public void done(String s, BmobException e) {
+
+
                         if(isOrder){
+
+                            Intent intent = OrdersTabActivity.newIntent(RestaurantService.this,1);
+                            PendingIntent pi = PendingIntent.getActivity(RestaurantService.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                            Bitmap largeIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.icon_my_order)).getBitmap();
+
+                            Notification notification;
+                            notification = new NotificationCompat.Builder(RestaurantService.this)
+                                    .setTicker("排队成功")
+                                    .setSmallIcon(R.drawable.icon_my_order)
+                                    .setContentTitle("排队成功")
+                                    .setContentText("您已排队成功，您的桌号是"+tableSize+tableNumber)
+                                    .setLargeIcon(largeIcon)
+                                    .setContentIntent(pi)
+                                    .setAutoCancel(true)
+                                    .build();
+                            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(RestaurantService.this);
+                            notificationManagerCompat.notify(0,notification);
+
+
                             queue.delete(new UpdateListener() {
                                 @Override
                                 public void done(BmobException e) {
                                     if (e == null) {
                                         Toast.makeText(RestaurantService.this,"DeleteSuccess",Toast.LENGTH_SHORT).show();
+
+                                         if(serviceCallback!=null){
+                                             serviceCallback.UpdateUI();
+                                         }
+
                                     } else {
                                         Toast.makeText(RestaurantService.this,"DeleteF",Toast.LENGTH_SHORT).show();
                                     }
@@ -244,8 +294,40 @@ public class RestaurantService extends Service {
                             });
                      }
                    else{
-                        BmobUtil.updateQueueIsArrive(queue,tableNumber);
+
+                        BmobUtil.updateQueueIsArrive(queue, tableNumber, new OneObjectCallBack() {
+                            @Override
+                            public void Success(Object result) {
+                                if(serviceCallback!=null){
+                                    serviceCallback.UpdateUI();
+                                }
+                                Intent intent = new Intent(RestaurantService.this, OrderMenuActivity.class);
+                                intent.putExtra(QUEUE,queue);
+                                PendingIntent pi = PendingIntent.getActivity(RestaurantService.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                                Bitmap largeIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.icon_my_order)).getBitmap();
+                                Notification notification;
+                                notification = new NotificationCompat.Builder(RestaurantService.this)
+                                        .setTicker("排队成功")
+                                        .setSmallIcon(R.drawable.icon_my_order)
+                                        .setContentTitle("排队成功")
+                                        .setContentText("您已排队成功，您的桌号是"+tableSize+tableNumber+",你还未点餐，是否现在点餐？")
+                                        .setLargeIcon(largeIcon)
+                                        .setContentIntent(pi)
+                                        .setAutoCancel(true)
+                                        .build();
+                                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(RestaurantService.this);
+                                notificationManagerCompat.notify(0,notification);
+                            }
+
+                            @Override
+                            public void Failed() {
+
+                            }
+                        });
                       }
+
+
+
                     }
                 });
 
@@ -260,10 +342,7 @@ public class RestaurantService extends Service {
         });
 
     }
-public  void cancelNotification(){
-    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
-    notificationManagerCompat.cancel(0);
-}
+
 
     /*protected void showMultiBtnDialog(String username,String table,String restaurant){
         AlertDialog.Builder normalDialog =

@@ -1,6 +1,9 @@
 package com.example.administrator.Fanpul.ui.fragment;
 
 import android.os.Bundle;
+
+import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,9 +22,18 @@ import butterknife.Bind;
  */
 
 
-public class PreCommentFragment extends BaseFragment { //待评论fragment
+public class PreCommentFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{ //待评论fragment
+    RecyclerView.Adapter adapter;
+    @Bind(R.id.id_swipe_ly)
+    SwipeRefreshLayout mSwipeLayout;
+    @Override
+    public void onResume() {
 
-public class PreCommentFragment extends BaseFragment { //带评论fragment
+        if(adapter!=null)
+        updateUI();
+
+        super.onResume();
+    }
 
 
     public static PreCommentFragment CreateFragment() {
@@ -43,12 +55,18 @@ public class PreCommentFragment extends BaseFragment { //带评论fragment
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mSwipeLayout.setOnRefreshListener(this);
         orders_listView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        updateUI();
+    }
+    public void updateUI(){
         BmobUtil.queryOrderByUserName("张三",0, new BmobQueryCallback<Order>() {
             @Override
             public void Success(List<Order> bmobObjectList) {
-                RecyclerView.Adapter adapter = AdapterManager.getPreCommentAdapter(getActivity(), bmobObjectList);//新建适配器
+                adapter = AdapterManager.getPreCommentAdapter(getActivity(), bmobObjectList);//新建适配器
                 orders_listView.setAdapter(adapter);//绑定适配器
+                mSwipeLayout.setRefreshing(false);
             }
 
             @Override
@@ -56,6 +74,12 @@ public class PreCommentFragment extends BaseFragment { //带评论fragment
 
             }
         });
+
+    }
+
+    @Override
+    public void onRefresh() {
+        updateUI();
 
     }
 }

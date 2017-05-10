@@ -31,10 +31,9 @@ import com.example.administrator.Fanpul.ui.activity.OrdersTabActivity;
 import com.example.administrator.Fanpul.ui.activity.SegmentTabActivity;
 import com.example.administrator.Fanpul.ui.component.dialog.LineDialog;
 
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
-import java.util.Calendar;
 
 import java.util.Date;
 import java.util.List;
@@ -62,13 +61,6 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
     @Bind(R.id.waitC)
     public TextView waitC_Info;
 
-    @Bind(R.id.waitTimeBtn)
-    public Button waitTimeBtn;
-
-   /* @Bind(R.id.test)
-    public TextView test;
-    @Bind(R.id.test1)
-    public TextView test1;*/
 
     private int smallTableLeft;  //小桌剩余量，为负数时表示有人排队
     private int middleTableLeft;//中桌桌剩余量
@@ -85,6 +77,9 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
 
     private String tableSize;//当前桌号类型
     private int curTableNum;//当前桌的A或B或C类型桌号的数量
+
+    private Long curTableTime;
+
 
     private boolean isUpdate;//判断当前fragment生命周期是否结束，结束时停止实时跟新
 
@@ -219,6 +214,9 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
                 dialog.setTableSize(tableSize);
                 dialog.setTableNumber(Math.abs(curTableNum));
 
+                dialog.setTime(curTableTime);
+
+
                 dialog.show();
                 dialog.updateUI();
                 TextView submit_btn_dialog = (TextView) dialog.findViewById(R.id.submit_btn_dialog);
@@ -242,13 +240,6 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
 
                                     OrdersTabActivity.startActivity(getActivity(), 0);
                                 } else
-
-                        queue.save(new SaveListener<String>() {
-                            @Override
-                            public void done(String s, BmobException e) {
-                                if (e == null)
-                                    OrdersTabActivity.startActivity(getActivity(), 0);
-                                else
 
                                     Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
                             }
@@ -637,6 +628,164 @@ public class QueueFragment extends BaseFragment {   //排队的fragment
 
 
     }
+
+
+    public void init() {
+        reqHandlerThread = new HandlerThread("UPDATE");
+        reqHandlerThread.start();
+        mRequestHandler = new Handler(reqHandlerThread.getLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+
+                if (msg.what == MESSAGE_UPDATE) {
+                    String bql = "select * from Restaurant where restaurantName = '" + restaurant.getRestaurantName() + "'";
+                    BmobUtil.queryBmobObject(bql, new BmobQueryCallback<Restaurant>() {
+                        @Override
+                        public void Success(List<Restaurant> bmobObjectList) {
+                            final Restaurant restaurant1 = bmobObjectList.get(0);
+                            BmobUtil.queryQueueByResName(restaurant1.getRestaurantName(), new BmobQueryCallback<Queue>() {
+                                @Override
+                                public void Success(List<Queue> bmobObjectList) {
+                                    checkForUpdate(bmobObjectList, restaurant1);
+                                }
+
+                                @Override
+                                public void Failed() {
+
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void Failed() {
+
+                        }
+                    });
+                    if (isUpdate)
+                        mRequestHandler.sendEmptyMessageDelayed(MESSAGE_UPDATE, 1500);
+
+                }
+            }
+        };
+        mRequestHandler.sendEmptyMessage(MESSAGE_UPDATE);
+
+    }
+
+    public void checkForUpdate(final List<Queue> queues, final Restaurant restaurant1) {
+        responseHander.post(new Runnable() {
+            @Override
+            public void run() {
+                updateUI(queues, restaurant1);
+            }
+        });
+    }
+
+
+    public void updateUI(List<Queue> bmobObjectList, Restaurant restaurant1) {
+        int ATableNumber = 0;
+        int BTableNumber = 0;
+        int CTableNumber = 0;
+        for (int i = 0; i < bmobObjectList.size(); i++) {
+            if (bmobObjectList.get(i).getTableSize().equals("A")) {
+                ATableNumber++;
+            } else if (bmobObjectList.get(i).getTableSize().equals("B")) {
+                BTableNumber++;
+            } else if (bmobObjectList.get(i).getTableSize().equals("C")) {
+                CTableNumber++;
+            }
+        }
+
+        smallTableLeft = restaurant1.getSmallTableLeft().size() - ATableNumber;
+        middleTableLeft = restaurant1.getMiddleTableLeft().size() - BTableNumber;
+        bigTableLeft = restaurant1.getBigTableLeft().size() - CTableNumber;
+
+        if (smallTableLeft > 0) {
+            waitA_Info.setText("当前无人等待，可以直接点单");
+            if (tableSize.equals("A")) {
+                showed_wb.setVisibility(View.VISIBLE);
+                showed_wl.setVisibility(View.GONE);
+            }
+        } else {
+            //waitA_Info.setText("有" + Math.abs(smallTableLeft) + "桌在等待，预计等待时间为"+8+"分钟");
+           BmobUtil.getEatingByIndex(Math.abs(smallTableLeft% restaurant.getSmalltableNum()),"A",restaurant, new OneObjectCallBack<Long>() {
+                @Override
+                public void Success(Long result) {
+                    waitA_Info.setText("有" + Math.abs(smallTableLeft) + "桌在等待，预计等待时间为"+result+"分钟");
+                    if(tableSize.equals("A")){
+                        curTableTime = result;
+                    }
+                }
+
+                @Override
+                public void Failed() {
+
+                }
+            });
+            if (tableSize.equals("A")) {
+                showed_wb.setVisibility(View.GONE);
+                showed_wl.setVisibility(View.VISIBLE);
+                curTableNum = smallTableLeft;
+            }
+
+        }
+        if (middleTableLeft > 0) {
+            waitB_Info.setText("当前无人等待，可以直接点单");
+            if (tableSize.equals("B")) {
+                showed_wb.setVisibility(View.VISIBLE);
+                showed_wl.setVisibility(View.GONE);
+            }
+        } else {
+            BmobUtil.getEatingByIndex(Math.abs(middleTableLeft% restaurant.getMiddletableNum()),"B",restaurant, new OneObjectCallBack<Long>() {
+                @Override
+                public void Success(Long result) {
+                    if(tableSize.equals("B")){
+                        curTableTime = result;
+                    }
+                    waitB_Info.setText("有" + Math.abs(middleTableLeft) + "桌在等待，预计等待时间为"+result+"分钟");
+                }
+
+                @Override
+                public void Failed() {
+
+                }
+            });
+            //waitB_Info.setText("有" + Math.abs(smallTableLeft) + "桌在等待，预计等待时间为"+8+"分钟");
+            if (tableSize.equals("B")) {
+                showed_wb.setVisibility(View.GONE);
+                showed_wl.setVisibility(View.VISIBLE);
+                curTableNum = middleTableLeft;
+            }
+        }
+        if (bigTableLeft > 0) {
+            waitC_Info.setText("当前无人等待，可以直接点单");
+            if (tableSize.equals("C")) {
+                showed_wb.setVisibility(View.VISIBLE);
+                showed_wl.setVisibility(View.GONE);
+            }
+        } else {
+            BmobUtil.getEatingByIndex(Math.abs(bigTableLeft%restaurant.getBigtableNum()),"C",restaurant, new OneObjectCallBack<Long>() {
+                @Override
+                public void Success(Long result) {
+                    if(tableSize.equals("C")){
+                        curTableTime = result;
+                    }
+                    waitC_Info.setText("有" + Math.abs(bigTableLeft) + "桌在等待，预计等待时间为"+result+"分钟");
+                }
+
+                @Override
+                public void Failed() {
+
+                }
+            });
+           // waitC_Info.setText("有" + Math.abs(smallTableLeft) + "桌在等待，预计等待时间为"+8+"分钟");
+            if (tableSize.equals("C")) {
+                showed_wb.setVisibility(View.GONE);
+                showed_wl.setVisibility(View.VISIBLE);
+                curTableNum = bigTableLeft;
+            }
+        }
+    }
+
 
 
 

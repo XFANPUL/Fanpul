@@ -136,10 +136,6 @@ public class ShopcartFragment extends Fragment {
             //表示没选桌号
         }
 
-        restaurantName = getActivity().getIntent().getStringExtra(CookListFragment.restaurantNameIntent);
-        tableSize = getActivity().getIntent().getStringExtra(CookListFragment.TABLESIZE);
-        tableNum = getActivity().getIntent().getIntExtra(CookListFragment.TABLENUM,0);
-
 
         restaurantNameText = (TextView) getActivity().findViewById(R.id.shop_cart_name);
         restaurantNameText.setText(restaurantName);

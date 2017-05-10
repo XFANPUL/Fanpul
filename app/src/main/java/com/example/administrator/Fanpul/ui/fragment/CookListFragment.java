@@ -149,10 +149,6 @@ public class CookListFragment extends BaseFragment implements ICookListView {
                 intent.putExtra(QUEUE,main.getQueue());
             }
 
-            intent.putExtra(restaurantNameIntent, main.getRestaurantName());
-            intent.putExtra(TABLESIZE, main.getTableSize());
-            intent.putExtra(TABLENUM, main.getTableNum());
-
             startActivity(intent);
         } else {
             Toast.makeText(getActivity(), "购物车不能为空", Toast.LENGTH_SHORT).show();
