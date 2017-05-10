@@ -1,5 +1,6 @@
 package com.example.administrator.Fanpul.ui;
 
+
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -16,6 +17,7 @@ import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AlertDialog;
+
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -23,7 +25,9 @@ import android.widget.Toast;
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
+
 import com.example.administrator.Fanpul.model.bmob.OneObjectCallBack;
+
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Eating;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Queue;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
@@ -35,7 +39,9 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+
 import cn.bmob.v3.BmobQuery;
+
 import cn.bmob.v3.BmobRealTimeData;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
@@ -47,6 +53,7 @@ import cn.bmob.v3.listener.ValueEventListener;
  */
 
 public class RestaurantService extends Service {
+
     public static final String QUEUE = "com.example.administrator.Fanpul.ui.RestaurantService.QUEUE";
     private String tableSize;
     public RestaurantBinder binder = new RestaurantBinder();
@@ -84,6 +91,7 @@ public class RestaurantService extends Service {
             return  RestaurantService.this;
         }
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -98,6 +106,7 @@ public class RestaurantService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -110,7 +119,9 @@ public class RestaurantService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+
         return binder;
+
     }
 
 
@@ -216,6 +227,7 @@ public class RestaurantService extends Service {
     protected void showNotification(final Queue queue, final String tableSize, final Integer tableNumber){
         final boolean isOrder = queue.isOrder();
 
+
       /*  BmobUtil.deleteEatingByTableNumber(tableNumber, tableSize, queue.getRestaurantName(), new OneObjectCallBack() {
             @Override
             public void Success(Object result) {
@@ -227,6 +239,7 @@ public class RestaurantService extends Service {
 
             }
         });*/
+
 
         BmobUtil.RemoveRestaurantTableNumber(queue.getRestaurantName(), tableSize, tableNumber, new BmobQueryCallback() {
             @Override
@@ -242,6 +255,7 @@ public class RestaurantService extends Service {
                 eating.save(new SaveListener<String>() {
                     @Override
                     public void done(String s, BmobException e) {
+
 
                         if(isOrder){
 
@@ -262,14 +276,17 @@ public class RestaurantService extends Service {
                             NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(RestaurantService.this);
                             notificationManagerCompat.notify(0,notification);
 
+
                             queue.delete(new UpdateListener() {
                                 @Override
                                 public void done(BmobException e) {
                                     if (e == null) {
                                         Toast.makeText(RestaurantService.this,"DeleteSuccess",Toast.LENGTH_SHORT).show();
+
                                          if(serviceCallback!=null){
                                              serviceCallback.UpdateUI();
                                          }
+
                                     } else {
                                         Toast.makeText(RestaurantService.this,"DeleteF",Toast.LENGTH_SHORT).show();
                                     }
@@ -277,6 +294,7 @@ public class RestaurantService extends Service {
                             });
                      }
                    else{
+
                         BmobUtil.updateQueueIsArrive(queue, tableNumber, new OneObjectCallBack() {
                             @Override
                             public void Success(Object result) {
@@ -309,6 +327,7 @@ public class RestaurantService extends Service {
                       }
 
 
+
                     }
                 });
 
@@ -323,6 +342,7 @@ public class RestaurantService extends Service {
         });
 
     }
+
 
     /*protected void showMultiBtnDialog(String username,String table,String restaurant){
         AlertDialog.Builder normalDialog =

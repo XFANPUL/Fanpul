@@ -14,15 +14,19 @@ import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import android.Manifest;
+
 import android.content.ComponentName;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
+
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -41,6 +45,7 @@ import butterknife.ButterKnife;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
+
 
 public class MainActivity extends FragmentActivity implements OnCheckedChangeListener {
     //@ViewInject(R.id.main_bottom_tabs)
@@ -96,8 +101,10 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         }
+
         bindService(RestaurantService.newIntent(this),serviceConnection, Context.BIND_AUTO_CREATE);
        // startService(RestaurantService.newIntent(this));//启动后台服务，一直监听数据库桌号变化
+
 
         group = (RadioGroup) findViewById(R.id.main_bottom_tabs);
         main_home = (RadioButton) findViewById(R.id.main_home);

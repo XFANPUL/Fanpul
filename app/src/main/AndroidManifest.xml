@@ -4,7 +4,6 @@
     package="com.example.administrator.Fanpul"
    >
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -110,9 +109,11 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
 
+
         <activity android:name=".ui.activity.OrderedMenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
         <service android:name=".ui.RestaurantService"></service>
+
     </application>
 
     </manifest>

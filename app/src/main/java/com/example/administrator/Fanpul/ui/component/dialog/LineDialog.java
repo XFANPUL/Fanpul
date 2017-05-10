@@ -16,6 +16,7 @@ public class LineDialog extends Dialog{
     Context context;
     private TextView ordered_desk_info;
 
+
     public Long getTime() {
         return time;
     }
@@ -27,6 +28,7 @@ public class LineDialog extends Dialog{
     private String tableSize;
     private TextView ordered_wait_time;
     private Long time;
+
 
     public String getTableSize() {
         return tableSize;
@@ -56,13 +58,17 @@ public class LineDialog extends Dialog{
         this.context = context;
         this.setContentView(R.layout.line_up);
         ordered_desk_info = (TextView)findViewById(R.id.ordered_desk_info);
+
         ordered_wait_time = (TextView)findViewById(R.id.ordered_wait_time);
+
 
         }
 
         public void updateUI(){
             ordered_desk_info.setText("您的桌型为"+tableSize+"型，您前面还有"+tableNumber+"桌");
+
             ordered_wait_time.setText("预计等待时间"+time+"分钟");
+
         }
 
     @Override

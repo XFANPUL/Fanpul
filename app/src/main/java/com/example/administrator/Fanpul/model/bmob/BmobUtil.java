@@ -48,9 +48,11 @@ public class BmobUtil {
     }
 
 
+
     //通过店名查找店铺
     public static void queryRestaurantByName(String restaurantName, final OneObjectCallBack callback) {
         String bql = "Select * from Restaurant where restaurantName = '" + restaurantName + "'";
+
         new BmobQuery<Restaurant>().doSQLQuery(bql, new SQLQueryListener<Restaurant>() {
             @Override
             public void done(BmobQueryResult<Restaurant> bmobQueryResult, BmobException e) {
@@ -68,9 +70,11 @@ public class BmobUtil {
     }
 
 
+
     //通过用户名查找排队情况
     public static void queryQueueByUserName(String userName, final BmobQueryCallback callBack) {
         String sql = "Select * from Queue where userName = '" + userName + "' order by createdAt";
+
         new BmobQuery<Queue>().doSQLQuery(sql, new SQLQueryListener<Queue>() {
             @Override
             public void done(BmobQueryResult<Queue> bmobQueryResult, BmobException e) {
@@ -82,7 +86,9 @@ public class BmobUtil {
         });
     }
 
+
     //通过用户名查找订单
+
     public static void queryOrderByUserName(String userName,Integer state, final BmobQueryCallback callback) {
         String sql = "Select * from Order where userName = '" + userName + "' and evaluateState = "+state;
         new BmobQuery<Order>().doSQLQuery(sql, new SQLQueryListener<Order>() {
@@ -97,7 +103,10 @@ public class BmobUtil {
         });
     }
 
+
     //通过店铺名查找菜单类别
+
+
     public static void queryRestaurantCategory(String restaurantName, final BmobQueryCallback callback) {
         String bql = "select * from Restaurant where restaurantName = '" + restaurantName + "'";
         new BmobQuery<Restaurant>().doSQLQuery(bql, new SQLQueryListener<Restaurant>() {
@@ -124,7 +133,9 @@ public class BmobUtil {
         });
     }
 
+
     //通过菜品类别查找菜品
+
     public static void queryMenuByCategory(MenuCategory menuCategory, final BmobQueryCallback callback) { //通过菜品种类查找菜品
         BmobQuery<Menu> menuBmobQuery = new BmobQuery<Menu>();
         menuBmobQuery.addWhereEqualTo("relation", menuCategory);
@@ -135,6 +146,7 @@ public class BmobUtil {
                     callback.Success(list);
                 } else {
                     callback.Failed();
+
                 }
             }
 
@@ -353,7 +365,9 @@ public class BmobUtil {
             }
         });
     }
+
     public static void updateQueueIsArrive(Queue queue, final Integer tableNumber, final OneObjectCallBack callBack){
+
         queue.setArrived(true);
         queue.setTableNumber(tableNumber);
         queue.update(new UpdateListener() {
@@ -361,7 +375,9 @@ public class BmobUtil {
             public void done(BmobException e) {
                 if(e == null){
                     Log.i("Success","Success");
+
                     callBack.Success(tableNumber);
+
                 }else{
                     Log.i("Fail1","Fail1");
                 }
@@ -413,10 +429,12 @@ public class BmobUtil {
                 }
                 else{
                     callBack.Failed();
+
                 }
             }
         });
     }
+
 
     public static void deleteEatingByTableNumber(Integer number, String tableSize, String restaurantName, final OneObjectCallBack callBack){
         String sql = "Select * from Eating where restaurantName = '"+restaurantName+"' " +
@@ -437,10 +455,12 @@ public class BmobUtil {
                         });
                     }
 
+
                 }
             }
         });
     }
+
 
     public static long getPreWaitTime(Eating eating,Restaurant restaurant) {
         String date = eating.getCreatedAt();//正在吃饭的最早的人开始吃饭的时间
@@ -466,10 +486,13 @@ public class BmobUtil {
 
         } catch (Exception e) {
         }
+
         if(time<0)
             time=0;
+
         return time;
     }
+
 
 
 }

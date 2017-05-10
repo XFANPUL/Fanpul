@@ -1,7 +1,9 @@
 package com.example.administrator.Fanpul.ui.fragment;
 
 import android.os.Bundle;
+
 import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import butterknife.Bind;
  * Created by Administrator on 2017/4/26 0026.
  */
 
+
 public class PreCommentFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{ //待评论fragment
     RecyclerView.Adapter adapter;
     @Bind(R.id.id_swipe_ly)
@@ -31,6 +34,7 @@ public class PreCommentFragment extends BaseFragment implements SwipeRefreshLayo
 
         super.onResume();
     }
+
 
     public static PreCommentFragment CreateFragment() {
         return new PreCommentFragment();
@@ -51,6 +55,7 @@ public class PreCommentFragment extends BaseFragment implements SwipeRefreshLayo
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         mSwipeLayout.setOnRefreshListener(this);
         orders_listView.setLayoutManager(new LinearLayoutManager(getActivity()));
         updateUI();
@@ -75,5 +80,6 @@ public class PreCommentFragment extends BaseFragment implements SwipeRefreshLayo
     @Override
     public void onRefresh() {
         updateUI();
+
     }
 }

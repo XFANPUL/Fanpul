@@ -3,8 +3,10 @@ package com.example.administrator.Fanpul.ui.adapter;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+
 import android.os.Handler;
 import android.os.Message;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +16,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.widget.Toast;
+
+
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
 import com.example.administrator.Fanpul.model.bmob.OneObjectCallBack;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Order;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Queue;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
+
 import com.example.administrator.Fanpul.ui.RestaurantService;
 import com.example.administrator.Fanpul.ui.activity.OrderMenuActivity;
 import com.example.administrator.Fanpul.ui.activity.OrderedMenuActivity;
@@ -27,13 +33,16 @@ import com.example.administrator.Fanpul.ui.activity.SeeOrderDetailActivity;
 import com.example.administrator.Fanpul.ui.fragment.QueuingFragment;
 import com.example.administrator.Fanpul.utils.GlideUtil;
 
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -84,6 +93,7 @@ public class OrdersListAdapter {
             this.context = context;
             this.list.addAll(lists);
         }
+
 
 
         @Override
@@ -180,12 +190,14 @@ public class OrdersListAdapter {
         //更新视图
         public void bindHolder(final Queue queue) {
 
+
             shop_name_inline.setText(queue.getRestaurantName());
             BmobUtil.queryRestaurantByName(queue.getRestaurantName(), new OneObjectCallBack<Restaurant>() {
                 @Override
                 public void Success(Restaurant result) {
                     new GlideUtil().attach(shopImg).injectImageWithNull(result.getIconfile().getUrl());
                 }
+
 
                 @Override
                 public void Failed() {
@@ -200,6 +212,7 @@ public class OrdersListAdapter {
                         tableInfo.setText("您的桌型为" + queue.getTableSize() + "型，您前面还有" + result + "桌");
                     }
 
+
                     @Override
                     public void Failed() {
 
@@ -208,9 +221,11 @@ public class OrdersListAdapter {
             }else{
                 tableInfo.setText("您已到号,您的桌号是"+queue.getTableSize()+queue.getTableNumber());
                 btn_book.setText("点单");
+
                 ordered_wait_time.setText("请在5分钟内完成订单");
                 ser_item.setVisibility(View.GONE);
                 cancel_order.setVisibility(View.GONE);
+
             }
 
             btn_book.setOnClickListener(new View.OnClickListener() {///
@@ -251,8 +266,10 @@ public class OrdersListAdapter {
             }else{
                 btn_book.setVisibility(View.VISIBLE);
 
+
                 if(!btn_book.getText().toString().equals("点单"))
                 cancel_order.setVisibility(View.VISIBLE);
+
 
                 btn_mybook.setVisibility(View.GONE);
             }

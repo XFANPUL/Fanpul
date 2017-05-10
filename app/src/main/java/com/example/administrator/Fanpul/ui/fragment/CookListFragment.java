@@ -131,13 +131,16 @@ public class CookListFragment extends BaseFragment implements ICookListView {
 
     public static final String TABLESIZE = "com.example.administrator.cookman.ui.fragment.CookListFragment.TABLESIZE";
     public static final String TABLENUM = "com.example.administrator.cookman.ui.fragment.CookListFragment.TABLENUM";
+
     public static final String QUEUE = "com.example.administrator.cookman.ui.fragment.CookListFragment.QUEUE";
+
 
     @OnClick(R.id.fab_app)
     public void onClickBuy() {
         if (!buyMap.isEmpty()) {
             MenuOrderFragment main = (MenuOrderFragment) getFragmentManager().findFragmentById(R.id.fragment_main_content);
             Intent intent = new Intent(getActivity(), ShoppingCartActivity.class);
+
             if(main.getQueue()==null) {
                 intent.putExtra(restaurantNameIntent, main.getRestaurantName());
                 intent.putExtra(TABLESIZE, main.getTableSize());
@@ -145,6 +148,7 @@ public class CookListFragment extends BaseFragment implements ICookListView {
             }else{
                 intent.putExtra(QUEUE,main.getQueue());
             }
+
             startActivity(intent);
         } else {
             Toast.makeText(getActivity(), "购物车不能为空", Toast.LENGTH_SHORT).show();
