@@ -65,22 +65,6 @@ public class OrderMenuActivity extends BaseSwipeBackActivity {
         MainPageViewPageAdapter.buyMap.clear();
        super.onBackPressed();
 
-        /*if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
-        }
-
-        this.doubleBackToExitPressedOnce = true;
-        ToastUtil.showToast(this, R.string.toast_msg_oncemore_exit);
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce = false;
-            }
-        }, 2000);*/
-
     }
 
     @Override
@@ -105,10 +89,5 @@ public class OrderMenuActivity extends BaseSwipeBackActivity {
         Intent intent = new Intent(context, OrderMenuActivity.class);
         context.startActivity(intent);
     }
-    public static final String SHOP_NAME = "com.example.administrator.cookman.ui.activity.OrderActivity.Shope_Name";
-    public static Intent getIntent(Context context,String name){
-        Intent intent = new Intent(context,OrderMenuActivity.class);
-        intent.putExtra(SHOP_NAME,name);
-        return intent;
-    }
+
 }

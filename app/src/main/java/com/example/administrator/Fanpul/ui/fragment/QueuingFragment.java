@@ -1,40 +1,51 @@
 package com.example.administrator.Fanpul.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ListView;
-
 import com.example.administrator.Fanpul.R;
+import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
+import com.example.administrator.Fanpul.model.bmob.BmobUtil;
+import com.example.administrator.Fanpul.model.entity.bmobEntity.Queue;
 import com.example.administrator.Fanpul.presenter.Presenter;
-import com.example.administrator.Fanpul.ui.adapter.OrdersListAdapter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.example.administrator.Fanpul.ui.RestaurantService;
+import com.example.administrator.Fanpul.ui.adapter.AdapterManager;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
-
 /**
  * Created by Administrator on 2017/4/26 0026.
  */
 
-public class QueuingFragment extends BaseFragment {  //排队中的fragment
-    @Bind(R.id.orders_list)
-    ListView orders_listView;  //订单的通用ListView
-    private List<Map<String, Object>> list ;  //ListView 装数据用的
-    private Map<String,Object> map ;
-    private String mTitle;
+public class QueuingFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,RestaurantService.ServiceCallback{  //排队中的fragment
+    @Bind(R.id.recy_order_view)
+    public RecyclerView orders_recy_View;  //订单的通用ListView
+    @Bind(R.id.id_swipe_ly)
+    SwipeRefreshLayout mSwipeLayout;
+    RecyclerView.Adapter queuingAdapter;
 
-    public String getmTitle() {
-        return mTitle;
+    @Override
+    public void onPause() {
+        if(RestaurantService.getRestaurantService()!=null)
+        RestaurantService.getRestaurantService().resetServiceCallback();
+        super.onPause();
     }
 
-    public void setmTitle(String mTitle) {
-        this.mTitle = mTitle;
+    @Override
+    public void onResume() {
+        if(queuingAdapter!=null)
+            updateUI();
+
+        if(RestaurantService.getRestaurantService()!=null)
+        RestaurantService.getRestaurantService().setServiceCallback(this);
+        super.onResume();
     }
+
     public static QueuingFragment CreateFragment(){
         return  new QueuingFragment();
     }
@@ -50,24 +61,40 @@ public class QueuingFragment extends BaseFragment {  //排队中的fragment
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        list = this.get_orders_inline_data();
-        OrdersListAdapter od_adapter = new OrdersListAdapter(getActivity(), list, mTitle);//新建适配器
-        orders_listView.setAdapter(od_adapter);//绑定适配器
+
+
+        mSwipeLayout.setOnRefreshListener(this);
+        orders_recy_View.setLayoutManager(new LinearLayoutManager(getActivity()));
+        updateUI();
+
     }
-    public List<Map<String, Object>> get_orders_inline_data(){
+    public void updateUI(){
+        BmobUtil.queryQueueByUserName("张三", new BmobQueryCallback<Queue>() {
+            @Override
+            public void Success(List<Queue> bmobObjectList) {
+                queuingAdapter = AdapterManager.getQueuingAdapter(getActivity(), bmobObjectList);//新建适配器
+                orders_recy_View.setAdapter(queuingAdapter);//绑定适配器
+                mSwipeLayout.setRefreshing(false);
+            }
+            @Override
+            public void Failed() {
 
-        String[] names={"红烧狮子头","宫保鸡丁","水煮肉片","嫩牛五方","鱼香肉丝"};
-
-        list = new ArrayList<Map<String, Object>>();
-
-
-        for (int i = 0; i < names.length; i++) {
-            map = new HashMap<String, Object>();
-            map.put("shop_name", names[i]);
-            list.add(map);
-        }
-        return list;
+            }
+        });
     }
 
+    public static void cancel(Context context){
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.cancel(0);
+    }
 
+    @Override
+    public void onRefresh() {
+        updateUI();
+    }
+
+    @Override
+    public void UpdateUI() {
+        updateUI();
+    }
 }

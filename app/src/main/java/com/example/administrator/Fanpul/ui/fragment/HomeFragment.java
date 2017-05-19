@@ -40,6 +40,9 @@ import com.example.administrator.Fanpul.utils.GlideUtil;
 import com.example.administrator.Fanpul.utils.Utils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.uuzuche.lib_zxing.activity.CaptureFragment;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.Bind;
@@ -111,7 +114,6 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
         initImageCycleView();
 		String bql = "select * from Restaurant";
 		BmobUtil.queryBmobObject(bql,this);
-		Log.e("jhd", "onCreateView");
 		return view;
 	}
 

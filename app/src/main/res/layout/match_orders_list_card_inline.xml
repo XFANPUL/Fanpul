@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical">
 
@@ -40,19 +40,9 @@
                 android:text="@string/app_name"
                 android:textColor="@color/personal_textview"
                 android:textSize="@dimen/personal_textview" />
-
-            <TextView
-                android:id="@+id/ordered_inline_desk_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/dip_10"
-                android:text="A30"
-                android:textColor="@color/home_font5"
-                android:textSize="@dimen/personal_texthint" />
-
         </LinearLayout>
 
-        <include layout="@layout/line_view"/>
+        <include layout="@layout/line_view" />
 
         <LinearLayout
             android:id="@+id/goods_lyt"
@@ -60,15 +50,16 @@
             android:layout_height="wrap_content"
             android:background="@drawable/list_bg"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dip_6"
                 android:layout_marginLeft="@dimen/dip_10"
                 android:layout_marginRight="@dimen/dip_10"
                 android:layout_marginTop="@dimen/dip_6"
-                android:layout_marginBottom="@dimen/dip_6"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/ordered_address"
                     android:layout_width="match_parent"
@@ -77,8 +68,8 @@
                     android:drawablePadding="@dimen/dip_11"
                     android:paddingBottom="@dimen/dip_9"
                     android:paddingTop="@dimen/dip_9"
-                    android:textColor="@color/afford_old_price"
                     android:text="北京交通大学东门34号"
+                    android:textColor="@color/afford_old_price"
                     android:textSize="@dimen/size14" />
 
                 <TextView
@@ -87,12 +78,11 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/icon_my_service"
                     android:drawablePadding="@dimen/dip_11"
-                    android:paddingTop="@dimen/dip_9"
                     android:paddingBottom="@dimen/dip_9"
-                    android:textColor="@color/afford_old_price"
+                    android:paddingTop="@dimen/dip_9"
                     android:text="您的桌型为A型，您前面还有23桌"
-                    android:textSize="@dimen/size14"
-                    />
+                    android:textColor="@color/afford_old_price"
+                    android:textSize="@dimen/size14" />
 
 
                 <TextView
@@ -103,8 +93,8 @@
                     android:drawablePadding="@dimen/dip_11"
                     android:paddingBottom="@dimen/dip_9"
                     android:paddingTop="@dimen/dip_9"
-                    android:textColor="@color/afford_old_price"
                     android:text="预计等待时间40分钟"
+                    android:textColor="@color/afford_old_price"
                     android:textSize="@dimen/size14" />
 
                 <TextView
@@ -113,12 +103,11 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/serviceorde_icon_goodsname"
                     android:drawablePadding="@dimen/dip_11"
-                    android:paddingTop="@dimen/dip_9"
                     android:paddingBottom="@dimen/dip_9"
-                    android:textColor="@color/afford_old_price"
+                    android:paddingTop="@dimen/dip_9"
                     android:text="建议您可以在排队时点单，节约做菜时间"
-                    android:textSize="@dimen/size14"
-                    />
+                    android:textColor="@color/afford_old_price"
+                    android:textSize="@dimen/size14" />
 
             </LinearLayout>
 
@@ -144,7 +133,20 @@
                 android:text="@string/order_book"
                 android:textColor="@drawable/btn_order_clicktext"
                 android:textSize="@dimen/personal_texthint" />
-
+            <Button
+                android:id="@+id/cancel_order"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_marginRight="@dimen/dip_10"
+                android:background="@drawable/btn_order"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/dip_8"
+                android:paddingLeft="@dimen/dip_26"
+                android:paddingRight="@dimen/dip_26"
+                android:paddingTop="@dimen/dip_8"
+                android:text="取消排队"
+                android:textColor="@drawable/btn_order_clicktext"
+                android:textSize="@dimen/personal_texthint" />
             <Button
                 android:id="@+id/btn_mybook"
                 android:layout_width="wrap_content"
@@ -152,14 +154,19 @@
                 android:layout_marginRight="@dimen/dip_10"
                 android:background="@drawable/btn_order"
                 android:gravity="center_vertical"
+                android:layout_gravity="right"
                 android:paddingBottom="@dimen/dip_8"
                 android:paddingLeft="@dimen/dip_15"
                 android:paddingRight="@dimen/dip_15"
                 android:paddingTop="@dimen/dip_8"
                 android:text="@string/order_mybook"
                 android:textColor="@drawable/btn_order_clicktext"
-                android:textSize="@dimen/personal_texthint" />
-
+                android:textSize="@dimen/personal_texthint"
+                android:visibility="gone"
+                />
         </LinearLayout>
+
+
+
     </LinearLayout>
 </LinearLayout>

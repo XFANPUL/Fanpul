@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?><!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.panpul.test_tab.EvaluateOrderActivity">-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    tools:context="com.example.administrator.Fanpul.ui.activity.EvaluateOrderActivity">
+
+
+    <LinearLayout
+        android:id="@+id/mainLlyout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topRlyt"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top_title"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/eva_shop_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dip_16"
+                android:paddingBottom="@dimen/dip_10"
+                android:src="@drawable/icon_logo"
+                android:textColor="#555555"
+                android:textSize="@dimen/size14" />
+
+            <TextView
+                android:id="@+id/eva_shop_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="必胜客"
+                android:textColor="#ffaaa9a9"
+                android:textSize="@dimen/size14" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/size20"
+            android:paddingRight="@dimen/size20">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/mainLlyout"
+                android:layout_marginTop="10dp"
+                android:background="@color/afford_goodstitle" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dip_25"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dip_10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:text="商品："
+                    android:textColor="@color/personal_textview"
+                    android:textSize="@dimen/size14" />
+
+                <RatingBar
+                    android:id="@+id/ratBarMenu"
+                    style="@style/evaRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:numStars="5"
+                    android:rating="5"
+                    android:stepSize="0.5" />
+
+                <TextView
+                    android:id="@+id/ratBarMenuScore"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    android:text="5.0"
+                    android:textColor="@color/detail_newprice"
+                    android:textSize="@dimen/size14" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dip_25"
+                android:layout_marginTop="@dimen/dip_10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:text="上菜速度："
+                    android:textColor="@color/personal_textview"
+                    android:textSize="@dimen/size14" />
+
+                <RatingBar
+                    android:id="@+id/ratBarSpeed"
+                    style="@style/evaRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:numStars="5"
+                    android:rating="5"
+                    android:stepSize="0.5" />
+
+                <TextView
+                    android:id="@+id/ratBarSpeedScore"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    android:text="5.0"
+                    android:textColor="@color/detail_newprice"
+                    android:textSize="@dimen/size14" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dip_25"
+                android:layout_marginTop="@dimen/dip_10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:text="服务质量："
+                    android:textColor="@color/personal_textview"
+                    android:textSize="@dimen/size14" />
+
+                <RatingBar
+                    android:id="@+id/ratBarServer"
+                    style="@style/evaRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:numStars="5"
+                    android:rating="5"
+                    android:stepSize="0.5" />
+
+                <TextView
+                    android:id="@+id/ratBarServerScore"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    android:text="5.0"
+                    android:textColor="@color/detail_newprice"
+                    android:textSize="@dimen/size14" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/mainRlyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mainLlyout"
+            android:layout_marginBottom="@dimen/dip_16"
+            android:layout_marginTop="@dimen/dip_16"
+            android:paddingLeft="@dimen/size20"
+            android:paddingRight="@dimen/size20">
+
+            <EditText
+                android:id="@+id/et_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext"
+                android:gravity="top"
+                android:hint="请输入评价"
+                android:maxLength="100"
+                android:maxLines="3"
+                android:minLines="3"
+                android:paddingLeft="@dimen/dip_16"
+                android:paddingRight="@dimen/dip_16"
+                android:paddingTop="@dimen/dip_5"
+                android:paddingBottom="@dimen/dip_16"
+                android:textColor="@color/personal_textview"
+                android:textSize="@dimen/size14" />
+
+            <TextView
+                android:id="@+id/edit_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/et_feedback"
+                android:layout_alignRight="@id/et_feedback"
+                android:layout_marginBottom="@dimen/dip_3"
+                android:layout_marginRight="@dimen/dip_3"
+                android:background="#EFEFEF"
+                android:lines="1"
+                android:text="0/100"
+                android:textColor="@color/personal_textview"
+                android:textSize="@dimen/size14" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/list_eva_menu"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:dividerHeight="1dp"
+            android:headerDividersEnabled="false"
+            android:paddingLeft="@dimen/size20"
+            android:paddingRight="@dimen/size20">
+
+        </ListView>
+
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/tvbtn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/mainLlyout"
+            android:layout_marginTop="@dimen/dip_10"
+            android:layout_alignLeft="@+id/mainLlyout"
+            android:layout_alignRight="@+id/mainLlyout"
+            android:background="@drawable/btn_feedsug"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size14" />
+
+</RelativeLayout>
+
+
+
+

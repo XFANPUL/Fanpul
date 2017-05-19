@@ -10,15 +10,22 @@
         android:layout_below="@+id/rlyt_view"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/linearlayout_1"
             android:background="@drawable/affordshop_detail_border"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:paddingBottom="@dimen/dip_10"
             android:paddingLeft="@dimen/dip_16"
             android:paddingRight="@dimen/dip_16"
             android:paddingTop="@dimen/dip_16">
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
             <TextView
                 android:id="@+id/shopinner_shopname"
@@ -55,8 +62,21 @@
                     android:textColor="@color/personal_hinttext"
                     android:textSize="@dimen/size12" />
             </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/shop_collect"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="left"
+                    android:paddingRight="@dimen/dip_16"
+                    android:src="@drawable/uncollect" >
+            </ImageView>
+
+
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -159,6 +179,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/topRlyt"
+            android:layout_marginTop="@dimen/dip_10"
+            android:background="@drawable/affordshop_detail_border"
             android:orientation="vertical"
             android:padding="@dimen/dip_16">
 
@@ -188,7 +210,8 @@
                     android:layout_marginTop="@dimen/dip_10"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:stepSize="1" />
+                    android:rating="4.5"
+                    android:stepSize="0.5" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -218,7 +241,8 @@
                     android:layout_marginTop="@dimen/dip_10"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:stepSize="4" />
+                    android:rating="4.5"
+                    android:stepSize="0.5" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -248,7 +272,8 @@
                     android:layout_marginTop="@dimen/dip_10"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:stepSize="1" />
+                    android:rating="4.5"
+                    android:stepSize="0.5" />
             </RelativeLayout>
 
         </LinearLayout>

@@ -47,7 +47,7 @@ public class CookListPresenter extends Presenter{
 
             @Override
             public void Failed() {
-                Toast.makeText(context,"查询失败",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context,"查询失败",Toast.LENGTH_SHORT).show();
                 Log.i("Failed","查询菜品失败");
             }
         });
