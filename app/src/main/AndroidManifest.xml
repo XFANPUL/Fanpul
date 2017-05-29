@@ -114,9 +114,11 @@
             android:name=".ui.activity.EvaluateOrderActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
 
+
         <activity android:name=".ui.activity.MyEvaActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             ></activity>
+
     </application>
 
 

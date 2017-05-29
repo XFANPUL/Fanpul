@@ -41,6 +41,7 @@ import com.example.administrator.Fanpul.utils.Utils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
