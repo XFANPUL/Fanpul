@@ -4,6 +4,7 @@
     <color name="colorPrimary">#de9816</color>
     <color name="colorPrimaryDark">#de9816</color>
     <color name="colorAccent">#de9816</color>
+    <color name="allorder_price">#da411d</color>
 
     <color name="transparent">#00000000</color>
     <color name="white">#ffffffff</color>

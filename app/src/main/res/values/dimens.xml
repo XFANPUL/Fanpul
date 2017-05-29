@@ -10,6 +10,7 @@
     <dimen name="dip_10">10dip</dimen>
     <dimen name="dip_8">8dip</dimen>
     <dimen name="size12">12sp</dimen>
+    <dimen name="size10">10sp</dimen>
     <dimen name="dip_12">12dip</dimen>
     <dimen name="size16">16sp</dimen>
     <dimen name="size20">20sp</dimen>
@@ -21,6 +22,7 @@
     <dimen name="dip_67">67dip</dimen>
     <dimen name="dip_65">65dip</dimen>
     <dimen name="dip_50">50dip</dimen>
+    <dimen name="dip_40">40dip</dimen>
     <dimen name="dip_6">6dip</dimen>
     <dimen name="personal_texthint">12sp</dimen>
     <dimen name="dip_15">15dip</dimen>

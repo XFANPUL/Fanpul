@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.administrator.Fanpul"
-   >
-
+    package="com.example.administrator.Fanpul">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -24,36 +22,33 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
-
     <application
-        android:name="com.example.administrator.Fanpul.CookManApplication"
-        tools:replace="android:name"
+        android:name=".CookManApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icon_app_cookman"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:name">
         <activity
-            android:name="com.example.administrator.Fanpul.ui.activity.OrderMenuActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:name=".ui.activity.OrderMenuActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" >
-
-        </service>
+            android:process=":remote"></service>
 
         <!-- meta-data需要写在application中 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="gTXcuaFqzuD6wi5aeoY79FGytzbmfZD2" />
 
-
         <activity
-            android:name="com.example.administrator.Fanpul.ui.activity.SplashActivity"
-            android:theme="@style/SplashTheme"
-            android:configChanges="orientation|keyboardHidden|screenSize"  >
+            android:name=".ui.activity.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,64 +56,70 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.administrator.Fanpul.ui.activity.CookChannelActivity"
+            android:name=".ui.activity.CookChannelActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.administrator.Fanpul.ui.activity.CookCategoryActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:name=".ui.activity.CookCategoryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.administrator.Fanpul.ui.activity.CookDetailActivity"
+            android:name=".ui.activity.CookDetailActivity"
             android:theme="@style/AppThemeFullImage" />
         <activity
-            android:name="com.example.administrator.Fanpul.ui.activity.CookSearchResultActivity"
+            android:name=".ui.activity.CookSearchResultActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.administrator.Fanpul.ui.activity.CookListActivity"
+            android:name=".ui.activity.CookListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.administrator.Fanpul.ui.activity.CookCollectionListActivity"
+            android:name=".ui.activity.CookCollectionListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.ShoppingCartActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".ui.activity.MadeCodeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".ui.activity.OrderFormActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".ui.activity.MenuInDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.activity.SegmentTabActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".ui.activity.OrdersTabActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".ui.activity.SeeOrderDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".ui.activity.ZxingActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.OrderedMenuActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
 
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.ShoppingCartActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+        <service android:name=".ui.RestaurantService" />
 
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.MainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+        <activity
+            android:name=".ui.activity.EvaluateOrderActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
 
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.MadeCodeActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
 
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.OrderFormActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
-
-        <activity android:name="com.example.administrator.Fanpul.ui.activity.MenuInDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"  >
-        </activity>
-
-        <activity android:name=".ui.activity.SegmentTabActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
-
-        <activity android:name=".ui.activity.OrdersTabActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
-
-        <activity android:name=".ui.activity.SeeOrderDetailActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
-
-        <activity android:name=".ui.activity.ZxingActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
-
-        <activity android:name=".ui.activity.OrderedMenuActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
-        <service android:name=".ui.RestaurantService"></service>
-
-        <activity android:name=".ui.activity.EvaluateOrderActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
-
+        <activity android:name=".ui.activity.MyEvaActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            ></activity>
 
     </application>
 
-    </manifest>
+
+</manifest>
