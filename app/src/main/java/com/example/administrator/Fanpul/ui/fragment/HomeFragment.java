@@ -1,8 +1,8 @@
 package com.example.administrator.Fanpul.ui.fragment;
+import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -20,32 +20,32 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.administrator.Fanpul.R;
+import com.example.administrator.Fanpul.constants.MyConstant;
 import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
 import com.example.administrator.Fanpul.model.bmob.BmobUtil;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
-import com.example.administrator.Fanpul.ui.activity.OrderMenuActivity;
 import com.example.administrator.Fanpul.ui.activity.SegmentTabActivity;
 import com.example.administrator.Fanpul.ui.adapter.BaseRecyclerAdapter;
 import com.example.administrator.Fanpul.ui.adapter.CommonHolder;
 import com.example.administrator.Fanpul.ui.view.ImageCycleView;
 import com.example.administrator.Fanpul.ui.view.WrapContentHeightViewPager;
-import com.example.administrator.Fanpul.constants.MyConstant;
 import com.example.administrator.Fanpul.utils.GlideUtil;
 import com.example.administrator.Fanpul.utils.Utils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.Bind;
 import cn.bmob.v3.datatype.BmobFile;
-import android.app.AlertDialog.Builder;
-import android.widget.Toast;
 public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaurant> {
 	@ViewInject(R.id.index_home_viewpager)
 	private WrapContentHeightViewPager viewPager;
@@ -111,7 +111,6 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
         initImageCycleView();
 		String bql = "select * from Restaurant";
 		BmobUtil.queryBmobObject(bql,this);
-		Log.e("jhd", "onCreateView");
 		return view;
 	}
 

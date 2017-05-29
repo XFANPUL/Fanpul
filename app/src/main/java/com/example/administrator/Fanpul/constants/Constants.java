@@ -6,7 +6,7 @@ package com.example.administrator.Fanpul.constants;
 
 public final class Constants {
     //Tag
-    public final static String Common_Tag = "CookMan";
+    public final static String Common_Tag = "Fanpul";
 
     public final static String Key_MobAPI_Cook = "1b5cf0085e135";
 
