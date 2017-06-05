@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/dp_30"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -44,7 +44,7 @@
             android:id="@+id/shop_suc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:layout_margin="@dimen/dp_2"
             android:scaleType="centerCrop"
             android:src="@drawable/shopcar_icon_paysuccess" />
 
@@ -53,10 +53,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:drawablePadding="16dip"
-            android:text="支付成功"
-            android:textColor="#555555"
-            android:textSize="30sp" />
+            android:drawablePadding="@dimen/dip_16"
+            android:text="@string/pay_success"
+            android:textColor="@color/confirmorder_textview"
+            android:textSize="@dimen/size30" />
 
 
     </LinearLayout>
@@ -67,23 +67,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/complete"
-        android:layout_marginTop="100dip"
+        android:layout_marginTop="@dimen/dip_100"
         android:gravity="center"
         android:orientation="horizontal">
 
 
         <Button
             android:id="@+id/btnOrderEvaluate"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/dp_100"
             android:layout_height="35dp"
-            android:layout_marginLeft="10dip"
+            android:layout_marginLeft="@dimen/dip_10"
             android:gravity="center"
-            android:paddingBottom="8dip"
-            android:paddingLeft="20dip"
-            android:paddingRight="20dip"
-            android:paddingTop="8dip"
+            android:paddingBottom="@dimen/dip_8"
+            android:paddingLeft="@dimen/dip_20"
+            android:paddingRight="@dimen/dip_20"
+            android:paddingTop="@dimen/dip_8"
             android:background="@drawable/btn_order"
-            android:text="去评价"
+            android:text="@string/order_toeva"
             android:textColor="@drawable/btn_order_clicktext"
             android:textSize="@dimen/personal_texthint" />
 
@@ -94,23 +94,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layoutComplete"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="@dimen/dip_5"
         android:gravity="center"
         android:orientation="horizontal">
 
 
         <Button
             android:id="@+id/all_order_but"
-            android:layout_width="100dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="10dip"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginLeft="@dimen/dip_10"
             android:gravity="center"
-            android:paddingBottom="8dip"
-            android:paddingLeft="20dip"
-            android:paddingRight="20dip"
-            android:paddingTop="8dip"
+            android:paddingBottom="@dimen/dip_8"
+            android:paddingLeft="@dimen/dip_20"
+            android:paddingRight="@dimen/dip_20"
+            android:paddingTop="@dimen/dip_8"
             android:background="@drawable/btn_order"
-            android:text="查看订单"
+            android:text="@string/order_see"
             android:textColor="@drawable/btn_order_clicktext"
             android:textSize="@dimen/personal_texthint" />
 
@@ -121,21 +121,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/all_order_delete_layout"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="@dimen/dip_5"
         android:gravity="center"
         android:orientation="horizontal">
 
 
         <Button
             android:id="@+id/btorder_complete_return"
-            android:layout_width="100dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="10dip"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginLeft="@dimen/dip_10"
             android:gravity="center"
-            android:paddingBottom="8dip"
-            android:paddingLeft="20dip"
-            android:paddingRight="20dip"
-            android:paddingTop="8dip"
+            android:paddingBottom="@dimen/dip_8"
+            android:paddingLeft="@dimen/dip_20"
+            android:paddingRight="@dimen/dip_20"
+            android:paddingTop="@dimen/dip_8"
             android:background="@drawable/btn_order"
             android:text="返回主页"
             android:textColor="@drawable/btn_order_clicktext"

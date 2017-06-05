@@ -11,9 +11,9 @@
         android:layout_height="60dp"
         android:gravity="center"
         android:minHeight="60dp"
-        android:padding="15dp"
+        android:padding="@dimen/dp_15"
         android:text="@string/delete"
-        android:textSize="18sp"
+        android:textSize="@dimen/size18"
         android:background="@drawable/selector_view_bg_click_white_gray"
         android:textColor="@drawable/selector_view_text_color_gray_colorprimary" />
 
@@ -25,10 +25,10 @@
     <Button
         android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:background="@drawable/selector_view_bg_click_white_gray"
         android:text="@string/cancel"
-        android:textSize="18sp"
+        android:textSize="@dimen/size18"
         android:textColor="@drawable/selector_view_text_color_colorprimary_yellow" />
 
 </LinearLayout>

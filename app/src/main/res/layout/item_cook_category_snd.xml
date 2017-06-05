@@ -11,16 +11,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
         android:background="@drawable/selector_tagview_cook_search_history"
         android:textColor="@drawable/selector_text_select_black_white"
-        android:minHeight="24dp"
+        android:minHeight="@dimen/dp_24"
         android:gravity="center"
         android:text="tag"
-        android:textSize="12sp">
+        android:textSize="@dimen/size12">
     </Button>
 
     <Button
@@ -28,16 +28,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
         android:background="@drawable/selector_tagview_cook_search_history"
         android:textColor="@drawable/selector_text_select_black_white"
-        android:minHeight="24dp"
+        android:minHeight="@dimen/dp_24"
         android:gravity="center"
         android:text="tag"
-        android:textSize="12sp">
+        android:textSize="@dimen/size12">
     </Button>
 
     <Button
@@ -45,16 +45,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
         android:background="@drawable/selector_tagview_cook_search_history"
         android:textColor="@drawable/selector_text_select_black_white"
-        android:minHeight="24dp"
+        android:minHeight="@dimen/dp_24"
         android:gravity="center"
         android:text="tag"
-        android:textSize="12sp">
+        android:textSize="@dimen/size12">
     </Button>
 
 </LinearLayout>

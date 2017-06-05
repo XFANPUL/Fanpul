@@ -26,6 +26,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     ViewGroup rootView;
     public final static int TYPE_HEAD = 0;
     public static final int TYPE_CONTENT = 1;
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int position) {
         rootView = parent;
@@ -34,10 +35,10 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         if (type == TYPE_HEAD) {
             return headHolder;
         } else {
-
             return setViewHolder(parent);
         }
     }
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 //        runEnterAnimation(holder.itemView, position);
@@ -53,9 +54,11 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         }
         ((CommonHolder) holder).setOnNotifyChangeListener(this);
     }
+
     public ViewGroup getRootView() {
         return rootView;
     }
+
     @Override
     public int getItemCount() {
         if (enableHead) {
@@ -63,6 +66,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         }
         return dataList.size();
     }
+
     @Override
     public int getItemViewType(int position) {
         if (enableHead) {
@@ -75,9 +79,11 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
             return TYPE_CONTENT;
         }
     }
+
     private int lastAnimatedPosition = -1;
     protected boolean animationsLocked = false;
     private boolean delayEnterAnimation = true;
+
     private void runEnterAnimation(View view, int position) {
         if (animationsLocked) return;
         if (position > lastAnimatedPosition) {
@@ -97,35 +103,24 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
                     }).start();
         }
     }
+
     @Override
     public void onNotify() {
         //提供给CommonHolder方便刷新视图
         notifyDataSetChanged();
     }
+
     public void setDataList(List<T> datas) {
         dataList.clear();
-
-        if (null != datas) {
-
-            if(datas.size()>0 &&datas.get(0) instanceof CookDetail){
-                for(int i=0;i<datas.size();i++){
-                   CookDetail cookDetail = (CookDetail) datas.get(i);
-                   if(cookDetail.getRecipe() != null&& cookDetail.getRecipe().getImg() != null && (!TextUtils.isEmpty(cookDetail.getRecipe().getImg()))){
-                       dataList.add(datas.get(i));
-                   }
-                }
-            }
-            else{
-                dataList.addAll(datas);
-            }
-           // dataList.addAll(datas);
-        }
+        dataList.addAll(datas);
         notifyDataSetChanged();
     }
+
     public void clearDatas() {
         dataList.clear();
         notifyDataSetChanged();
     }
+
     /**
      * 添加数据到前面
      */
@@ -134,24 +129,16 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         dataList.addAll(0, datas);
         notifyDataSetChanged();
     }
+
     /**
      * 添加数据到尾部
      */
     public void addItems(List<T> datas) {
         if (null == datas) return;
-        if(datas.size()>0 &&datas.get(0) instanceof CookDetail){
-            for(int i=0;i<datas.size();i++){
-                CookDetail cookDetail = (CookDetail) datas.get(i);
-                if(cookDetail.getRecipe() != null&& cookDetail.getRecipe().getImg() != null && (!TextUtils.isEmpty(cookDetail.getRecipe().getImg()))){
-                    dataList.add(datas.get(i));
-                }
-            }
-        }
-        else{
-            dataList.addAll(datas);
-        }
+        dataList.addAll(datas);
         notifyDataSetChanged();
     }
+
     /**
      * 添加单条数据
      */
@@ -160,6 +147,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         dataList.add(data);
         notifyDataSetChanged();
     }
+
     /**
      * 删除单条数据
      */
@@ -168,6 +156,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         Log.d("deletItem: ", dataList.remove(data) + "");
         notifyDataSetChanged();
     }
+
     /**
      * 设置是否显示head
      *
@@ -176,18 +165,22 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     public void setEnableHead(boolean ifEnable) {
         enableHead = ifEnable;
     }
+
     public void setHeadHolder(CommonHolder headHolder1) {
         enableHead = true;
         headHolder = headHolder1;
     }
+
     public void setHeadHolder(View itemView) {
         enableHead = true;
         headHolder = new HeadHolder(itemView);
         notifyItemInserted(0);
     }
+
     public CommonHolder getHeadHolder() {
         return headHolder;
     }
+
     /**
      * 子类重写实现自定义ViewHolder
      */
@@ -199,7 +192,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         }
 
         public HeadHolder(Context context, ViewGroup root, int layoutRes) {
-            super(context,root,layoutRes);
+            super(context, root, layoutRes);
         }
 
         @Override

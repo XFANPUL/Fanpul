@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.ui.activity.MadeCodeActivity;
 import com.example.administrator.Fanpul.ui.activity.OrderMenuActivity;
+import com.example.administrator.Fanpul.utils.ToastUtil;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
@@ -61,7 +61,9 @@ public class ZxingFragment extends Fragment {
                     // intent.setData(content_url);
                     // startActivity(intent);
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
-                    Toast.makeText(getActivity(), "解析二维码失败", Toast.LENGTH_LONG).show();
+
+                    ToastUtil.showToast(getActivity(),getString(R.string.toast_msg_fail_QRCode));
+
                 }
             }
         }

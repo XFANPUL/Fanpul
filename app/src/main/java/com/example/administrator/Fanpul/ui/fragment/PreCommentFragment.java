@@ -1,49 +1,49 @@
 package com.example.administrator.Fanpul.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-
 import com.example.administrator.Fanpul.R;
+import com.example.administrator.Fanpul.model.DB.DBQueryCallback;
+import com.example.administrator.Fanpul.model.DB.DBConnection;
+import com.example.administrator.Fanpul.model.entity.bmobEntity.Order;
 import com.example.administrator.Fanpul.presenter.Presenter;
-import com.example.administrator.Fanpul.ui.adapter.OrdersListAdapter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.example.administrator.Fanpul.ui.adapter.AdapterManager;
 import java.util.List;
-import java.util.Map;
-
 import butterknife.Bind;
 
 /**
  * Created by Administrator on 2017/4/26 0026.
  */
 
-public class PreCommentFragment extends BaseFragment { //带评论fragment
-    public String getmTitle() {
-        return mTitle;
+public class PreCommentFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{ //待评论fragment
+    RecyclerView.Adapter adapter;
+    @Bind(R.id.id_swipe_ly)
+    SwipeRefreshLayout mSwipeLayout;
+    @Override
+    public void onResume() {
+
+        if(adapter!=null)
+        updateUI();
+
+        super.onResume();
     }
 
-    public void setmTitle(String mTitle) {
-        this.mTitle = mTitle;
+    public static PreCommentFragment CreateFragment() {
+        return new PreCommentFragment();
     }
-    public static PreCommentFragment CreateFragment(){
-        return  new PreCommentFragment();
-    }
-    @Bind(R.id.orders_list)
 
-    public ListView orders_listView ;
+    @Bind(R.id.recy_order_view)
+    public RecyclerView orders_listView;
 
-    private List<Map<String, Object>> list ;  //ListView 装数据用的
-    private Map<String,Object> map ;
-    private String mTitle;
     @Override
     protected Presenter getPresenter() {
         return null;
     }
+
     @Override
     protected int getLayoutId() {
         return R.layout.orders_list_card;
@@ -51,22 +51,29 @@ public class PreCommentFragment extends BaseFragment { //带评论fragment
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        list = this.get_orders_to_eva_data();
-        OrdersListAdapter od_adapter = new OrdersListAdapter(getActivity(), list, mTitle);//新建适配器
-        orders_listView.setAdapter(od_adapter);//绑定适配器
+        mSwipeLayout.setOnRefreshListener(this);
+        orders_listView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        updateUI();
     }
-    public List<Map<String, Object>> get_orders_to_eva_data(){
+    public void updateUI(){
+        DBConnection.queryOrderByUserName("张三",0, new DBQueryCallback<Order>() {
+            @Override
+            public void Success(List<Order> bmobObjectList) {
+                adapter = AdapterManager.getPreCommentAdapter(getActivity(), bmobObjectList);//新建适配器
+                orders_listView.setAdapter(adapter);//绑定适配器
+                mSwipeLayout.setRefreshing(false);
+            }
 
-        String[] names={"红烧狮子头","宫保鸡丁","水煮肉片","嫩牛五方","鱼香肉丝"};
+            @Override
+            public void Failed() {
 
-        list = new ArrayList<Map<String, Object>>();
+            }
+        });
 
+    }
 
-        for (int i = 0; i < names.length; i++) {
-            map = new HashMap<String, Object>();
-            map.put("shop_name", names[i]);
-            list.add(map);
-        }
-        return list;
+    @Override
+    public void onRefresh() {
+        updateUI();
     }
 }

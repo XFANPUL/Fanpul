@@ -7,10 +7,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -21,21 +23,21 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:navigationIcon="@null"
-                    android:background="?attr/colorPrimary">
+                    android:background="?attr/colorPrimary"
+                    app:navigationIcon="@null">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:text="小厨小菜"
                             android:id="@+id/shop_cart_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
+                            android:text="@string/xiaochuxiaocai"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/fragment_main_text_size"/>
+                            android:textSize="@dimen/fragment_main_text_size" />
 
                     </RelativeLayout>
 
@@ -43,10 +45,10 @@
 
             </android.support.design.widget.AppBarLayout>
 
-           <FrameLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:id="@+id/shopcart_container"></FrameLayout>
+            <FrameLayout
+                android:id="@+id/shopcart_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></FrameLayout>
             <!--<FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -56,94 +58,94 @@
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_5"
                 android:background="@mipmap/bg_menu_edit"
-                android:hint="给卖家留言（口味偏好）"
-                android:textSize="15sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:singleLine="true" />
+                android:hint="@string/liuyan"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10"
+                android:singleLine="true"
+                android:textSize="@dimen/size15" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingTop="25dp">
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_25">
 
                 <TextView
                     android:id="@+id/total_money_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:text="金额：￥8997.0"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:text="@string/money"
                     android:textColor="@color/gray"
-                    android:textSize="17sp" />
+                    android:textSize="@dimen/size17" />
 
                 <TextView
+                    android:id="@+id/textview_total_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="18dp"
-                    android:text="共2件商品"
-                    android:id="@+id/textview_total_item"
-                    android:textColor="@color/gray"
                     android:layout_alignBaseline="@+id/total_money_item"
                     android:layout_alignBottom="@+id/total_money_item"
+                    android:layout_marginEnd="@dimen/dp_18"
+                    android:layout_marginRight="@dimen/dp_18"
                     android:layout_toStartOf="@+id/total_money_item"
-                    android:layout_marginEnd="18dp" />
+                    android:text="@string/number"
+                    android:textColor="@color/gray" />
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="@dimen/dp_3"
                 android:background="@color/black_alpha_light" />
 
             <LinearLayout
                 android:id="@+id/linear_pay_ways"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_50"
                 android:background="@color/white"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:text="支付方式"
                     android:id="@+id/pay_ways"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:text="@string/pay_way"
                     android:textColor="@color/gray" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="2"
-                    android:text="支付方式不能为空"
                     android:id="@+id/pay_ways_hint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_weight="2"
+                    android:text="@string/pay_way_cannot_empty"
                     android:textColor="@color/red"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
 
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:src="@mipmap/arrow_expend_right" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="@dimen/dp_3"
                 android:background="@color/black_alpha_light" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_50"
                 android:background="@color/white"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -151,53 +153,53 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_weight="1"
-                    android:text="选择代金券"
+                    android:text="@string/daijinquan"
                     android:textColor="@color/gray" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:src="@mipmap/arrow_expend_right" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="@dimen/dp_3"
                 android:background="@color/black_alpha_light" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginBottom="@dimen/dp_50"
                 android:background="@color/white"
                 android:gravity="center"
-                android:layout_marginBottom="50dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:layout_weight="1"
-                    android:text="匿名购买"
+                    android:text="@string/niming"
                     android:textColor="@color/gray" />
 
                 <CheckBox
+                    android:id="@+id/shop_cart_checkbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:id="@+id/shop_cart_checkbox"/>
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:gravity="center_vertical">
@@ -207,26 +209,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp_10"
             android:background="@color/red"
-            android:paddingBottom="10dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingTop="10dp"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingRight="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_10"
             android:text="确 认"
             android:textColor="@color/white"
-            android:textSize="17sp" />
+            android:textSize="@dimen/size17" />
 
         <TextView
+            android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/tv_buy_ok"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="@dimen/dp_15"
             android:layout_toLeftOf="@+id/tv_buy_ok"
-            android:id="@+id/total"
             android:text="合计：￥8997.0"
-            android:textColor="@color/red"
-            />
+            android:textColor="@color/red" />
     </RelativeLayout>
 
 </RelativeLayout>

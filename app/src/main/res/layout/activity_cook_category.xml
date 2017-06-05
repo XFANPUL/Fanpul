@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:layout_gravity="center"
-                android:textSize="20sp"
+                android:textSize="@dimen/title_text_size"
                 android:textColor="@color/white"
                 />
 

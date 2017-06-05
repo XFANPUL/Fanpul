@@ -22,7 +22,17 @@ public class Restaurant extends BmobObject {
     private List<Integer> bigTableLeft;//剩余的大桌数量,存储的是桌号，通过随机生成数字i（<size),取得桌号
     private List<Integer> middleTableLeft;//存储的是桌号
     private List<Integer> smallTableLeft;//存储的是桌号
+
+    public Integer getAvgTime() {
+        return avgTime;
+    }
+
+    public void setAvgTime(Integer avgTime) {
+        this.avgTime = avgTime;
+    }
+
     private List<String> favourable;//优惠信息
+    private Integer avgTime;//平均等待时间
 
     public List<Integer> getBigTableLeft() {
         return bigTableLeft;

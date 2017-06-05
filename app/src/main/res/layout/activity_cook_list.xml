@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="5dp">
+        app:elevation="@dimen/dp_5">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:layout_gravity="center"
-                android:textSize="20sp"
+                android:textSize="@dimen/size20"
                 android:textColor="@color/white"
                 />
 

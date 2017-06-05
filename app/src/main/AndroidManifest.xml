@@ -106,6 +106,35 @@
 
         <activity android:name=".ui.activity.SeeOrderDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.ZxingActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+        <activity android:name=".ui.activity.OrderedMenuActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+        <service android:name=".ui.RestaurantService"></service>
+
+        <activity android:name=".ui.activity.EvaluateOrderActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  ></activity>
+
+      <activity android:name=".ui.activity.MyCollectionMenuActivity"
+          android:configChanges="orientation|keyboardHidden|screenSize"></activity>
+
+        <activity android:name=".ui.activity.CollectionRestaurantActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
+
+        <activity android:name=".ui.activity.MyEvaActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
+        <activity
+            android:name="com.zaaach.citypicker.CityPickerActivity"
+            android:theme="@style/CityPicker.NoActionBar"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="950a97bab8535cf0ba7b6f93107a8edc"/>
+
     </application>
 
     </manifest>

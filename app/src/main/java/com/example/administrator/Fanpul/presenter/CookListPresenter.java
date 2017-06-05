@@ -2,13 +2,12 @@ package com.example.administrator.Fanpul.presenter;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.administrator.Fanpul.IView.ICookListView;
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.constants.Constants;
-import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
-import com.example.administrator.Fanpul.model.bmob.BmobUtil;
+import com.example.administrator.Fanpul.model.DB.DBQueryCallback;
+import com.example.administrator.Fanpul.model.DB.DBConnection;
 import com.example.administrator.Fanpul.model.entity.CookEntity.subscriberEntity.SearchCookMenuSubscriberResultInfo;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Menu;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.MenuCategory;
@@ -39,7 +38,7 @@ public class CookListPresenter extends Presenter{
     }
     public void updateRefreshCookMenuCategory(MenuCategory menuCategory){
         curPage = 1;
-        BmobUtil.queryMenuByCategory(menuCategory, new BmobQueryCallback<Menu>() {
+        DBConnection.queryMenuByCategory(menuCategory, new DBQueryCallback<Menu>() {
             @Override
             public void Success(List<Menu> bmobObjectList) {
                 iCookListView.onMenuListUpdateRefreshSuccess(bmobObjectList);
@@ -47,14 +46,14 @@ public class CookListPresenter extends Presenter{
 
             @Override
             public void Failed() {
-                Toast.makeText(context,"查询失败",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context,"查询失败",Toast.LENGTH_SHORT).show();
                 Log.i("Failed","查询菜品失败");
             }
         });
     }
 
     public void loadMoreMenuByCategory(MenuCategory menuCategory){
-        BmobUtil.queryMenuByCategory(menuCategory, new BmobQueryCallback() {
+        DBConnection.queryMenuByCategory(menuCategory, new DBQueryCallback() {
             @Override
             public void Success(List bmobObjectList) {
 

@@ -8,9 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.administrator.Fanpul.R;
+import com.example.administrator.Fanpul.model.entity.bmobEntity.Order;
+import com.example.administrator.Fanpul.presenter.Presenter;
 import com.example.administrator.Fanpul.ui.fragment.FragmentManager;
 import com.example.administrator.Fanpul.utils.ViewFindUtils;
 import com.flyco.tablayout.SegmentTabLayout;
@@ -18,33 +21,49 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 
 import java.util.ArrayList;
 
-public class OrdersTabActivity extends AppCompatActivity {
+import butterknife.Bind;
+
+public class OrdersTabActivity extends BaseSwipeBackActivity {
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private String[] mTitles = {"排队中", "待评论", "历史的"};
-    private View mDecorView;
-    private SegmentTabLayout mOrders_tab;
+    @Bind(R.id.orders_tab)
+    public SegmentTabLayout mOrders_tab;
+    private int startTab;
+    public static final String START = "com.example.administrator.Fanpul.ui.activity.OrdersTabActivity.START";
+    @Override
+    protected Presenter getPresenter() {
+        return null;
+    }
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_orders_tab;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orders_tab);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //tab
+    protected void init(Bundle savedInstanceState) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle("饭谱");
         for (String title : mTitles) {
             mFragments.add(FragmentManager.getFragment(title));
         }
-
-        mDecorView = getWindow().getDecorView();
-        mOrders_tab = ViewFindUtils.find(mDecorView, R.id.orders_tab);    //装入fragement
         init_tab_data();  //加载tab标签数据
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+           finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
     //
     private void init_tab_data(){
-        final ViewPager vp = ViewFindUtils.find(mDecorView, R.id.orders_tab_vp);
+        final ViewPager vp = (ViewPager)findViewById(R.id.orders_tab_vp);
         vp.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-
         mOrders_tab.setTabData(mTitles);
         mOrders_tab.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -73,7 +92,8 @@ public class OrdersTabActivity extends AppCompatActivity {
 
             }
         });
-        vp.setCurrentItem(1);
+        startTab = getIntent().getIntExtra(START,0);
+        vp.setCurrentItem(startTab);
     }
 
     //tab的fragment 适配器
@@ -98,8 +118,15 @@ public class OrdersTabActivity extends AppCompatActivity {
         }
     }
 
-    public static void startActivity(Context context){
+    public static void startActivity(Context context,int start){
         Intent intent = new Intent(context,OrdersTabActivity.class);
+        intent.putExtra(START,start);
         context.startActivity(intent);
+    }
+
+    public static Intent newIntent(Context context,int start){
+        Intent intent = new Intent(context,OrdersTabActivity.class);
+        intent.putExtra(START,start);
+        return  intent;
     }
 }

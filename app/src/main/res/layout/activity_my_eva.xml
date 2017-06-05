@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.Fanpul.ui.activity.MyEvaActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/head_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/my_header_height"
+                android:background="@drawable/img_my_head_bg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dip_30"
+                    android:layout_marginRight="@dimen/dip_16"
+                    android:layout_marginTop="@dimen/dip_7"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:id="@+id/iv_baijin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/baijin" />
+
+                        <ImageView
+                            android:id="@+id/my_head_login"
+                            android:layout_width="@dimen/personal_unlogin_userpic"
+                            android:layout_height="@dimen/personal_unlogin_userpic"
+                            android:layout_marginTop="@dimen/dip_20"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/icon_head_pic" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/rlyt_top_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dip_5">
+
+                            <LinearLayout
+                                android:id="@+id/lty_user"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <TextView
+                                    android:id="@+id/my_login_username"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="@dimen/dip_5"
+                                    android:paddingRight="@dimen/dip_10"
+                                    android:background="@drawable/tv_member"
+                                    android:paddingTop="@dimen/dip_5"
+                                    android:text="苏珊珊"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/personal_login_textview" />
+
+                                <TextView
+                                    android:id="@+id/my_member_lv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="@dimen/dip_5"
+                                    android:paddingLeft="@dimen/dip_10"
+                                    android:paddingRight="@dimen/dip_10"
+                                    android:paddingTop="@dimen/dip_5"
+                                    android:text="已贡献3条评价"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/personal_texthint" />
+                            </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_my_eva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+</LinearLayout>

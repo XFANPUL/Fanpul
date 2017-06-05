@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="afford_goodstitle">#dededd</color>
     <color name="colorPrimary">#de9816</color>
     <color name="colorPrimaryDark">#de9816</color>
     <color name="colorAccent">#de9816</color>
-
     <color name="transparent">#00000000</color>
     <color name="white">#ffffffff</color>
     <color name="color_text_gray_darker">#333336</color>
@@ -19,13 +19,11 @@
     <color name="Green">#0ba62c</color>
     <color name="divider">#B6B6B6</color>
     <color name="shadow_gray">#cabbbbbb</color>
-
     <color name="main_indicator_bg">#f4eded</color>
     <color name="gray_bg">#fff5f5f5</color>
     <color name="main_indicator_bg_press">#d2bfbf</color>
     <color name="text_tip">#ff2e2e2e</color>
     <color name="seperate_line">#ffcdcdcd</color>
-
     <color name="subscribe_item_drag_stroke">#ffd2d2d2</color>
     <color name="subscribe_item_drag_bg">#fff5f5f5</color>
     <color name="subscribe_item_selected_stroke">#ffde9816</color>
@@ -41,7 +39,6 @@
     <color name="subscribe_item_text_color_pressed_night">#ff303030</color>
     <color name="subscribe_item_selected_stroke_night">#eaaf42</color>
     <color name="subscribe_item_text_color_normal_night">#ff747474</color>
-
     <color name="test">#ffffffff</color>
     <color name="normal_orange">#ff6633</color>
     <color name="normal_bg_color">#f0f0f0</color>
@@ -74,8 +71,6 @@
     <color name="afford_newprice">#ff6600</color>
     <color name="home_font5">#e15616</color>
     <color name="afford_old_price">#999999</color>
-
-
     <color name="defaultBg">#f5f5f5</color>
     <!--个人中心顶部关注商品背景半透明色-->
     <color name="my_translucence">#88a42e2b</color>
@@ -90,4 +85,9 @@
     <color name="line">#dddddd</color>
     <color name="confirmorder_textbg">#ffffff</color>
     <color name="confirmorder_textview">#555555</color>
+    <color name="pink">#ff05ff</color>
+    <color name="gray1">#745D5C</color>
+    <color name="gray2">#C9CACC</color>
+    <color name="gray3">#cccccc</color>
+    <color name="gray4">#ffaaa9a9</color>
 </resources>

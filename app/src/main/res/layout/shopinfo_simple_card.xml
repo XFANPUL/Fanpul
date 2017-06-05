@@ -10,15 +10,22 @@
         android:layout_below="@+id/rlyt_view"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/linearlayout_1"
             android:background="@drawable/affordshop_detail_border"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:paddingBottom="@dimen/dip_10"
             android:paddingLeft="@dimen/dip_16"
             android:paddingRight="@dimen/dip_16"
             android:paddingTop="@dimen/dip_16">
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
             <TextView
                 android:id="@+id/shopinner_shopname"
@@ -26,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="店铺名称"
+                android:text="@string/shop_name"
                 android:textColor="@color/personal_textview"
                 android:textSize="@dimen/size16" />
 
@@ -41,7 +48,7 @@
                     android:id="@+id/shopinner_sale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="月服务986单"
+                    android:text="@string/yuedan"
                     android:textColor="@color/personal_hinttext"
                     android:textSize="@dimen/size12" />
 
@@ -51,12 +58,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dip_12"
-                    android:text="评分4.0"
+                    android:text="@string/pingfen"
                     android:textColor="@color/personal_hinttext"
                     android:textSize="@dimen/size12" />
             </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/shop_collect"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_gravity="left"
+                    android:paddingRight="@dimen/dip_16"
+                    android:src="@drawable/uncollect" >
+            </ImageView>
+
+
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="地址 ："
+                android:text="@string/address"
                 android:textColor="@color/personal_textview"
                 android:textSize="@dimen/size16" />
 
@@ -108,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="北京交通大学东门"
+                android:text="@string/address1"
                 android:textColor="@color/personal_hinttext"
                 android:textSize="@dimen/size12" />
 
@@ -128,7 +148,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="联系电话 :"
+                android:text="@string/phone"
                 android:textColor="@color/detail_goodsname"
                 android:textSize="@dimen/size14" />
 
@@ -159,6 +179,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/topRlyt"
+            android:layout_marginTop="@dimen/dip_10"
+            android:background="@drawable/affordshop_detail_border"
             android:orientation="vertical"
             android:padding="@dimen/dip_16">
 
@@ -173,7 +195,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:lines="1"
-                    android:text="商品满意度："
+                    android:text="@string/manyidu"
                     android:textColor="@color/personal_textview"
                     android:textSize="@dimen/size16" />
 
@@ -181,14 +203,15 @@
                     android:id="@+id/shopinner_ratBarShop"
                     style="@style/roomRatingBar"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="@dimen/dp_25"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/dip_10"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:stepSize="1" />
+                    android:rating="4.5"
+                    android:stepSize="0.5" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -203,7 +226,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:lines="1"
-                    android:text="上菜速度满意度："
+                    android:text="@string/sudumanyidu"
                     android:textColor="@color/personal_textview"
                     android:textSize="@dimen/size16" />
 
@@ -218,7 +241,8 @@
                     android:layout_marginTop="@dimen/dip_10"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:stepSize="4" />
+                    android:rating="4.5"
+                    android:stepSize="0.5" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -233,7 +257,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:lines="1"
-                    android:text="服务质量满意度："
+                    android:text="@string/zhiliangmanyidu"
                     android:textColor="@color/personal_textview"
                     android:textSize="@dimen/size16" />
 
@@ -241,14 +265,15 @@
                     android:id="@+id/shopinner_ratBarServer"
                     style="@style/roomRatingBar"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="@dimen/dp_25"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/dip_10"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:stepSize="1" />
+                    android:rating="4.5"
+                    android:stepSize="0.5" />
             </RelativeLayout>
 
         </LinearLayout>
