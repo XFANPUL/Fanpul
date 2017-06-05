@@ -16,8 +16,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_margin="8dp"
-                android:textSize="20sp"
+                android:layout_margin="@dimen/dp_8"
+                android:textSize="@dimen/size20"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"/>
 
@@ -42,10 +42,10 @@
             android:text="sumary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:textSize="16sp"/>
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:textSize="@dimen/size16"/>
 
 </LinearLayout>

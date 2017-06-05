@@ -16,6 +16,7 @@ import com.example.administrator.Fanpul.ui.activity.CookDetailActivity;
 import com.example.administrator.Fanpul.ui.activity.MenuInDetailActivity;
 import com.example.administrator.Fanpul.ui.fragment.CookListFragment;
 import com.example.administrator.Fanpul.utils.GlideUtil;
+import com.example.administrator.Fanpul.utils.ToastUtil;
 
 import butterknife.Bind;
 
@@ -101,7 +102,8 @@ public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
                       //  buy.setNumber(currentNum);
                     }
                     else{
-                        Toast.makeText(activity,"数量不能为负",Toast.LENGTH_SHORT).show();
+                        ToastUtil.showToast(activity,R.string.toast_msg_cannot_be_minus);
+
                     }
                 }
             });
@@ -120,7 +122,8 @@ public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
                         numberText.setText(currentNum + "");
                      //   buy.setNumber(currentNum);
                     }else{
-                        Toast.makeText(activity,"数量超过限制",Toast.LENGTH_SHORT).show();
+                        ToastUtil.showToast(activity,R.string.toast_msg_more_than_max);
+
                     }
 
                 }

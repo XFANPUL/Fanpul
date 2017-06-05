@@ -5,13 +5,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="5dp">
+    android:elevation="@dimen/dp_5">
 
     <com.example.administrator.Fanpul.ui.component.fab_transformation.widget.RevealFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/dp_8"
         android:clickable="true">
 
         <LinearLayout
@@ -36,21 +36,21 @@
                         android:layout_width="0dp"
                         android:layout_height="46dp"
                         android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
+                        android:layout_marginLeft="@dimen/dp_16"
                         android:imeOptions="actionSearch"
                         android:hint="@string/search"
                         android:inputType="text"
-                        android:textColor="#333333"
-                        android:textColorHint="#cccccc"
-                        android:textSize="16sp">
+                        android:textColor="@color/darkGray"
+                        android:textColorHint="@color/gray3"
+                        android:textSize="@dimen/size16">
                         <requestFocus />
                     </EditText>
 
                     <ImageView
                         android:id="@+id/img_search"
-                        android:padding="8dp"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:padding="@dimen/dp_8"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
                         android:scaleType="fitXY"
                         android:src="@mipmap/icon_search_orange"
                         android:clickable="true"/>
@@ -64,23 +64,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:orientation="vertical"
-                android:paddingLeft="16dp"
+                android:paddingLeft="@dimen/dp_16"
                 android:background="@color/white">
 
                 <TextView
                     android:text="@string/history_search_record"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:textSize="14sp"/>
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:textSize="@dimen/size14"/>
 
                 <com.example.administrator.Fanpul.ui.component.tagCloudLayout.TagCloudLayout
                     android:id="@+id/tag_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:tagSpacing="15dp"
-                    app:lineSpacing="10dp" />
+                    app:tagSpacing="@dimen/dp_15"
+                    app:lineSpacing="@dimen/dp_10" />
 
             </LinearLayout>
 

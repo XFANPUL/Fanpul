@@ -19,19 +19,20 @@
             android:drawableLeft="@drawable/home_ico_city"
             android:drawablePadding="@dimen/little_sapce"
             android:gravity="center_vertical"
-            android:padding="10dp"
+            android:padding="@dimen/dp_10"
             android:text="选择"
             android:textColor="@color/white"
       />
 
         <TextView
-            android:layout_width="10dp"
+            android:layout_width="@dimen/dp_10"
             android:layout_height="wrap_content"
             android:padding="11dp"
             android:textSize="@dimen/title_text_size"
             android:textColor="@color/white"/>
 
         <TextView
+            android:id="@+id/img_search_restaurant"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,6 +46,7 @@
             android:text="商户名，地点等...        "
             android:textColor="@color/white"
              />
+
     </LinearLayout>
 
     <FrameLayout
@@ -58,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="@dimen/dp_20"
                 >
 	 	 		<include layout="@layout/index_home_list9" /> 
 	 	 		
@@ -66,12 +68,12 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="18dp" />
+                    android:layout_height="@dimen/dp_18" />
 
                 <!--<include layout="@layout/line_view"/>-->
                 <View
                     android:layout_width="fill_parent"
-                    android:layout_height="3dp"
+                    android:layout_height="@dimen/dp_3"
                     android:background="@color/normal_bg_color_litter"/>
                   
                  <LinearLayout
@@ -91,16 +93,16 @@
                          android:layout_height="wrap_content"
                          android:gravity="center"
                          android:drawableLeft="@drawable/found_icon_friend"
-                         android:drawablePadding="16dp"
+                         android:drawablePadding="@dimen/dp_16"
                          android:padding="@dimen/normal_space"
                          android:text="@string/target_string"
-                         android:textSize="18sp" />
+                         android:textSize="@dimen/size18" />
                  </LinearLayout>
 
 
                 <View
                     android:layout_width="fill_parent"
-                    android:layout_height="3dp"
+                    android:layout_height="@dimen/dp_3"
                     android:background="@color/normal_bg_color_litter"/>
               <include layout="@layout/index_home_list10" />
 
@@ -110,7 +112,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="8dp"
+            android:layout_height="@dimen/dp_8"
             android:background="@drawable/title_shadow_shape" />
 
         <LinearLayout
@@ -125,35 +127,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_30"
                 android:drawableLeft="@drawable/home_navibar_tips_icon_comment"
-                android:drawablePadding="8dp"
+                android:drawablePadding="@dimen/dp_8"
                 android:gravity="center"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_8"
                 android:text="写点评" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="@dimen/dp_8"
                 android:drawableLeft="@drawable/home_navibar_tips_icon_store"
-                android:drawablePadding="8dp"
+                android:drawablePadding="@dimen/dp_8"
                 android:gravity="center"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_8"
                 android:text="添加商户" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="@dimen/dp_8"
                 android:drawableLeft="@drawable/home_navibar_tips_icon_scan"
-                android:drawablePadding="8dp"
+                android:drawablePadding="@dimen/dp_8"
                 android:gravity="center"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_8"
                 android:text="扫一扫" />
         </LinearLayout>
     </FrameLayout>

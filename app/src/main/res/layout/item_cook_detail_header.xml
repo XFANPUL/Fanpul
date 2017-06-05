@@ -9,8 +9,8 @@
         android:text="@string/ingredients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:textSize="20sp"
+        android:layout_margin="@dimen/dp_8"
+        android:textSize="@dimen/size20"
         android:textStyle="bold"
         android:textColor="@color/colorPrimary"/>
 
@@ -18,15 +18,15 @@
         android:id="@+id/relative_view1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_10">
 
         <View
             android:id="@+id/view_circle1"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="2dp"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_2"
             android:background="@drawable/shape_circle_orange">
         </View>
 
@@ -35,9 +35,9 @@
             android:text="ingredients content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:layout_toRightOf="@+id/view_circle1"
-            android:textSize="18sp"
+            android:textSize="@dimen/size18"
             android:textColor="@color/black_alpha_30"/>
 
     </RelativeLayout>
@@ -47,15 +47,15 @@
         android:id="@+id/relative_view2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_10">
 
         <View
             android:id="@+id/view_circle2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="2dp"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_2"
             android:background="@drawable/shape_circle_orange">
         </View>
 
@@ -64,9 +64,9 @@
             android:text="ingredients content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:layout_toRightOf="@+id/view_circle2"
-            android:textSize="18sp"
+            android:textSize="@dimen/size18"
             android:textColor="@color/black_alpha_30"/>
 
     </RelativeLayout>
@@ -75,15 +75,15 @@
         android:id="@+id/relative_view3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_10">
 
         <View
             android:id="@+id/view_circle3"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="2dp"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_2"
             android:background="@drawable/shape_circle_orange">
         </View>
 
@@ -92,9 +92,9 @@
             android:text="ingredients content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/dp_8"
             android:layout_toRightOf="@+id/view_circle3"
-            android:textSize="18sp"
+            android:textSize="@dimen/size18"
             android:textColor="@color/black_alpha_30"/>
 
     </RelativeLayout>
@@ -103,8 +103,8 @@
         android:text="@string/methods"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:textSize="20sp"
+        android:layout_margin="@dimen/dp_8"
+        android:textSize="@dimen/size20"
         android:textStyle="bold"
         android:textColor="@color/colorPrimary"/>
 

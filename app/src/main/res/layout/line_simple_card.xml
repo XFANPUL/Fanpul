@@ -49,18 +49,18 @@
                 android:layout_marginLeft="@dimen/dip_60"
                 android:drawablePadding="@dimen/dip_6"
                 android:padding="@dimen/dip_5"
-                android:text="A桌（2-4人）"
+                android:text="@string/table_A"
                 android:textColor="@color/confirmorder_textview"
-                android:textSize="14sp" />
+                android:textSize="@dimen/size14" />
 
             <TextView
                 android:id="@+id/waitA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/dp_10"
                 android:layout_marginLeft="@dimen/dip_60"
                 android:gravity="center"
-                android:textSize="14sp"
+                android:textSize="@dimen/size14"
                 android:text="有4桌在等待，预计等待时间为8分钟"/>
 
             <RadioButton
@@ -75,18 +75,18 @@
                 android:drawableLeft="@drawable/bg_checked"
                 android:drawablePadding="@dimen/dip_6"
                 android:padding="@dimen/dip_5"
-                android:text="B桌（5-8人）"
+                android:text="@string/table_B"
                 android:textColor="@color/confirmorder_textview"
-                android:textSize="14sp" />
+                android:textSize="@dimen/size14" />
 
             <TextView
                 android:id="@+id/waitB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/dp_10"
                 android:layout_marginLeft="@dimen/dip_60"
                 android:gravity="center"
-                android:textSize="14sp"
+                android:textSize="@dimen/size14"
                 android:text="有4桌在等待，预计等待时间为8分钟"/>
 
             <RadioButton
@@ -101,18 +101,18 @@
                 android:drawableLeft="@drawable/bg_checked"
                 android:drawablePadding="@dimen/dip_6"
                 android:padding="@dimen/dip_5"
-                android:text="C桌（8人以上）"
+                android:text="@string/table_C"
                 android:textColor="@color/confirmorder_textview"
-                android:textSize="14sp" />
+                android:textSize="@dimen/size14" />
 
             <TextView
                 android:id="@+id/waitC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/dp_10"
                 android:layout_marginLeft="@dimen/dip_60"
                 android:gravity="center"
-                android:textSize="14sp"
+                android:textSize="@dimen/size14"
                 android:text="有4桌在等待，预计等待时间为8分钟"/>
 
         </RadioGroup>
@@ -128,7 +128,7 @@
             android:paddingLeft="@dimen/dip_26"
             android:paddingRight="@dimen/dip_26"
             android:paddingTop="@dimen/dip_8"
-            android:text="我要点单"
+            android:text="@string/want_order"
             android:textColor="@drawable/btn_order_clicktext"
             android:textSize="@dimen/personal_texthint"
             android:visibility="visible"/>
@@ -144,11 +144,10 @@
             android:paddingLeft="@dimen/dip_26"
             android:paddingRight="@dimen/dip_26"
             android:paddingTop="@dimen/dip_8"
-            android:text="我要排队"
+            android:text="@string/want_queue"
             android:textColor="@drawable/btn_order_clicktext"
             android:textSize="@dimen/personal_texthint"
             android:visibility="gone"/>
-
     </LinearLayout>
 
 

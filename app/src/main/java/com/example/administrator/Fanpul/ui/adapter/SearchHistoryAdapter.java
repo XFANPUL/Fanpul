@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 
 import com.example.administrator.Fanpul.R;
-import com.example.administrator.Fanpul.model.entity.tb_cook.TB_CookSearchHistory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,20 +16,20 @@ import java.util.List;
  * Created by Administrator on 2017/2/20.
  */
 
-public class TagCookSearchHistoryAdapter extends BaseAdapter {
+public class SearchHistoryAdapter extends BaseAdapter {
 
     private Context context;
-    private List<TB_CookSearchHistory> datas;
+    private List<String> datas;
 
-    public TagCookSearchHistoryAdapter(Context context, List<TB_CookSearchHistory> datas) {
+    public SearchHistoryAdapter(Context context, List<String> datas) {
         this.context = context;
 
         this.datas = new ArrayList<>();
-        for(TB_CookSearchHistory item : datas)
+        for(String item : datas)
             this.datas.add(item);
 
         if(datas.size() > 0){
-            this.datas.add(new TB_CookSearchHistory(TB_CookSearchHistory.CookSearchHistory_Type_Clean, "清除历史"));
+            this.datas.add(new String("清除历史"));
         }
 
     }
@@ -41,7 +40,7 @@ public class TagCookSearchHistoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public TB_CookSearchHistory getItem(int position) {
+    public String getItem(int position) {
         return datas.get(position);
     }
 
@@ -65,11 +64,11 @@ public class TagCookSearchHistoryAdapter extends BaseAdapter {
         }
 
         final int index = position;
-        holder.tagBtn.setText(getItem(index).getName());
+        holder.tagBtn.setText(getItem(index));
         return convertView;
     }
 
-    public void setDatas(List<TB_CookSearchHistory> datas){
+    public void setDatas(List<String> datas){
         this.datas = datas;
     }
 

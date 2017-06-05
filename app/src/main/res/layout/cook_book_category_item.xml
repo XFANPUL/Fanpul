@@ -6,9 +6,9 @@
 <TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="14dp"
-    android:textColor="#745D5C"
-    android:textSize="16sp"
+    android:layout_margin="@dimen/dp_14"
+    android:textColor="@color/gray1"
+    android:textSize="@dimen/size14"
     android:textStyle="bold"
     android:singleLine="true"
     android:id="@+id/cook_book_category"
