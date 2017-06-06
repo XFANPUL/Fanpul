@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 
 import com.example.administrator.Fanpul.constants.Constants;
+import com.example.administrator.Fanpul.utils.Crash;
 import com.example.administrator.Fanpul.utils.Logger.LogLevel;
 import com.example.administrator.Fanpul.utils.Logger.Logger;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -19,6 +20,8 @@ public class CookManApplication extends LitePalApplication   {
     public void onCreate() {
         super.onCreate();
         initDisplayOpinion();
+        Crash crashHandler = Crash.getInstance();
+        crashHandler.init(getApplicationContext());
         mContext = getApplicationContext();
 
         //Logger设置

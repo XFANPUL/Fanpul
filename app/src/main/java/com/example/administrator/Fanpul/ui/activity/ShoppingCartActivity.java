@@ -24,6 +24,7 @@ import com.example.administrator.Fanpul.constants.Constants;
 import com.example.administrator.Fanpul.presenter.Presenter;
 import com.example.administrator.Fanpul.ui.fragment.ShopcartFragment;
 import com.example.administrator.Fanpul.utils.StatusBarUtil;
+import com.example.administrator.Fanpul.utils.ToastUtil;
 
 import butterknife.Bind;
 
@@ -104,7 +105,8 @@ public class ShoppingCartActivity extends BaseSwipeBackActivity {
             editStart = editText.getSelectionStart();
             editEnd = editText.getSelectionEnd();
             if (temp.length() > 30) {
-                Toast.makeText(ShoppingCartActivity.this, "你输入的字数已经超过了限制！", Toast.LENGTH_SHORT).show();
+                ToastUtil.showToast(ShoppingCartActivity.this,getString(R.string.toast_msg_no_more_words));
+
                 s.delete(editStart-1, editEnd);
                 int tempSelection = editStart;
                 editText.setText(s);

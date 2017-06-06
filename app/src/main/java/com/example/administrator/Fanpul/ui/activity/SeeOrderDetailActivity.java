@@ -9,62 +9,82 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.Fanpul.R;
+import com.example.administrator.Fanpul.constants.Constants;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Menu;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Order;
+import com.example.administrator.Fanpul.presenter.Presenter;
 import com.example.administrator.Fanpul.utils.GlideUtil;
 
 import java.util.List;
+
+import butterknife.Bind;
 
 /**
  * Created by Administrator on 2017/4/18 0018.
  */
 
-public class SeeOrderDetailActivity extends AppCompatActivity {
-
-    private RecyclerView recyOrderDetail;
-
-    private TextView seeOrderRestaurantNameText;
-    private TextView seeCookDetailTotalMoneyText;
-    private TextView seeOrderCustomNameText;
-    private TextView cookOrderFinishedTimeText;
-    private TextView seeOrderNumber;
+public class SeeOrderDetailActivity extends BaseSwipeBackActivity {
+@Bind(R.id.recy_see_order_detail)
+    public RecyclerView recyOrderDetail;
+    @Bind(R.id.see_order_restaurant_name_text)
+    public TextView seeOrderRestaurantNameText;
+    @Bind(R.id.see_cook_detail_total_money)
+    public TextView seeCookDetailTotalMoneyText;
+    @Bind(R.id.see_order_custom_name)
+    public TextView seeOrderCustomNameText;
+    @Bind(R.id.cook_order_finished_time)
+    public TextView cookOrderFinishedTimeText;
+    @Bind(R.id.see_order_number)
+    public TextView seeOrderNumber;
 
     private Order order;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.see_order_detail);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        Intent intent = getIntent();
-
-        order = (Order)intent.getSerializableExtra(OrderFormActivity.ORDER);
-        recyOrderDetail = (RecyclerView)findViewById(R.id.recy_see_order_detail);
-        recyOrderDetail.setLayoutManager(new LinearLayoutManager(SeeOrderDetailActivity.this));
-        recyOrderDetail.setAdapter(new SeeOrderAdapter(order.getMenuList()));
-
-        seeOrderRestaurantNameText =(TextView) findViewById(R.id.see_order_restaurant_name_text);
-        seeOrderRestaurantNameText.setText(order.getRestaurantName());
-        seeCookDetailTotalMoneyText = (TextView)findViewById(R.id.see_cook_detail_total_money);
-        seeCookDetailTotalMoneyText.setText("金额:￥"+order.getTotalPrice());
-        seeOrderCustomNameText = (TextView)findViewById(R.id.see_order_custom_name);
-        seeOrderCustomNameText.setText("顾客名:"+order.getUserName());
-       // seeOrderObjectIdText = (TextView)findViewById(R.id.see_order_object_id);
-       // seeOrderObjectIdText.setText("订单号:"+order.getObjectId());
-        cookOrderFinishedTimeText = (TextView)findViewById(R.id.cook_order_finished_time);
-        cookOrderFinishedTimeText.setText("订单完成时间:"+order.getOrderDate());
-        seeOrderNumber =(TextView) findViewById(R.id.see_order_number);
-        seeOrderNumber.setText("共"+order.getMenuNumber()+"件商品");
+    protected Presenter getPresenter() {
+        return null;
     }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.see_order_detail;
+    }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle("饭谱");
+        Intent intent = getIntent();
+        order = (Order)intent.getSerializableExtra(Constants.INTENT_START_ACTIVITY_MANAGER_OBJECT);
+        recyOrderDetail.setLayoutManager(new LinearLayoutManager(SeeOrderDetailActivity.this));
+        recyOrderDetail.setAdapter(new SeeOrderAdapter(order.getMenuList()));
+        seeOrderRestaurantNameText.setText(order.getRestaurantName());
+        seeCookDetailTotalMoneyText.setText("金额:￥"+order.getTotalPrice());
+        seeOrderCustomNameText.setText(order.getUserName()+"");
+        cookOrderFinishedTimeText.setText(order.getOrderDate()+"");
+        seeOrderNumber.setText("共"+order.getMenuNumber()+"件商品");
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+           finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     public static void startActivity(Context context, Order order){
         Intent intent = new Intent(context,SeeOrderDetailActivity.class);
-        intent.putExtra(OrderFormActivity.ORDER,order);
+        intent.putExtra(Constants.INTENT_START_ACTIVITY_MANAGER_OBJECT,order);
         context.startActivity(intent);
     }
 
@@ -106,7 +126,7 @@ public class SeeOrderDetailActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(SeeOrderHolder holder, int position) {
              holder.bindHolder(menulist.get(position).getImgUrl(),menulist.get(position).getMenuName()
-             ,menulist.get(position).getPrice(),order.getMenuNumber());
+             ,menulist.get(position).getPrice(),order.getMenuNumberList().get(position));
         }
 
         @Override

@@ -6,10 +6,10 @@
     android:background="@drawable/selector_tagview_cook_search_history"
     android:id="@+id/tag_btn"
     android:minHeight="24dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:paddingLeft="@dimen/dp_10"
+    android:paddingRight="@dimen/dp_10"
     android:minWidth="45dp"
     android:gravity="center"
     android:text="tag"
-    android:textSize="12sp">
+    android:textSize="@dimen/size12">
 </Button>

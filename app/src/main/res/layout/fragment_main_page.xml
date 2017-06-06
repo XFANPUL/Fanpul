@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="5dp">
+        app:elevation="@dimen/dp_5">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="小厨小菜"
+                    android:text="@string/xiaochuxiaocai"
                     android:id="@+id/shop_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -37,17 +37,17 @@
                    android:layout_height="wrap_content"
                    android:layout_toRightOf="@+id/shop_name"
                    android:id="@+id/table_number"
-                   android:layout_marginLeft="20dp"
+                   android:layout_marginLeft="@dimen/dp_20"
                    android:text="桌号：A36"
-                   android:layout_marginTop="5dp"
-                   android:textSize="15sp"
+                   android:layout_marginTop="@dimen/dp_5"
+                   android:textSize="@dimen/size15"
                    android:visibility="invisible"
                    />
                 <ImageView
                     android:id="@+id/imgv_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="@dimen/dp_8"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:src="@mipmap/icon_search"
@@ -76,7 +76,7 @@
         <com.example.administrator.Fanpul.ui.component.magicindicator.MagicIndicator
             android:id="@+id/magic_indicator"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/dp_40"
             android:background="@color/main_indicator_bg"
             android:layout_toLeftOf="@+id/imgv_add"/>
 
