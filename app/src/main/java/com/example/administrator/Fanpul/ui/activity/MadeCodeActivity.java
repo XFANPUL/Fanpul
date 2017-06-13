@@ -11,9 +11,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.example.administrator.Fanpul.R;
+import com.example.administrator.Fanpul.utils.ToastUtil;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 
@@ -45,7 +44,8 @@ public class MadeCodeActivity extends Activity implements View.OnClickListener {
             String content = code_edt.getText().toString().trim();
             boolean isAddLogo = logo_cb.isChecked();
             if (TextUtils.isEmpty(content)) {
-                Toast.makeText(this, "输入内容不能为空", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "输入内容不能为空", Toast.LENGTH_LONG).show();
+                ToastUtil.showToast(this,getString(R.string.toast_msg_cannot_no_word));
                 return;
             }
             madeCode(content, isAddLogo);

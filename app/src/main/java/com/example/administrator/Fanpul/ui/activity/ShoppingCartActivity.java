@@ -1,32 +1,22 @@
 package com.example.administrator.Fanpul.ui.activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
-import android.text.InputFilter;
 import android.text.InputType;
-import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.administrator.Fanpul.R;
-
-import com.example.administrator.Fanpul.constants.Constants;
 import com.example.administrator.Fanpul.presenter.Presenter;
 import com.example.administrator.Fanpul.ui.fragment.ShopcartFragment;
 import com.example.administrator.Fanpul.utils.StatusBarUtil;
-
-import butterknife.Bind;
-
+import com.example.administrator.Fanpul.utils.ToastUtil;
 
 public class ShoppingCartActivity extends BaseSwipeBackActivity {
     private TextView totalmoneyText;
@@ -104,7 +94,8 @@ public class ShoppingCartActivity extends BaseSwipeBackActivity {
             editStart = editText.getSelectionStart();
             editEnd = editText.getSelectionEnd();
             if (temp.length() > 30) {
-                Toast.makeText(ShoppingCartActivity.this, "你输入的字数已经超过了限制！", Toast.LENGTH_SHORT).show();
+                ToastUtil.showToast(ShoppingCartActivity.this,getString(R.string.toast_msg_no_more_words));
+
                 s.delete(editStart-1, editEnd);
                 int tempSelection = editStart;
                 editText.setText(s);
@@ -113,9 +104,9 @@ public class ShoppingCartActivity extends BaseSwipeBackActivity {
         }
     };
     public void updateUI(float totalMoney,int size){
-        totalItemNumber.setText("共"+size+"件商品");
-        totalmoneyText.setText("金额:"+totalMoney);
-        totalMoneyText1.setText("合计:"+totalMoney);
+        totalItemNumber.setText(getString(R.string.product_num , size));
+        totalmoneyText.setText(getString(R.string.money_number , totalMoney));
+        totalMoneyText1.setText(getString(R.string.total , totalMoney));
     }
 
 }

@@ -1,8 +1,5 @@
 package com.example.administrator.Fanpul.IView;
-
-import com.example.administrator.Fanpul.model.entity.CookEntity.CookDetail;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Menu;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +8,10 @@ import java.util.List;
  */
 
 public interface ICookListView {
-
-    void onCookListUpdateRefreshSuccess(ArrayList<CookDetail> list);
+    void onCookListUpdateRefreshSuccess(ArrayList<Menu> list);
     void onMenuListUpdateRefreshSuccess(List<Menu> list);
     void onCookListUpdateRefreshFaile(String msg);
-    void onCookListLoadMoreSuccess(ArrayList<CookDetail> list);
+    void onCookListLoadMoreSuccess(ArrayList<Menu> list);
     void onMenuListLoadMoreSuccess(List<Menu> list);
     void onCookListLoadMoreFaile(String msg);
 }

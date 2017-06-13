@@ -4,17 +4,15 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
 import com.example.administrator.Fanpul.presenter.Presenter;
 import com.umeng.analytics.MobclickAgent;
-
 import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2017/2/17.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity { //activity的基类
 
     protected Context context;
     protected Presenter presenter;

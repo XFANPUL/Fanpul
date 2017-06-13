@@ -1,4 +1,6 @@
 package com.example.administrator.Fanpul.ui.fragment;
+
+import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,33 +22,39 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.administrator.Fanpul.R;
-import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
-import com.example.administrator.Fanpul.model.bmob.BmobUtil;
+import com.example.administrator.Fanpul.constants.Constants;
+import com.example.administrator.Fanpul.model.DB.DBProxy;
+import com.example.administrator.Fanpul.model.DB.DBQueryCallback;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Restaurant;
-import com.example.administrator.Fanpul.ui.activity.OrderMenuActivity;
 import com.example.administrator.Fanpul.ui.activity.SegmentTabActivity;
-import com.example.administrator.Fanpul.ui.adapter.BaseRecyclerAdapter;
-import com.example.administrator.Fanpul.ui.adapter.CommonHolder;
+import com.example.administrator.Fanpul.ui.adapter.baseadapter.BaseRecyclerAdapter;
+import com.example.administrator.Fanpul.ui.adapter.holder.CommonHolder;
 import com.example.administrator.Fanpul.ui.view.ImageCycleView;
 import com.example.administrator.Fanpul.ui.view.WrapContentHeightViewPager;
-import com.example.administrator.Fanpul.constants.MyConstant;
 import com.example.administrator.Fanpul.utils.GlideUtil;
 import com.example.administrator.Fanpul.utils.Utils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.zaaach.citypicker.CityPickerActivity;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.bmob.v3.datatype.BmobFile;
-import android.app.AlertDialog.Builder;
-import android.widget.Toast;
-public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaurant> {
+
+import static android.app.Activity.RESULT_OK;
+
+public class HomeFragment extends Fragment  implements DBQueryCallback<Restaurant> {
 	@ViewInject(R.id.index_home_viewpager)
 	private WrapContentHeightViewPager viewPager;
 
@@ -102,6 +110,7 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
                              Bundle savedInstanceState) {
 		View view=inflater.inflate(R.layout.index_home, container,false);
 		ViewUtils.inject(this, view);
+		ButterKnife.bind(this,view);
         restaurantItemAdapter = new RestaurantItemAdapter();
         List<Restaurant> restaurantList;restaurantList = new ArrayList<>();
         restaurantItemAdapter.setDataList(restaurantList);
@@ -110,8 +119,7 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
         initStoreList();
         initImageCycleView();
 		String bql = "select * from Restaurant";
-		BmobUtil.queryBmobObject(bql,this);
-		Log.e("jhd", "onCreateView");
+		DBProxy.proxy.queryRestaurantByBql(bql,this);
 		return view;
 	}
 
@@ -154,6 +162,15 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
 
 	}
 
+	@OnClick(R.id.img_search_restaurant)
+	public void onClickImgvSearch() {
+		getFragmentManager()
+				.beginTransaction()
+				.add(android.R.id.content, new SearchFragment(), "fragment_search")
+				.addToBackStack("fragment:reveal")
+				.commit();
+	}
+
 	public class GridViewAdapter extends BaseAdapter {
 		private LayoutInflater inflater;
 		private int page;
@@ -169,7 +186,7 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
 			if(page!=-1){
 				return 8;
 			}else{
-				return MyConstant.navSort.length;
+				return Constants.navSort.length;
 			}
 		}
 		@Override
@@ -192,8 +209,8 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
 			else{
 				vh=(ViewHolder) convertView.getTag();
 			}
-			vh.iv_navsort.setImageResource(MyConstant.navSortImages[position+8*page]);
-			vh.tv_navsort.setText(MyConstant.navSort[position+8*page]);
+			vh.iv_navsort.setImageResource(Constants.navSortImages[position+8*page]);
+			vh.tv_navsort.setText(Constants.navSort[position+8*page]);
 			if(position==8-1 && page==2){
 				vh.iv_navsort.setOnClickListener(new OnClickListener() {
 					@Override
@@ -327,28 +344,23 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
 		return city;
 	}
 
-
+	private static final int REQUEST_CODE_PICK_CITY = 233;
+	public  void onActivityResult(int requestCode, int resultCode, Intent data) {
+		//super.onActivityResult(requestCode,resultCode,data);
+		if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK){
+			if (data != null){
+				String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
+				cityView.setText( city);
+			}
+		}
+	}
 	private void initCity(){
-		// 声明LocationClient类
-		mLocationClient = new LocationClient(getActivity().getApplicationContext());
-		// 注册监听函数
-		mLocationClient.registerLocationListener(myListener);
-		// 设置定位参数
-		setLocationOption();
-		dialog = new ProgressDialog(getActivity());
-		dialog.setMessage("正在定位...");
-		dialog.setCanceledOnTouchOutside(false);
+
 		cityView.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View arg0) {
-				//通过定位设置城市
-				if (Utils.checkNetwork(getActivity()) == false) {
-					Toast.makeText(getActivity(), "网络异常,请检查网络设置",
-							Toast.LENGTH_SHORT).show();
-					return;
-				}
-				dialog.show();
-				requestLocation();
+			public void onClick(View v) {
+				startActivityForResult(new Intent(getActivity(), CityPickerActivity.class),
+						REQUEST_CODE_PICK_CITY);
 			}
 		});
 	}
@@ -538,32 +550,5 @@ public class HomeFragment extends Fragment  implements BmobQueryCallback<Restaur
 		}
 	}
 
-	/*	@Override
-		public RestaurantItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-			LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-			View view = layoutInflater.inflate(R.layout.match_storelist_item,parent,false);
-			return new RestaurantItemHolder(view);
-		}
-		@Override
-		public void onBindViewHolder(RestaurantItemHolder holder, int position) {
-			holder.bindrestaurantItemHolder(MyConstant.shopName[position]);
-		}
-		@Override
-		public int getItemCount() {
-			return MyConstant.shopName.length;
-		}*/
-		/*public RestaurantItemHolder(View itemView) {
-			super(itemView);
-			shopNameText = (TextView)itemView.findViewById(R.id.shop_name);
-			imageRecyclerView = (RecyclerView)itemView.findViewById(R.id.listViewStore);
-			itemView.setOnClickListener(this);
-		}*/
-
-		/*public void bindrestaurantItemHolder(String shopnameText){
-			//shopName = shopnameText;
-			shopNameText.setText(shopnameText);
-			imageRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false));
-		    imageRecyclerView.setAdapter(new ImageItemAdapter(getData()));
-		}*/
 
 }

@@ -1,7 +1,6 @@
 package com.example.administrator.Fanpul.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.Fanpul.R;
-import com.example.administrator.Fanpul.model.bmob.BmobQueryCallback;
-import com.example.administrator.Fanpul.model.bmob.BmobUtil;
+import com.example.administrator.Fanpul.model.DB.DBProxy;
+import com.example.administrator.Fanpul.model.DB.DBQueryCallback;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Menu;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.MenuCategory;
 import com.example.administrator.Fanpul.presenter.Presenter;
@@ -50,7 +49,7 @@ public class CookBookFragment extends BaseFragment {//菜单fragemnt
 
         recyclerViewCategory.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewCookBook.setLayoutManager(new LinearLayoutManager(getActivity()));
-        BmobUtil.queryRestaurantCategory(((SegmentTabActivity)getActivity()).getRestaurant().getRestaurantName(), new BmobQueryCallback<MenuCategory>() {
+        DBProxy.proxy .queryRestaurantCategory(((SegmentTabActivity)getActivity()).getRestaurant().getRestaurantName(), new DBQueryCallback<MenuCategory>() {
             @Override
             public void Success(List<MenuCategory> bmobObjectList) {
                 recyclerViewCategory.setAdapter(new CategoryAdapter(bmobObjectList,recyclerViewCookBook));
@@ -80,7 +79,7 @@ public class CookBookFragment extends BaseFragment {//菜单fragemnt
 
         @Override
         public void onClick(View v) {
-            BmobUtil.queryMenuByCategory(menuCategory, new BmobQueryCallback<Menu>() {
+            DBProxy.proxy .queryMenuByCategory(menuCategory, new DBQueryCallback<Menu>() {
                 @Override
                 public void Success(List<Menu> bmobObjectList) {
                     recyclerViewCookBook.setAdapter(new MenuCookAdapter(bmobObjectList));
