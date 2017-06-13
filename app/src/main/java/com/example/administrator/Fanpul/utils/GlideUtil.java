@@ -20,6 +20,14 @@ public class GlideUtil {
     private DiskCacheStrategy diskCache = DiskCacheStrategy.ALL;//磁盘缓存
     private boolean isSkipMemoryCache = false;//禁止内存缓存
 
+    public static GlideUtil getGlideUtil(){
+         return GlideUtilHolder.glideUtilInstance;
+    }
+
+    private static class GlideUtilHolder{
+        private static final GlideUtil glideUtilInstance = new GlideUtil();
+    }
+
     public GlideUtil attach(ImageView imageView) {
         this.imageView = imageView;
         return this;

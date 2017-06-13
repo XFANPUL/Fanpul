@@ -11,10 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-/**
- * @author 王晨彦
- * 
- */
 public class Utils {
 
 	/**

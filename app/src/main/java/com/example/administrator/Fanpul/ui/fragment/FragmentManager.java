@@ -1,28 +1,29 @@
 package com.example.administrator.Fanpul.ui.fragment;
 
 import android.support.v4.app.Fragment;
-public class FragmentManager{
-    public static Fragment getFragment(String title){
-        if(title.equals("排队")) {
+
+import com.example.administrator.Fanpul.constants.Constants;
+
+public class FragmentManager {
+    public static Fragment getFragment(String title) {
+        if (title.equals(Constants.QUEUE)) {
             return QueueFragment.CreateFragment();
-        }
-        else if(title.equals("菜谱")){
-            return  CookBookFragment.CreateFragment();
-        }
-        else if(title.equals("店铺")){
-           return   ShopFragment.CreateFragment();
-        }
-        else if(title.equals("待评论")){
+        } else if (title.equals(Constants.COOK_BOOK)) {
+            return CookBookFragment.CreateFragment();
+        } else if (title.equals(Constants.RESTAURANT)) {
+            return ShopFragment.CreateFragment();
+        } else if (title.equals(Constants.PRECOMMENT)) {
             PreCommentFragment preCommentFragment = PreCommentFragment.CreateFragment();
-            preCommentFragment.setmTitle(title);
             return preCommentFragment;
-        }
-        else if(title.equals("排队中")){
-            QueuingFragment queuingFragment=QueuingFragment.CreateFragment();
-            queuingFragment.setmTitle(title);
+        } else if (title.equals(Constants.QUEUING)) {
+            QueuingFragment queuingFragment = QueuingFragment.CreateFragment();
             return queuingFragment;
+        }else if(title.equals(Constants.MORE)){
+           return ShopMoreFragment.CreateFragment();
+        }else if(title.equals(Constants.HISTORY)){
+            return HistoryOrderFragment.CreateFragment();
         }
-        return  new Fragment();
+        return new Fragment();
     }
 }
 

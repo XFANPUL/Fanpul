@@ -134,14 +134,14 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <TextView
+                  <!--      <TextView
                             android:id="@+id/mylogin_att_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/dip_5"
                             android:text="0"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/personal_login_texthint"/>
+                            android:textSize="@dimen/personal_login_texthint"/>-->
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -149,7 +149,8 @@
                             android:padding="@dimen/dip_5"
                             android:text="@string/usercenter_login_dish"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/personal_login_textview"/>
+                            android:textSize="@dimen/personal_login_textview"
+                            android:id="@+id/menu_collection"/>
 
                     </LinearLayout>
 
@@ -162,7 +163,7 @@
                         android:background="@color/my_translucence"
                         android:gravity="center"
                         android:orientation="vertical">
-
+<!--
                         <TextView
                             android:id="@+id/mylogin_browse_num"
                             android:layout_width="wrap_content"
@@ -170,9 +171,10 @@
                             android:padding="@dimen/dip_5"
                             android:text="0"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/personal_login_texthint"/>
+                            android:textSize="@dimen/personal_login_texthint"/>-->
 
                         <TextView
+                            android:id="@+id/restaurant_collection"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/dip_5"
@@ -207,6 +209,7 @@
                     android:paddingRight="@dimen/dip_6">
 
                     <TextView
+                        android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -215,7 +218,7 @@
                         android:drawablePadding="@dimen/dip_15"
                         android:text="@string/usercenter_login_myorder"
                         android:textColor="@color/personal_textview"
-                        android:textSize="@dimen/personal_login_textview"/>
+                        android:textSize="@dimen/personal_login_textview" />
 
                     <TextView
                         android:id="@+id/personal_allorder"
@@ -260,7 +263,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawablePadding="16dp"
+                    android:drawablePadding="@dimen/dp_16"
                     android:drawableRight="@drawable/btn_into_gray"
                     android:text="@string/youhuiquan"
                     android:textColor="@color/personal_textview"
@@ -284,7 +287,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/icon_my_store"
-                    android:drawablePadding="16dp"
+                    android:drawablePadding="@dimen/dp_16"
                     android:drawableRight="@drawable/btn_into_gray"
                     android:text="@string/huiyuan"
                     android:textColor="@color/personal_textview"
@@ -298,11 +301,11 @@
                 android:id="@+id/feedbackSuggestionPart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/dp_10"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp">
+                android:paddingLeft="@dimen/dp_3"
+                android:paddingRight="@dimen/dp_3">
 
                 <include layout="@layout/line_view"/>
                 <!-- 反馈与建议 -->
@@ -321,7 +324,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:drawableLeft="@drawable/icon_feedback_suggestion"
-                        android:drawablePadding="16dp"
+                        android:drawablePadding="@dimen/dp_16"
                         android:drawableRight="@drawable/btn_into_gray"
                         android:text="@string/feedbackSuggestion"
                         android:textColor="@color/personal_textview"
@@ -353,7 +356,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:drawableLeft="@drawable/icon_my_share"
-                        android:drawablePadding="16dp"
+                        android:drawablePadding="@dimen/dp_16"
                         android:drawableRight="@drawable/btn_into_gray"
                         android:text="@string/shareWith"
                         android:textColor="@color/personal_textview"

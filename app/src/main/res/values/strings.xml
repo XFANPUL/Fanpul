@@ -1,9 +1,21 @@
 <resources>
 
-
     <string name="toast_msg_oncemore_exit">再按一次返回键退出</string>
     <string name="toast_msg_no_more_data">没有更多数据了</string>
     <string name="toast_msg_no_more_search_data">没有找到相关菜谱</string>
+    <string name="toast_msg_no_more_words">你输入的字数已经超过了限制！</string>
+    <string name="toast_msg_cannot_no_word">输入内容不能为空</string>
+    <string name="toast_msg_connect">连接</string>
+    <string name="toast_msg_disconnect"> 服务已断开</string>
+    <string name="toast_msg_fail_QRCode"> 解析二维码失败</string>
+    <string name="toast_msg_cannot_be_minus"> 数量不能为负</string>
+    <string name="toast_msg_more_than_max"> 数量超过限制</string>
+    <string name="toast_msg_shoppingcat_cannot_be_empty"> 购物车不能为空</string>
+    <string name="toast_msg_pay_failed"> 支付失败</string>
+    <string name="toast_msg_failed"> 失败</string>
+    <string name="toast_msg_delete_failed"> 删除失败</string>
+    <string name="toast_msg_delete_success"> 删除成功</string>
+    <string name="toast_exit"> 再按一次退出程序</string>
 
     <string name="cancel">取消</string>
     <string name="category">分类</string>
@@ -11,6 +23,11 @@
     <string name="search">搜索</string>
     <string name="delete">删除</string>
     <string name="buy">购物车</string>
+    <string name="main_page">首页</string>
+    <string name="saoyisao">扫一扫</string>
+    <string name="order">订单</string>
+    <string name="mine">我的</string>
+
 
     <string name="history_search_record">历史搜索记录</string>
     <string name="cook_channel_title">菜单频道管理</string>
@@ -45,6 +62,7 @@
     <string name="order_cancel">取消排队</string>
     <string name="order_toeva">去评价</string>
     <string name="order_detailbook">详细菜品</string>
+    <string name="order_see">查看订单</string>
 
     <string name="usercenter_register">登录/注册</string>
     <string name="usercenter_login_favorible">登录后可享受更多优惠</string>
@@ -60,6 +78,88 @@
 
     <string name="huiyuan">会员中心</string>
 
+    <string name="scan_QRCode">扫描二维码选择桌号</string>
+    <string name="result_QRCode">显示扫描结果</string>
+    <string name="create_QRCode">生成二维码</string>
+    <string name="return_button">返回</string>
+    <string name="refresh">下拉刷新</string>
+    <string name="xiaochuxiaocai">小厨小菜</string>
+    <string name="saomiao">扫描二维码选择桌号</string>
+    <string name="liuyan">给卖家留言（口味偏好）</string>
+    <string name="money">金额：￥8997.0</string>
+    <string name="number">共2件商品</string>
+    <string name="pay_way">支付方式</string>
+    <string name="pay_way_cannot_empty">支付方式不能为空</string>
+    <string name="daijinquan">选择代金券</string>
+    <string name="niming">匿名购买</string>
+    <string name="shop_name">店铺名称</string>
+    <string name="yuedan">月服务986单</string>
+    <string name="pingfen">评分4.0</string>
+    <string name="address">地址 ：</string>
+    <string name="address1">   北京交通大学东门</string>
+    <string name="phone">联系电话 :</string>
+    <string name="manyidu">商品满意度：</string>
+    <string name="sudumanyidu">上菜速度满意度：</string>
+    <string name="zhiliangmanyidu">服务质量满意度：</string>
+    <string name="pay_success">支付成功</string>
+    <string name="pay_money">消费金额：</string>
+    <string name="table_A">A桌（2-4人）</string>
+    <string name="table_B">B桌（5-8人）</string>
+    <string name="table_C">C桌（8人以上）</string>
+    <string name="want_order">我要点单</string>
+    <string name="want_queue">我要排队</string>
+    <string name ="user_name">张三</string>
+    <string name = "start_order">点单</string>
+    <string name="wait_time_info">请在5分钟内完成订单</string>
+    <string name="menu_taste">口味:</string>
+    <string name="speed">上菜:</string>
+    <string name="server">服务:</string>
+    <string name="appid">3b60c6eb37caced9f0023a6515b2d8a5</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="shop_info">月售%1$d单  | %2$1.1f分 | 离我%3$d米</string>
+    <string name="order_desk_info_01">您已到号,您的桌号是%1$s%2$d</string>
+    <string name="order_desk_info_02">您的桌型为%1$s型，您前面还有%2$d桌</string>
+    <string name="price">￥：%1$.2f</string>
+    <string name="star">%1$s%2$.1f星</string>
+    <string name = "total_comment">已贡献%1$d条评价</string>
+    <string name ="num">×%1$d</string>
+    <string name="money_number">金额:￥%1$.2f</string>
+    <string name="product_num">共%1$d件商品</string>
+    <string name="total">合计%1$.2f</string>
+    <string name="yuan">%1$d元/份</string>
+    <string name="sale_num">月售%1$d单</string>
+
+
+    <string name="fail_QR">扫码失败</string>
+    <string name="fail_QR_Redo">无法识别该二维码,请重新扫描</string>
+    <string name="fragment_search">fragment_search</string>
+    <string name="cancel_collextion">取消收藏</string>
+    <string name="add_collection">已添加到收藏夹</string>
+    <string name="ready_queue">排队中</string>
+    <string name="ready_comment">待评论</string>
+    <string name="queue">排队</string>
+    <string name="fanpul">饭谱</string>
+    <string name="menu">菜谱</string>
+    <string name="Restuarant">店铺</string>
+    <string name="comment">待评论</string>
+    <string name="queuing">排队中</string>
+    <string name="more">更多</string>
+    <string name="history">历史的</string>
+    <string name="tip">提示</string>
+    <string name="table_number">桌号:</string>
+    <string name="table">桌</string>
+    <string name="noone_wait">当前无人等待，可以直接点单</string>
+    <string name="cache_success">缓存成功</string>
+    <string name="confirm_pay">确认支付</string>
+    <string name="confirm">确认</string>
+    <string name="time_format">yyyy年MM月dd日    HH:mm:ss</string>
+    <string name="alipay">支付宝支付</string>
+    <string name="wechat">微信支付</string>
+    <string name="visa">网银支付</string>
+    <string name="pay_method">支付方式</string>
+    <string name="choose_paymethod">请选择支付方式</string>
+    <string name="pingfen1">评分</string>
+
 </resources>

@@ -8,14 +8,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.administrator.Fanpul.R;
 import com.example.administrator.Fanpul.model.entity.bmobEntity.Menu;
-import com.example.administrator.Fanpul.ui.activity.CookDetailActivity;
 import com.example.administrator.Fanpul.ui.activity.MenuInDetailActivity;
+import com.example.administrator.Fanpul.ui.adapter.baseadapter.BaseRecyclerAdapter;
+import com.example.administrator.Fanpul.ui.adapter.holder.CommonHolder;
 import com.example.administrator.Fanpul.ui.fragment.CookListFragment;
 import com.example.administrator.Fanpul.utils.GlideUtil;
+import com.example.administrator.Fanpul.utils.ToastUtil;
 
 import butterknife.Bind;
 
@@ -23,7 +24,7 @@ import butterknife.Bind;
  * Created by Administrator on 2017/2/19.
  */
 
-public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
+public class CookListAdapter extends BaseRecyclerAdapter<Menu> {
 
     private Activity activity;
     private GlideUtil glideUtil;
@@ -74,9 +75,6 @@ public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
                 numberText.setText(0+"");
                 currentNum = 0;
             }
-            /*if(cook.getRecipe() != null && cook.getRecipe().getImg() != null && (!TextUtils.isEmpty(cook.getRecipe().getImg()))) {
-                glideUtil.attach(imgvCook).injectImageWithNull(cook.getRecipe().getImg());
-            }else imgvCook.setImageResource(R.mipmap.qiudaoyu);*/
             if(cook!=null && cook.getImgUrl()!=null&&(!TextUtils.isEmpty(cook.getImgUrl()))){
                 glideUtil.attach(imgvCook).injectImageWithNull(cook.getImgUrl());
             }
@@ -101,7 +99,8 @@ public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
                       //  buy.setNumber(currentNum);
                     }
                     else{
-                        Toast.makeText(activity,"数量不能为负",Toast.LENGTH_SHORT).show();
+                        ToastUtil.showToast(activity,R.string.toast_msg_cannot_be_minus);
+
                     }
                 }
             });
@@ -120,7 +119,8 @@ public class CookListAdapter extends BaseRecyclerAdapter<Menu>{
                         numberText.setText(currentNum + "");
                      //   buy.setNumber(currentNum);
                     }else{
-                        Toast.makeText(activity,"数量超过限制",Toast.LENGTH_SHORT).show();
+                        ToastUtil.showToast(activity,R.string.toast_msg_more_than_max);
+
                     }
 
                 }

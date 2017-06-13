@@ -22,17 +22,13 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(getLayoutId(), container, false);
         ButterKnife.bind(this, view);
-
         initView(inflater, container, savedInstanceState);
-
         return view;
     }
 
     @Override
     public void onResume(){
         super.onResume();
-
-
         if(presenter == null && getPresenter() != null){
             presenter = getPresenter();
         }

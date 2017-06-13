@@ -9,11 +9,11 @@
 <android.support.v7.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="12dp">
+    app:cardCornerRadius="@dimen/dp_12">
     <com.example.administrator.Fanpul.ui.view.ImageCycleView
         android:id="@+id/ad_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="@dimen/dp_200" />
 </android.support.v7.widget.CardView>
 
 </RelativeLayout>

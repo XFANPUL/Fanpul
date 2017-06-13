@@ -9,22 +9,19 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.administrator.Fanpul.R;
+import com.example.administrator.Fanpul.model.DB.DBProxy;
+import com.example.administrator.Fanpul.model.DB.IDBCallBack.OneObjectCallBack;
 import com.example.administrator.Fanpul.presenter.Presenter;
 import com.example.administrator.Fanpul.utils.GlideUtil;
 
-import butterknife.Bind;
-import cn.bmob.v3.b.I;
-
-
+//菜品详细信息的activity
 public class MenuInDetailActivity extends BaseSwipeBackActivity {
     public static final String MENU_TAG = "com.example.administrator.Fanpul.ui.activity.MenuInDetailActivity.Menu";
 
@@ -33,15 +30,19 @@ public class MenuInDetailActivity extends BaseSwipeBackActivity {
     public TextView detail_product_sale;
     public TextView detail_product_price;
     public TextView detail_menu_introduction;
+    public FloatingActionButton fab;
+    private com.example.administrator.Fanpul.model.entity.bmobEntity.Menu menu;
 
     @Override
     protected Presenter getPresenter() {
         return null;
     }
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_product_in_detail;
     }
+
     @Override
     protected void init(Bundle savedInstanceState) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -49,35 +50,84 @@ public class MenuInDetailActivity extends BaseSwipeBackActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
-       detail_menu_name = (TextView)findViewById(R.id.product_name);
-        detail_menu_img = (ImageView)findViewById(R.id.detail_menu_img) ;
-       detail_product_sale = (TextView)findViewById(R.id.detail_product_sale);
+        detail_menu_name = (TextView) findViewById(R.id.product_name);
+        detail_menu_img = (ImageView) findViewById(R.id.detail_menu_img);
+        detail_product_sale = (TextView) findViewById(R.id.detail_product_sale);
         detail_product_price = (TextView) findViewById(R.id.detail_product_price);
-        detail_menu_introduction = (TextView)findViewById(R.id.detail_menu_introduction);
+        detail_menu_introduction = (TextView) findViewById(R.id.detail_menu_introduction);
 
         GlideUtil glideUtil = new GlideUtil();
-        Intent intent =getIntent();
-        com.example.administrator.Fanpul.model.entity.bmobEntity.Menu menu =
-                (com.example.administrator.Fanpul.model.entity.bmobEntity.Menu) intent.getSerializableExtra(MENU_TAG);
+        Intent intent = getIntent();
+        menu = (com.example.administrator.Fanpul.model.entity.bmobEntity.Menu) intent.getSerializableExtra(MENU_TAG);
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         collapsingToolbarLayout.setTitle(menu.getMenuName());
         detail_menu_name.setText(menu.getMenuName());
         glideUtil.attach(detail_menu_img).injectImageWithNull(menu.getImgUrl());
-        detail_product_price.setText(menu.getPrice()+"元/份");
-        detail_product_sale.setText("月售"+menu.getSaleNum()+"份");
+        detail_product_price.setText(getString(R.string.yuan,menu.getPrice()));
+        detail_product_sale.setText(getString(R.string.sale_num,menu.getSaleNum()));
         detail_menu_introduction.setText(menu.getDescription());
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         //收藏取消收藏可以用换图片实现 ，收藏是timg，取消收藏是uncollect
-        fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#eaeaea")));//设置背景颜色的代码，你们写后台的时候自己写 我就先不改了
-
-        fab.setOnClickListener(new View.OnClickListener() {
+        DBProxy.proxy.judgeIsCollectionMenu(getString(R.string.user_name), menu, new OneObjectCallBack<Boolean>() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "已添加到收藏夹", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void Success(Boolean result) {
+                updateUI(result);
+            }
+
+            @Override
+            public void Failed() {
+
             }
         });
+        fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#eaeaea")));//设置背景颜色的代码，你们写后台的时候自己写 我就先不改了
+
+    }
+
+    public void updateUI(boolean flag) {
+        if (flag) {
+            fab.setImageResource(R.drawable.timg);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Snackbar.make(v, R.string.cancel_collextion, Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    DBProxy.proxy.deleteCollectionMenu(getString(R.string.user_name), menu, new OneObjectCallBack() {
+                        @Override
+                        public void Success(Object result) {
+                            updateUI(false);
+                        }
+
+                        @Override
+                        public void Failed() {
+
+                        }
+                    });
+                }
+            });
+        } else {
+            fab.setImageResource(R.drawable.uncollect);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DBProxy.proxy.addCollectionMenu(getString(R.string.user_name), menu, new OneObjectCallBack() {
+                        @Override
+                        public void Success(Object result) {
+                            updateUI(true);
+                        }
+
+                        @Override
+                        public void Failed() {
+
+                        }
+                    });
+
+                    Snackbar.make(view, R.string.add_collection , Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+        }
+
     }
 
     @Override
@@ -104,9 +154,9 @@ public class MenuInDetailActivity extends BaseSwipeBackActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static void MenuInDetailActivityStart(Context context,com.example.administrator.Fanpul.model.entity.bmobEntity.Menu menu){
-        Intent intent = new Intent(context,MenuInDetailActivity.class);
-        intent.putExtra(MENU_TAG,menu);
+    public static void MenuInDetailActivityStart(Context context, com.example.administrator.Fanpul.model.entity.bmobEntity.Menu menu) {
+        Intent intent = new Intent(context, MenuInDetailActivity.class);
+        intent.putExtra(MENU_TAG, menu);
         context.startActivity(intent);
     }
 

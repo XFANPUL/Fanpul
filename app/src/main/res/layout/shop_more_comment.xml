@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_swipe_ly"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <RatingBar
+                android:id="@+id/shop_more_ratBarShop"
+                style="@style/evaRatingBar"
+                android:paddingTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginTop="@dimen/dip_10"
+                android:layout_marginLeft="@dimen/dip_9"
+                android:layout_centerHorizontal="true"
+                android:isIndicator="true"
+                android:gravity="center_vertical"
+                android:numStars="5"
+                android:rating="4.5"
+                android:stepSize="0.5" />
+
+            <TextView
+                android:id="@+id/shop_more_fraction"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/dip_10"
+                android:layout_height="@dimen/dp_25"
+                android:text="4.5分" />
+
+            <TextView
+                android:id="@+id/shop_more_ContrastPeer"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/dip_10"
+                android:layout_marginRight="@dimen/dip_11"
+                android:layout_height="@dimen/dp_25"
+                android:gravity="right"
+                android:text="高于99%的同行" />
+        </LinearLayout>
+
+        <include layout="@layout/line_view" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/shop_comment_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>
